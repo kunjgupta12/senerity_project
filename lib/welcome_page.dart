@@ -1,6 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:untitled5/auth_controller.dart';
-
+import 'package:untitled5/Upload_Page.dart';
+import 'package:untitled5/signup_page.dart';
+import 'package:untitled5/button_widget.dart';
 class Welcomepage extends StatelessWidget {
   String email;
    Welcomepage({Key? key, required this.email}):super(key:key);
@@ -94,6 +99,23 @@ email,
 
             ),
           ),
+         SizedBox(height: 20,),
+
+       /*  RichText(
+              text: TextSpan(
+                  text: "Don\'t have an account?",
+                  style: TextStyle(color: Colors.grey[500], fontSize: 20),
+                  children: [
+                    TextSpan(
+                        text: "Create one for Free!!",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => Get.to(() =>ButtonWidget(icon:Icons.earbuds , text: "flutter", onClicked:)))
+                  ]))*/
+
         ],
       ),
     );

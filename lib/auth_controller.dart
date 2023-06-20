@@ -1,7 +1,9 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled5/email_authstep.dart';
 import 'package:untitled5/login_page.dart';
 import 'package:untitled5/welcome_page.dart';
 
@@ -26,12 +28,14 @@ _initialScreen(User? user){
   }
   else
     {
+      bool check  = false;
       Get.offAll(()=>Welcomepage(email:user.email!));
     }
 }
 void register(String email,password) async{
   try{
     await auth.createUserWithEmailAndPassword(email: email, password: password);
+    Get.offAll(()=> EmailVerificationScreen());
   }catch(e){
 Get.snackbar("About user", "User message",
 backgroundColor: Colors.redAccent,
