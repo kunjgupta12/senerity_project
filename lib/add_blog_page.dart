@@ -213,13 +213,15 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         final User? user = _auth.currentUser;
 
                         postRef.child('Post List').child(date.toString()).set({
+
                           'pId': date.toString(),
                           'pImage': newUrl.toString(),
                           'pTime': date.toString(),
                           'pTitle': titleController.text.toString(),
                           'pDescription': descriptionController.text.toString(),
-                          'uEmail': user!.email.toString(),
-                          'uid': user!.uid.toString(),
+                          'uEmail': user?.email.toString(),
+                          'uid': user?.uid.toString(),
+
                         }).then((value) {
                           toastMessage('Post published');
                           Navigator.push(

@@ -24,13 +24,14 @@ Future main() async {
 }
 
 class MyAppp extends StatelessWidget {
-  static final String title = 'Firebase Upload';
+  static final String title = 'Id Upload';
 
   @override
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
         title: title,
-        theme: ThemeData(primarySwatch: Colors.green),
+
+        theme: ThemeData(primarySwatch: Colors.blue),
         home: MainPage(),
       );
 }
@@ -44,7 +45,7 @@ class _MainPageState extends State<MainPage> {
   UploadTask? task;
   File? file;
   bool isButtonClickable = true;
-bool kunj=false;
+
   @override
   Widget build(BuildContext context) {
     final fileName = file != null ? basename(file!.path) : 'No File Selected';
@@ -64,21 +65,11 @@ bool kunj=false;
                 text: 'Select File',
                 icon: Icons.attach_file,
                 onClicked: selectFile,
+
               ),
               SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: () {
-                  if (isButtonClickable) {
 
-                  }
-                },
-                child: Text(
-                  isButtonClickable?"Clickable":"Not Clickable",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+
               Text(
                 fileName,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),

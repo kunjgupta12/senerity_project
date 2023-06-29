@@ -7,16 +7,18 @@ import 'package:untitled5/Upload_Page.dart';
 import 'package:untitled5/community_page.dart';
 import 'package:untitled5/signup_page.dart';
 import 'package:untitled5/button_widget.dart';
+
 class Welcomepage extends StatelessWidget {
   String email;
-   Welcomepage({Key? key, required this.email}):super(key:key);
+  Welcomepage({Key? key, required this.email}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-      double w = MediaQuery.of(context).size.width;
+    double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.width;
     return Scaffold(
+
+
       backgroundColor: Colors.white,
       body: Column(
         children: [
@@ -39,46 +41,36 @@ class Welcomepage extends StatelessWidget {
               ],
             ),
           ),
-
           SizedBox(
-            height: 60,),
-            Container(
-              width: w,
-              margin: const EdgeInsets.only(
-                left: 20
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Welcome",
-                    style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54
-                    ),
-                  ),
-                  Text(
-email,
-                    style: TextStyle(
-                        fontSize: 18,
-
-                        color: Colors.grey[500]
-                    ),
-                  ),
-                ],
-              ),
+            height: 60,
+          ),
+          Container(
+            width: w,
+            margin: const EdgeInsets.only(left: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Welcome",
+                  style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black54),
+                ),
+                Text(
+                  email,
+                  style: TextStyle(fontSize: 18, color: Colors.grey[500]),
+                ),
+              ],
             ),
-
+          ),
           SizedBox(
-            height: 200,),
-
+            height: 200,
+          ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               AuthController.instance.Logout();
-            }
-            ,
-
+            },
             child: Container(
               width: w * 0.38,
               height: h * .15,
@@ -96,27 +88,25 @@ email,
                   ),
                 ),
               ),
-
-
             ),
           ),
-         SizedBox(height: 20,),
-
-         RichText(
+          SizedBox(
+            height: 20,
+          ),
+          RichText(
               text: TextSpan(
                   text: "",
                   style: TextStyle(color: Colors.grey[500], fontSize: 20),
                   children: [
-                    TextSpan(
-                        text: "Procced",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () => Get.to(() =>HomeScreen()))
-                  ]))
-
+                TextSpan(
+                    text: "Procced",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => Get.to(() => HomeScreen()))
+              ]))
         ],
       ),
     );
