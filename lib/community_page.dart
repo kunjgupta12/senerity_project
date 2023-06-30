@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:untitled5/Upload_Page.dart';
+import 'package:untitled5/add_poll_page.dart';
 import 'package:untitled5/login_page.dart';
 import 'package:untitled5/nav_bar.dart';
 
@@ -66,10 +67,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   auth.signOut().then((value) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => profilepage()));
+                        MaterialPageRoute(builder: (context) => AddPollScreen()));
                   });
                 },
                 child: Icon(Icons.person),),
+            InkWell(
+              onTap: () {
+                auth.signOut().then((value) {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => profilepage()));
+                });
+              },
+              child: Icon(Icons.person),),
             SizedBox(
               width: 20,
             ),
