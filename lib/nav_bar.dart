@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/Upload_Page.dart';
 import 'package:untitled5/profile_page.dart';
+import 'package:untitled5/settings_page.dart';
 import 'community_page.dart';
 class profilepage extends StatefulWidget {
   const profilepage({super.key});
@@ -15,8 +16,8 @@ class _profilepageState extends State<profilepage> {
   final screens=[
     HomeScreen(),
     MyAppp(),
-    profile(),
-
+   SettingsUI(),
+SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -41,6 +42,8 @@ class _profilepageState extends State<profilepage> {
               label: 'Govt id upload',),
             NavigationDestination(icon: Icon(Icons.person),
               label: 'Profile',),
+            NavigationDestination(icon: Icon(Icons.settings),
+              label: 'Settings',),
           ],
         ),
       ) ,
