@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/Upload_Page.dart';
-import 'package:untitled5/profile_page.dart';
+import 'package:untitled5/pages/profile_page.dart';
+
 import 'package:untitled5/settings_page.dart';
 import 'community_page.dart';
+import 'gethelp.dart';
 class profilepage extends StatefulWidget {
   const profilepage({super.key});
 
@@ -15,8 +17,8 @@ class _profilepageState extends State<profilepage> {
   int index=0;
   final screens=[
     HomeScreen(),
-    MyAppp(),
-   SettingsUI(),
+    getHelp(),
+   ProfilePage(),
 SettingsPage(),
   ];
   @override
@@ -32,14 +34,14 @@ SettingsPage(),
         ),
         child: NavigationBar(
           height: 60,
-          selectedIndex: 1,
+          selectedIndex: 0,
           onDestinationSelected: (index)=>setState(() =>this.index=index
           ),
           destinations: [
             NavigationDestination(icon: Icon(Icons.chat),
               label: 'Community',),
-            NavigationDestination(icon: Icon(Icons.insert_drive_file),
-              label: 'Govt id upload',),
+            NavigationDestination(icon: Icon(Icons.help),
+              label: 'Get Help',),
             NavigationDestination(icon: Icon(Icons.person),
               label: 'Profile',),
             NavigationDestination(icon: Icon(Icons.settings),

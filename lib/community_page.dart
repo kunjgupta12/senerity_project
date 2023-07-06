@@ -9,7 +9,7 @@ import 'package:untitled5/Upload_Page.dart';
 import 'package:untitled5/add_poll_page.dart';
 import 'package:untitled5/login_page.dart';
 import 'package:untitled5/nav_bar.dart';
-import 'package:untitled5/profile_page.dart';
+
 
 import 'add_blog_page.dart';
 import 'login_page.dart';
@@ -36,11 +36,15 @@ class _HomeScreenState extends State<HomeScreen> {
         SystemNavigator.pop();
         return true;
       },
+
       child: Scaffold(
+
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text('New Blogs'),
+
           centerTitle: true,
+
           actions: [
             InkWell(
                 onTap: () {
@@ -83,15 +87,18 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(
               width: 20,
+
             ),
           ],
         ),
         body: Padding(
+
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
               TextFormField(
                 controller: searchController,
                 keyboardType: TextInputType.emailAddress,
@@ -110,6 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   search = value;
                 },
               ),
+
               Expanded(
                 child: FirebaseAnimatedList(
                   query: databaseReference.child('Post List'),
@@ -158,6 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               SizedBox(
                                 height: 10,
+
                               ),
                               Padding(
                                 padding:
@@ -238,7 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 height: 10,
                               ),
-                              profilepage(),
+
                             ],
                           ),
                         ),

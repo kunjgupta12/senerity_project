@@ -7,6 +7,7 @@ import 'package:untitled5/splash_screen.dart';
 import 'package:untitled5/welcome_page.dart';
 import 'package:get/get.dart';
 import 'firebase_options.dart';
+import 'nav_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

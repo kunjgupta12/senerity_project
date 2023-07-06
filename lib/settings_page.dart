@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled5/community_page.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -15,7 +16,9 @@ class _SettingsPageState extends State<SettingsPage> {
         elevation: 1,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+         setState(() {
+           HomeScreen();
+         });
           },
           icon: Icon(
             Icons.arrow_back,
@@ -56,7 +59,7 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 10,
             ),
-            buildAccountOptionRow(context, "Change password"),
+            buildAccountOptionRow(context, "Change password",),
             buildAccountOptionRow(context, "Content settings"),
             buildAccountOptionRow(context, "Social"),
             buildAccountOptionRow(context, "Language"),
