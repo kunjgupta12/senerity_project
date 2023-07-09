@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled5/ForgotPasswordPage.dart';
 import 'package:untitled5/community_page.dart';
+import 'package:untitled5/login_page.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -98,7 +100,9 @@ class _SettingsPageState extends State<SettingsPage> {
             Center(
               child: OutlinedButton(
 
-                onPressed: () {},
+                onPressed: () {setState(() {
+                Loginpage();
+                });},
                 child: Text("SIGN OUT",
                     style: TextStyle(
                         fontSize: 16, letterSpacing: 2.2, color: Colors.black)),

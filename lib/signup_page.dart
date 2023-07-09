@@ -38,10 +38,12 @@ class SignupPage extends StatefulWidget {
         body: SingleChildScrollView(
 
           child: Column(
+
             children: [
+              SizedBox(height: 10,),
               Container(
-                width: w,
-                height: h * 0.5,
+                width: w*.9,
+                height: h * 0.45,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage("img/logo.png"),

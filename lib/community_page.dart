@@ -139,10 +139,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: FadeInImage.assetNetwork(
-                                  fit: BoxFit.cover,
-                                  width: MediaQuery.of(context).size.width * 1,
+                                  fit: BoxFit.fill,
+                                  width: MediaQuery.of(context).size.width * .9,
                                   height:
-                                      MediaQuery.of(context).size.height * .25,
+                                      MediaQuery.of(context).size.height * .4,
                                   placeholder: 'images/tohru.jpg',
                                   image: snapshot
                                       .child('pImage')
@@ -159,9 +159,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Text(
                                   snapshot.child('pTitle').value!.toString(),
                                   style: TextStyle(
-                                      fontSize: 23,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.deepOrangeAccent),
+                                      fontSize: 29,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black54,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -178,9 +179,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                       .toString(),
                                   style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w400),
+                                      fontWeight: FontWeight.w500,
+                                  color: Colors.black87),
                                 ),
                               ),
+                          /*   Padding(
+                                padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text(
+
+                                  snapshot
+                                      .child('pComment')
+                                      .value!
+                                      .toString(),
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),*/
                               SizedBox(
                                 height: 10,
                               ),
@@ -244,6 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       fontWeight: FontWeight.w400),
                                 ),
                               ),
+
                               SizedBox(
                                 height: 10,
                               ),
