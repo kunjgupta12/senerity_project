@@ -10,15 +10,15 @@ class UserData {
   static User myUser = User(
     image:
         "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
-    name: 'Test Test',
+    name: 'Your Name',
     birthdate: 'MM/DD/YYYY',
     bloodtype: 'A,B,O or AB - Positive or Negative ',
     weightandheight: ' 80 kg -- 180 cm ',
-    cityandcountry: ' Cairo - Egypt ',
+    cityandcountry: 'India-Delhi ',
     email: 'test.test@gmail.com',
-    phone: '(208) 206-5039',
+    phone: '+919245594852',
     aboutMeDescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...',
+        'Tell About Yourself'
   );
 
   static Future init() async =>

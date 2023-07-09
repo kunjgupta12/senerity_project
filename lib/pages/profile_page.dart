@@ -28,13 +28,10 @@ class _ProfilePageState extends State<ProfilePage> {
     final user = UserData.myUser;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            toolbarHeight: 10,
-          ),
+
           Center(
               child: Padding(
                   padding: EdgeInsets.only(bottom: 20),
@@ -46,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       color: Color.fromRGBO(64, 105, 225, 1),
                     ),
                   ))),
-          SizedBox(height: 50),
+          SizedBox(height: 10),
           InkWell(
 
               onTap: () {

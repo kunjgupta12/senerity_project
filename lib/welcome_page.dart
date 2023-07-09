@@ -20,94 +20,99 @@ class Welcomepage extends StatelessWidget {
 
 
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Container(
-            width: w,
-            height: h * 0.5,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("img/logo.png"), fit: BoxFit.fitHeight)),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: h * .3,
-                ),
-                CircleAvatar(
-                  backgroundColor: Colors.white70,
-                  radius: 40,
-                  backgroundImage: AssetImage("img/logo.png"),
-                )
-              ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("img/img_1.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          children: [
+            Container(
+              width: w*.8,
+              height: h * 0.5,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("img/logo.png"), fit: BoxFit.fitHeight)),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: h * .3,
+                  ),
+
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 60,
-          ),
-          Container(
-            width: w,
-            margin: const EdgeInsets.only(left: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Welcome",
-                  style: TextStyle(
+            SizedBox(
+              height: 250,
+            ),
+            Container(
+              width: w,
+              margin: const EdgeInsets.only(left: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Welcome to the"      "                               Serenity Family...........",
+                    style: TextStyle(
+
+                        fontSize: 46,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.black54),
+                  ),
+                  SizedBox(height: 20,),
+                  Text(
+                    " "+email,
+                    style: TextStyle(fontSize: 20, color: Colors.black87,fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
+            ),
+
+            GestureDetector(
+              onTap: () {
+                AuthController.instance.Logout();
+              },
+              child: Container(
+                width: w * 0.38,
+                height: h * .15,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    image: DecorationImage(
+                        image: AssetImage("img/img.png"), fit: BoxFit.fill)),
+                child: Center(
+                  child: Text(
+                    "Sign out",
+                    style: TextStyle(
                       fontSize: 36,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black54),
-                ),
-                Text(
-                  email,
-                  style: TextStyle(fontSize: 18, color: Colors.grey[500]),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 200,
-          ),
-          GestureDetector(
-            onTap: () {
-              AuthController.instance.Logout();
-            },
-            child: Container(
-              width: w * 0.38,
-              height: h * .15,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
-                      image: AssetImage("img/img.png"), fit: BoxFit.fill)),
-              child: Center(
-                child: Text(
-                  "Sign out",
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey[700],
+                      color: Colors.grey[700],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          RichText(
-              text: TextSpan(
-                  text: "",
-                  style: TextStyle(color: Colors.grey[500], fontSize: 20),
-                  children: [
-                TextSpan(
-                    text: "Procced",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () => Get.to(() => HomeScreen()))
-              ]))
-        ],
+            SizedBox(
+              height: 20,
+            ),
+            RichText(
+                text: TextSpan(
+                    text: "",
+                    style: TextStyle(color: Colors.grey[500], fontSize: 20),
+                    children: [
+                  TextSpan(
+                      text: "Proceed",
+                      style: TextStyle(
+                          color: Colors.pink,
+                          fontSize: 20,
+
+                          fontWeight: FontWeight.bold),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () => Get.to(() => HomeScreen()))
+                ]))
+          ],
+        ),
       ),
     );
   }

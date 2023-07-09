@@ -26,8 +26,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              backgroundColor: Colors.grey,
-              content: Text('Password resend link  send !Check  your email'),
+              backgroundColor: Colors.blueGrey,
+
+              content: Text('Password resend link has been send !'
+                  '                             Please Check  your Email',textAlign: TextAlign.center,style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 20,
+              ),
+              ),
             );
           });
     } on FirebaseAuthException catch (e) {
@@ -36,8 +42,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              backgroundColor: Colors.grey,
-              content: Text(e.message.toString()),
+              backgroundColor: Colors.white12,
+              content: Text(e.message.toString(),style:TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 20,
+              ),),
             );
           });
     }
@@ -45,50 +54,85 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurple[200],
-        elevation: 0,
-      ),
-      body: Column(
+      resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Text(
-              'Enter Your email and we will send your password resend link',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
-            ),
+SizedBox(height: 20,),
+          Container(
+            width: w * 0.5,
+            height: h * 0.45,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("img/logo.png"),
+                    fit: BoxFit.fitHeight)),
           ),
-          SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
+
+             Text(
+              'Enter Your Registered Email-Id a Resend Link Will be Send',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 35,color: Colors.grey[600],fontWeight:FontWeight.w500 ),
+
+            ),
+
+          SizedBox(height: 150),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(30),
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 10,
+                    spreadRadius: 5,
+                    offset: Offset(1, 1),
+                    color: Colors.grey.withOpacity(.2))
+              ]),
+
             child: TextField(
               controller: _emailcontroller,
+
               decoration: InputDecoration(
+                hintText: "Email",
+                prefixIcon: Icon(
+                  Icons.email,
+                  color: Colors.deepOrangeAccent,
+                ),
+
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(50),
+                  borderSide: BorderSide(color: Colors.white12, width: 1.0),
+
+                ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(50),
                   borderSide: BorderSide(color: Colors.white, width: 1.0),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.pink, width: 1.0),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                hintText: 'Email',
-                fillColor: Colors.brown,
-                filled: true,
-              ),
+
+
+             ),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 80),
           MaterialButton(
+
             onPressed: passwordreset,
-            child: Text('Resend password'),
-            color: Colors.pink[100],
+            shape: Border.symmetric(),
+            child: Text('Resend password',style: TextStyle(
+              fontSize: 30,
+              fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.w600,
+            ),),
+            color: Colors.white10,
+
           ),
         ],
       ),
+        ),
     );
   }
 }
