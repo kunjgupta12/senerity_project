@@ -28,14 +28,7 @@ class _LoginpageState extends State<Loginpage> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("img/img_1.png"),
-              fit: BoxFit.fitHeight,
-              filterQuality: FilterQuality.high
-            ),
-          ),
+
           child: Column(
             children: [
               SizedBox(
@@ -206,7 +199,7 @@ class _LoginpageState extends State<Loginpage> {
             ],
           ),
         ),
-      ),
+
     );
   }
 }

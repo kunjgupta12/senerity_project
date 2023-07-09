@@ -1,8 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:untitled5/ForgotPasswordPage.dart';
-import 'package:untitled5/community_page.dart';
+
 import 'package:untitled5/login_page.dart';
+import 'package:untitled5/razorpay.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -13,21 +19,8 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 1,
-        leading: IconButton(
-          onPressed: () {
-         setState(() {
-           HomeScreen();
-         });
-          },
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.green,
-          ),
-        ),
-      ),
+
+
       body: Container(
         padding: EdgeInsets.only(left: 16, top: 25, right: 16),
         child: ListView(
@@ -43,7 +36,7 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 Icon(
                   Icons.person,
-                  color: Colors.green,
+                  color: Colors.blue,
                 ),
                 SizedBox(
                   width: 8,
@@ -61,7 +54,18 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 10,
             ),
-            buildAccountOptionRow(context, "Change password",),
+            InkWell(
+
+              onTap: () {
+                navigateSecondPage(ForgotPasswordPage());
+              },
+
+              child: Text("Reset Password",style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+color: Colors.black45
+              ),),
+            ),
             buildAccountOptionRow(context, "Content settings"),
             buildAccountOptionRow(context, "Social"),
             buildAccountOptionRow(context, "Language"),
@@ -73,7 +77,7 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 Icon(
                   Icons.volume_up_outlined,
-                  color: Colors.green,
+                  color: Colors.blue,
                 ),
                 SizedBox(
                   width: 8,
@@ -91,23 +95,40 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 10,
             ),
-            buildNotificationOptionRow("New for you", true),
+
             buildNotificationOptionRow("Account activity", true),
-            buildNotificationOptionRow("Opportunity", false),
+
             SizedBox(
               height: 50,
             ),
-            Center(
-              child: OutlinedButton(
+            Center(child: Text("Contact Developer for more assistance",style: TextStyle(
+              fontWeight: FontWeight.w600,
+              color: Colors.black54,
+              fontSize: 30,
+            ),)),
+            SizedBox(
+              height: 100,
+            ),
 
-                onPressed: () {setState(() {
-                Loginpage();
-                });},
-                child: Text("SIGN OUT",
-                    style: TextStyle(
-                        fontSize: 16, letterSpacing: 2.2, color: Colors.black)),
-              ),
-            )
+                Center(
+                  child: RichText(
+                      text: TextSpan(
+                          text: "",
+                          style: TextStyle(color: Colors.grey[500], fontSize: 20),
+                          children: [
+                            TextSpan(
+                                text: "Sign out",
+                                style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 40,
+
+                                    fontWeight: FontWeight.bold),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () => Get.to(() => Loginpage()))
+                          ])),
+                )
+
+
           ],
         ),
       ),
@@ -182,5 +203,12 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
     );
+  }
+  FutureOr onGoBack(dynamic value) {
+    setState(() {});
+  }
+  void navigateSecondPage(Widget editForm) {
+    Route route = MaterialPageRoute(builder: (context) => editForm);
+    Navigator.push(context, route).then(onGoBack);
   }
 }

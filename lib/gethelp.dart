@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:untitled5/signaling..dart';
 
 Future<void> main() async {
@@ -8,20 +9,25 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(gethelp());
 }
+class gethelp extends StatefulWidget {
+  const gethelp({super.key});
 
-class gethelp extends StatelessWidget {
-  // This widget is the root of your application.
+  @override
+  State<gethelp> createState() => _gethelpState();
+}
+
+class _gethelpState extends State<gethelp> {
+  var _razorpay = Razorpay();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
 }
+
+
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -60,21 +66,25 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Get Help"),
-      ),
+
       body: Column(
+
         children: [
-          SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          SizedBox(height: 20),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ElevatedButton(
+
                 onPressed: () {
                   signaling.openUserMedia(_localRenderer, _remoteRenderer);
                 },
-                child: Text("Open camera & microphone"),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                ),
+                child: Text("Open camera & microphone",style: TextStyle(color: Colors.blueGrey,fontSize:20),),
               ),
+
               SizedBox(
                 width: 8,
               ),
@@ -84,7 +94,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   textEditingController.text = roomId!;
                   setState(() {});
                 },
-                child: Text("Create room"),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                ),
+                child: Text("Create room",style: TextStyle(color: Colors.blueGrey,fontSize:20),),
               ),
               SizedBox(
                 width: 8,
@@ -97,7 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     _remoteRenderer,
                   );
                 },
-                child: Text("Join room"),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                ),
+                child: Text("Join room",style: TextStyle(color: Colors.blueGrey,fontSize:20),),
               ),
               SizedBox(
                 width: 8,
@@ -106,7 +122,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   signaling.hangUp(_localRenderer);
                 },
-                child: Text("Hangup"),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                ),
+                child: Text("Hangup",style: TextStyle(fontSize:20),),
               )
             ],
           ),

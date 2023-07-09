@@ -45,7 +45,7 @@ class Welcomepage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 250,
+              height: 50,
             ),
             Container(
               width: w,
@@ -53,14 +53,14 @@ class Welcomepage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+              /*    Text(
                     "Welcome to the"      "                               Serenity Family...........",
                     style: TextStyle(
 
                         fontSize: 46,
                         fontWeight: FontWeight.w800,
                         color: Colors.black54),
-                  ),
+                  ),*/
                   SizedBox(height: 20,),
                   Text(
                     " "+email,
@@ -69,6 +69,7 @@ class Welcomepage extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: h*.5,),
 
             GestureDetector(
               onTap: () {

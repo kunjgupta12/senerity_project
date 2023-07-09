@@ -31,6 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
+          SizedBox(height: 20,),
 
           Center(
               child: Padding(
