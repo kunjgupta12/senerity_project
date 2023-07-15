@@ -2,18 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:untitled5/doctor_call.dart';
 import 'package:untitled5/gethelp.dart';
 import 'package:untitled5/signup_page.dart';
 
 
-class paymemnt extends StatefulWidget {
-  paymemnt({Key? key}) : super(key: key);
+class doctor extends StatefulWidget {
+  doctor({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<paymemnt> {
+class _HomePageState extends State<doctor> {
   late var _razorpay;
   var amountController = TextEditingController();
 
@@ -32,7 +33,7 @@ class _HomePageState extends State<paymemnt> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) => gethelp()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => doctorcall()));
   }
 
 
@@ -74,54 +75,11 @@ class _HomePageState extends State<paymemnt> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-
+         Text('Book appointment'),
+            SizedBox(height: 50,),
             CupertinoButton(
                 color: Colors.grey,
-                child: Text("Pay Amount 100 for 15 min"),
-                onPressed: () {
-                  ///Make payment
-
-                    var options = {
-                      'key': "rzp_test_ALdrxH7AP4NuvJ",
-
-                      'amount': 10000,
-                      'name': 'Serenity',
-                      'description': 'Conference',
-                      'timeout': 3000, // in seconds
-                      'prefill': {
-                        'contact': '8787878787',
-                        'email': 'email',
-                      }
-                    };
-                    _razorpay.open(options);
-
-                }
-                ),
-            CupertinoButton(
-                color: Colors.grey,
-                child: Text("Pay Amount 200 for 45 min"),
-                onPressed: () {
-                  ///Make payment
-
-                  var options = {
-                    'key': "rzp_test_ALdrxH7AP4NuvJ",
-
-                    'amount': 20000,
-                    'name': 'Serenity',
-                    'description': 'Conference',
-                    'timeout': 3000, // in seconds
-                    'prefill': {
-                      'contact': '8787878787',
-                      'email': 'email',
-                    }
-                  };
-                  _razorpay.open(options);
-
-                }
-            ),
-            CupertinoButton(
-                color: Colors.grey,
-                child: Text("Pay Amount 300 for 1 hr"),
+                child: Text("Connect to Doctor & Pay Amount 500 for 1 hr "),
                 onPressed: () {
                   ///Make payment
 
