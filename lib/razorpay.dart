@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:untitled5/gethelp.dart';
+import 'package:untitled5/signup_page.dart';
 
 
 class paymemnt extends StatefulWidget {
@@ -16,11 +17,13 @@ class _HomePageState extends State<paymemnt> {
   late var _razorpay;
   var amountController = TextEditingController();
 
+
   @override
   void initState() {
     // TODO: implement initState
     _razorpay = Razorpay();
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     super.initState();
@@ -31,6 +34,7 @@ class _HomePageState extends State<paymemnt> {
 
     Navigator.push(context, MaterialPageRoute(builder: (context) => gethelp()));
   }
+
 
   void _handlePaymentError(PaymentFailureResponse response) {
     // Do something when payment fails
@@ -87,6 +91,7 @@ class _HomePageState extends State<paymemnt> {
                       'prefill': {
                         'contact': '8787878787',
                         'email': 'email',
+                        'name':'kunj',
                       }
                     };
                     _razorpay.open(options);
@@ -109,6 +114,7 @@ class _HomePageState extends State<paymemnt> {
                     'prefill': {
                       'contact': '8787878787',
                       'email': 'email',
+                      'name':'kunj',
                     }
                   };
                   _razorpay.open(options);

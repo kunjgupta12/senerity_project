@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:untitled5/community_page.dart';
 import 'package:untitled5/signaling..dart';
 
 Future<void> main() async {
@@ -47,12 +50,15 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     _localRenderer.initialize();
     _remoteRenderer.initialize();
+    Timer(Duration(seconds: 30), (){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
+          HomeScreen()));
 
     signaling.onAddRemoteStream = ((stream) {
       _remoteRenderer.srcObject = stream;
-      setState(() {});
-    });
 
+    });
+    });
     super.initState();
   }
 
