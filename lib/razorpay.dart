@@ -16,7 +16,7 @@ class paymemnt extends StatefulWidget {
 class _HomePageState extends State<paymemnt> {
   late var _razorpay;
   var amountController = TextEditingController();
-
+int index=1;
 
   @override
   void initState() {

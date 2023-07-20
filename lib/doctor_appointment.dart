@@ -43,6 +43,7 @@ class _HomePageState extends State<doctor> {
     // Do something when payment fails
     print("Payment Fail");
 
+
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
@@ -110,27 +111,29 @@ class _HomePageState extends State<doctor> {
                               SizedBox(
                                 height: 100,
                               ),
-                              Center(
-                                child: CupertinoButton(
-                                    color: Colors.grey,
-                                    child: Text("Book  Appointment"),
-                                    onPressed: () {
-                                      ///Make payment
+                              Container(
+                                child: Center(
+                                  child: CupertinoButton(
+                                      color: Colors.grey,
+                                      child: Text("Book  Appointment"),
+                                      onPressed: () {
+                                        ///Make payment
 
-                                      var options = {
-                                        'key': "rzp_test_ALdrxH7AP4NuvJ",
+                                        var options = {
+                                          'key': "rzp_test_ALdrxH7AP4NuvJ",
 
-                                        'amount': (double.parse(snapshot.data!.docs[index]['price']).toString()),
-                                        'name': 'Serenity',
-                                        'description': 'Conference',
-                                        'timeout': 3000, // in seconds
-                                        'prefill': {
-                                          'contact': '8787878787',
-                                          'email': 'email',
-                                        }
-                                      };
-                                      _razorpay.open(options);
-                                    }),
+                                          'amount': (double.parse(snapshot.data!.docs[index]['price']).toString()),
+                                          'name': 'Serenity',
+                                          'description': 'Conference',
+                                          'timeout': 3000, // in seconds
+                                          'prefill': {
+                                            'contact': '8787878787',
+                                            'email': 'email',
+                                          }
+                                        };
+                                        _razorpay.open(options);
+                                      }),
+                                ),
                               ),
                             ]),
                           ),

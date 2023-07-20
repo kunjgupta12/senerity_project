@@ -26,34 +26,11 @@ class _AddPostScreenState extends State<AddPostScreenn> {
 
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-  File? _image;
-  String title = "", description = "";
-  final picker = ImagePicker();
+
 
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
-  Future getImageGallery() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
-      } else {
-        print('No image selected');
-      }
-    });
-  }
-
-  Future getImageCamera() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
-    setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
-      } else {
-        print('No image selected');
-      }
-    });
-  }
 
   void dialog(context) {
     showDialog(
@@ -66,26 +43,7 @@ class _AddPostScreenState extends State<AddPostScreenn> {
               height: 120,
               child: Column(
                 children: [
-                  InkWell(
-                    onTap: () {
-                      getImageCamera();
-                      Navigator.pop(context);
-                    },
-                    child: ListTile(
-                      leading: Icon(Icons.camera_alt),
-                      title: Text('Camera'),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      getImageGallery();
-                      Navigator.pop(context);
-                    },
-                    child: ListTile(
-                      leading: Icon(Icons.photo_library),
-                      title: Text('Gallery'),
-                    ),
-                  )
+
                 ],
               ),
             ),
@@ -100,7 +58,7 @@ class _AddPostScreenState extends State<AddPostScreenn> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: true,
-          title: Text('Upload Blog'),
+          title: Text('Comment'),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -109,38 +67,7 @@ class _AddPostScreenState extends State<AddPostScreenn> {
             const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
             child: Column(
               children: [
-                InkWell(
-                  onTap: () {
-                    dialog(context);
-                  },
-                  child: Center(
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * .3,
-                      width: MediaQuery.of(context).size.width * .9,
-                      child: _image != null
-                          ? ClipRect(
-                        child: Image.file(
-                          _image!.absolute,
-                          height: 100,
-                          width: 100,
-                          fit: BoxFit.fitHeight,
-                        ),
-                      )
-                          : Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        width: 100,
-                        height: 100,
-                        child: Icon(
-                          Icons.camera_alt,
-                          color: Colors.deepOrange,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+
                 SizedBox(
                   height: 30,
                 ),
@@ -151,45 +78,23 @@ class _AddPostScreenState extends State<AddPostScreenn> {
                           controller: titleController,
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
-                            labelText: 'Title',
-                            hintText: 'Enter post title',
+                            labelText: 'Comment',
+                            hintText: 'Suggest',
                             border: OutlineInputBorder(),
                             hintStyle: TextStyle(
                                 color: Colors.grey, fontWeight: FontWeight.normal),
                             labelStyle: TextStyle(
                                 color: Colors.grey, fontWeight: FontWeight.normal),
                           ),
-                          onChanged: (value) {
-                            title = value;
-                          },
+
                           validator: (value) {
-                            return value!.isEmpty ? 'enter title' : null;
+                            return value!.isEmpty ? 'Comment?' : null;
                           },
                         ),
                         SizedBox(
                           height: 30,
                         ),
-                        TextFormField(
-                          controller: descriptionController,
-                          keyboardType: TextInputType.text,
-                          minLines: 1,
-                          maxLines: 5,
-                          decoration: InputDecoration(
-                            labelText: 'Description',
-                            hintText: 'Enter post description',
-                            border: OutlineInputBorder(),
-                            hintStyle: TextStyle(
-                                color: Colors.grey, fontWeight: FontWeight.normal),
-                            labelStyle: TextStyle(
-                                color: Colors.grey, fontWeight: FontWeight.normal),
-                          ),
-                          onChanged: (value) {
-                            description = value;
-                          },
-                          validator: (value) {
-                            return value!.isEmpty ? 'enter description' : null;
-                          },
-                        ),
+
                       ],
                     )),
                 SizedBox(
@@ -207,9 +112,7 @@ class _AddPostScreenState extends State<AddPostScreenn> {
 
                         Reference ref = FirebaseStorage.instance
                             .ref('/blog_app_firebase/$date');
-                        UploadTask uploadTask = ref.putFile(_image!.absolute);
-                        await Future.value(uploadTask);
-                        var newUrl = await ref.getDownloadURL();
+
                         final User? user = _auth.currentUser;
 
                         postRef.child('Post List').child(date.toString()).set({
