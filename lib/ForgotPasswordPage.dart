@@ -27,12 +27,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           builder: (context) {
             return AlertDialog(
               backgroundColor: Colors.blueGrey,
-
-              content: Text('Password resend link has been send !'
-                  '                             Please Check  your Email',textAlign: TextAlign.center,style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 20,
-              ),
+              content: Text(
+                'Password resend link has been send !'
+                '                             Please Check  your Email',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20,
+                ),
               ),
             );
           });
@@ -43,10 +45,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           builder: (context) {
             return AlertDialog(
               backgroundColor: Colors.white12,
-              content: Text(e.message.toString(),style:TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 20,
-              ),),
+              content: Text(
+                e.message.toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
             );
           });
     }
@@ -58,81 +63,78 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     double h = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-        body: SingleChildScrollView(
+      body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-SizedBox(height: 20,),
-          Container(
-            width: w * 0.5,
-            height: h * 0.45,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("img/logo.png"),
-                    fit: BoxFit.fitHeight)),
-          ),
-
-             Text(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: w * 0.5,
+              height: h * 0.45,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("img/logo.png"),
+                      fit: BoxFit.fitHeight)),
+            ),
+            Text(
               'Enter Your Registered Email-Id a Resend Link Will be Send',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 35,color: Colors.grey[600],fontWeight:FontWeight.w500 ),
-
+              style: TextStyle(
+                  fontSize: 35,
+                  color: Colors.grey[600],
+                  fontWeight: FontWeight.w500),
             ),
-
-          SizedBox(height: 150),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 10,
-                    spreadRadius: 5,
-                    offset: Offset(1, 1),
-                    color: Colors.grey.withOpacity(.2))
-              ]),
-
-            child: TextField(
-              controller: _emailcontroller,
-
-              decoration: InputDecoration(
-                hintText: "Email",
-                prefixIcon: Icon(
-                  Icons.email,
-                  color: Colors.deepOrangeAccent,
+            SizedBox(height: 150),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 10,
+                        spreadRadius: 5,
+                        offset: Offset(1, 1),
+                        color: Colors.grey.withOpacity(.2))
+                  ]),
+              child: TextField(
+                controller: _emailcontroller,
+                decoration: InputDecoration(
+                  hintText: "Email",
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.deepOrangeAccent,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: BorderSide(color: Colors.white12, width: 1.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: BorderSide(color: Colors.white, width: 1.0),
+                  ),
                 ),
-
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50),
-                  borderSide: BorderSide(color: Colors.white12, width: 1.0),
-
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50),
-                  borderSide: BorderSide(color: Colors.white, width: 1.0),
-                ),
-
-
-             ),
+              ),
             ),
-          ),
-          SizedBox(height: 80),
-          MaterialButton(
-
-            onPressed: passwordreset,
-            shape: Border.symmetric(),
-            child: Text('Resend password',style: TextStyle(
-              fontSize: 30,
-              fontStyle: FontStyle.normal,
-              fontWeight: FontWeight.w600,
-            ),),
-            color: Colors.white10,
-
-          ),
-        ],
-      ),
+            SizedBox(height: 80),
+            MaterialButton(
+              onPressed: passwordreset,
+              shape: Border.symmetric(),
+              child: Text(
+                'Resend password',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              color: Colors.white10,
+            ),
+          ],
         ),
+      ),
     );
   }
 }

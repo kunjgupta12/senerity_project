@@ -4,7 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:untitled5/community_page.dart';
+
+import 'package:untitled5/nav_bar.dart';
 import 'package:untitled5/signaling..dart';
 
 Future<void> main() async {
@@ -12,6 +13,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(gethelp());
 }
+
 class gethelp extends StatefulWidget {
   const gethelp({super.key});
 
@@ -29,8 +31,6 @@ class _gethelpState extends State<gethelp> {
     );
   }
 }
-
-
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -50,14 +50,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     _localRenderer.initialize();
     _remoteRenderer.initialize();
-    Timer(Duration(seconds: 30), (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-          HomeScreen()));
 
-    signaling.onAddRemoteStream = ((stream) {
-      _remoteRenderer.srcObject = stream;
+    Timer(Duration(seconds: 30), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => profilepage()));
 
-    });
+      signaling.onAddRemoteStream = ((stream) {
+        _remoteRenderer.srcObject = stream;
+      });
     });
     super.initState();
   }
@@ -72,25 +72,25 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Column(
-
         children: [
           SizedBox(height: 20),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ElevatedButton(
-
                 onPressed: () {
                   signaling.openUserMedia(_localRenderer, _remoteRenderer);
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black87),
                 ),
-                child: Text("Open camera & microphone",style: TextStyle(color: Colors.blueGrey,fontSize:20),),
+                child: Text(
+                  "Open camera & microphone",
+                  style: TextStyle(color: Colors.blueGrey, fontSize: 20),
+                ),
               ),
-
               SizedBox(
                 width: 8,
               ),
@@ -101,9 +101,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   setState(() {});
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black87),
                 ),
-                child: Text("Create room",style: TextStyle(color: Colors.blueGrey,fontSize:20),),
+                child: Text(
+                  "Create room",
+                  style: TextStyle(color: Colors.blueGrey, fontSize: 20),
+                ),
               ),
               SizedBox(
                 width: 8,
@@ -117,9 +121,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black87),
                 ),
-                child: Text("Join room",style: TextStyle(color: Colors.blueGrey,fontSize:20),),
+                child: Text(
+                  "Join room",
+                  style: TextStyle(color: Colors.blueGrey, fontSize: 20),
+                ),
               ),
               SizedBox(
                 width: 8,
@@ -129,9 +137,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   signaling.hangUp(_localRenderer);
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black87),
                 ),
-                child: Text("Hangup",style: TextStyle(fontSize:20),),
+                child: Text(
+                  "Hangup",
+                  style: TextStyle(fontSize: 20),
+                ),
               )
             ],
           ),

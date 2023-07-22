@@ -36,14 +36,13 @@ class _HomePageState extends State<doctor> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) =>  doctorslot()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => doctorslot()));
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
     // Do something when payment fails
     print("Payment Fail");
-
-
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
@@ -72,7 +71,6 @@ class _HomePageState extends State<doctor> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
-
     return Scaffold(
       body: Column(
         children: [
@@ -90,7 +88,6 @@ class _HomePageState extends State<doctor> {
                       itemBuilder: (context, index) {
                         return Card(
                           child: ListTile(
-
                             horizontalTitleGap: 10,
                             title: SelectableText(
                               snapshot.data!.docs[index]['name'].toString(),
@@ -106,8 +103,6 @@ class _HomePageState extends State<doctor> {
                                   fontSize: 20,
                                 ),
                               ),
-
-
                               SizedBox(
                                 height: 100,
                               ),
@@ -122,7 +117,9 @@ class _HomePageState extends State<doctor> {
                                         var options = {
                                           'key': "rzp_test_ALdrxH7AP4NuvJ",
 
-                                          'amount': (double.parse(snapshot.data!.docs[index]['price']).toString()),
+                                          'amount': (double.parse(snapshot
+                                                  .data!.docs[index]['price'])
+                                              .toString()),
                                           'name': 'Serenity',
                                           'description': 'Conference',
                                           'timeout': 3000, // in seconds

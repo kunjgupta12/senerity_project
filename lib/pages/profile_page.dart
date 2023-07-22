@@ -31,8 +31,9 @@ class _ProfilePageState extends State<ProfilePage> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          SizedBox(height: 20,),
-
+          SizedBox(
+            height: 20,
+          ),
           Center(
               child: Padding(
                   padding: EdgeInsets.only(bottom: 20),
@@ -46,27 +47,31 @@ class _ProfilePageState extends State<ProfilePage> {
                   ))),
           SizedBox(height: 10),
           InkWell(
-
-              onTap: () {
-                navigateSecondPage(MyAppp());
-              },
-
-              child: Text("Upload Id",style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                backgroundColor: Colors.cyan
-              ),),
-              ),
-          SizedBox(height: 20,),
+            onTap: () {
+              navigateSecondPage(MyAppp());
+            },
+            child: Text(
+              "Upload Id",
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  backgroundColor: Colors.cyan),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
           buildUserInfoDisplay(user.name, 'Name', EditNameFormPage()),
           buildUserInfoDisplay(
               user.birthdate, 'Birth Date', EditbirthdateFormPage()),
-          buildUserInfoDisplay(user.bloodtype, 'Blood Type', EditbloodtypeFormPage()),
-          buildUserInfoDisplay(user.weightandheight, 'Weight AND Height',EditweightandheightFormPage()),
-          buildUserInfoDisplay(user.cityandcountry, 'City AND Country',EditcityandcountryFormPage()),
+          buildUserInfoDisplay(
+              user.bloodtype, 'Blood Type', EditbloodtypeFormPage()),
+          buildUserInfoDisplay(user.weightandheight, 'Weight AND Height',
+              EditweightandheightFormPage()),
+          buildUserInfoDisplay(user.cityandcountry, 'City AND Country',
+              EditcityandcountryFormPage()),
           buildUserInfoDisplay(user.phone, 'Phone', EditPhoneFormPage()),
           buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
-
           Expanded(
             child: buildAbout(user),
             flex: 4,

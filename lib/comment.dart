@@ -10,8 +10,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-
-
 class AddPostScreenn extends StatefulWidget {
   const AddPostScreenn({Key? key}) : super(key: key);
 
@@ -26,11 +24,8 @@ class _AddPostScreenState extends State<AddPostScreenn> {
 
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-
-
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-
 
   void dialog(context) {
     showDialog(
@@ -42,9 +37,7 @@ class _AddPostScreenState extends State<AddPostScreenn> {
             content: Container(
               height: 120,
               child: Column(
-                children: [
-
-                ],
+                children: [],
               ),
             ),
           );
@@ -64,39 +57,36 @@ class _AddPostScreenState extends State<AddPostScreenn> {
         body: SingleChildScrollView(
           child: Padding(
             padding:
-            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
             child: Column(
               children: [
-
                 SizedBox(
                   height: 30,
                 ),
                 Form(
                     child: Column(
-                      children: [
-                        TextFormField(
-                          controller: titleController,
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            labelText: 'Comment',
-                            hintText: 'Suggest',
-                            border: OutlineInputBorder(),
-                            hintStyle: TextStyle(
-                                color: Colors.grey, fontWeight: FontWeight.normal),
-                            labelStyle: TextStyle(
-                                color: Colors.grey, fontWeight: FontWeight.normal),
-                          ),
-
-                          validator: (value) {
-                            return value!.isEmpty ? 'Comment?' : null;
-                          },
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-
-                      ],
-                    )),
+                  children: [
+                    TextFormField(
+                      controller: titleController,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        labelText: 'Comment',
+                        hintText: 'Suggest',
+                        border: OutlineInputBorder(),
+                        hintStyle: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.normal),
+                        labelStyle: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.normal),
+                      ),
+                      validator: (value) {
+                        return value!.isEmpty ? 'Comment?' : null;
+                      },
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                )),
                 SizedBox(
                   height: 30,
                 ),
@@ -116,11 +106,7 @@ class _AddPostScreenState extends State<AddPostScreenn> {
                         final User? user = _auth.currentUser;
 
                         postRef.child('Post List').child(date.toString()).set({
-
-
                           'pComment': descriptionController.text.toString(),
-
-
                         }).then((value) {
                           toastMessage('Post published');
                           Navigator.push(

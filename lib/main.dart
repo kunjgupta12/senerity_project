@@ -6,7 +6,6 @@ import 'package:untitled5/splash_screen.dart';
 import 'package:untitled5/welcome_page.dart';
 import 'package:get/get.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value) => Get.put(AuthController()));
@@ -20,12 +19,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: splashscreen(
-
-        ));
+        home: splashscreen());
   }
 }

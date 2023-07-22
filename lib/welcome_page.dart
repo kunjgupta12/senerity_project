@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:untitled5/auth_controller.dart';
 import 'package:untitled5/Upload_Page.dart';
 import 'package:untitled5/community_page.dart';
+import 'package:untitled5/nav_bar.dart';
 import 'package:untitled5/signup_page.dart';
 import 'package:untitled5/button_widget.dart';
 
@@ -17,8 +18,6 @@ class Welcomepage extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.width;
     return Scaffold(
-
-
       backgroundColor: Colors.white,
       body: Container(
         decoration: BoxDecoration(
@@ -30,17 +29,17 @@ class Welcomepage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: w*.8,
+              width: w * .8,
               height: h * 0.5,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("img/logo.png"), fit: BoxFit.fitHeight)),
+                      image: AssetImage("img/logo.png"),
+                      fit: BoxFit.fitHeight)),
               child: Column(
                 children: [
                   SizedBox(
                     height: h * .3,
                   ),
-
                 ],
               ),
             ),
@@ -53,7 +52,7 @@ class Welcomepage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-              /*    Text(
+                  /*    Text(
                     "Welcome to the"      "                               Serenity Family...........",
                     style: TextStyle(
 
@@ -61,16 +60,22 @@ class Welcomepage extends StatelessWidget {
                         fontWeight: FontWeight.w800,
                         color: Colors.black54),
                   ),*/
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Text(
-                    " "+email,
-                    style: TextStyle(fontSize: 20, color: Colors.black87,fontWeight: FontWeight.w600),
+                    " " + email,
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w600),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: h*.5,),
-
+            SizedBox(
+              height: h * .5,
+            ),
             GestureDetector(
               onTap: () {
                 AuthController.instance.Logout();
@@ -107,10 +112,9 @@ class Welcomepage extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.pink,
                           fontSize: 20,
-
                           fontWeight: FontWeight.bold),
                       recognizer: TapGestureRecognizer()
-                        ..onTap = () => Get.to(() => HomeScreen()))
+                        ..onTap = () => Get.to(() => profilepage()))
                 ]))
           ],
         ),

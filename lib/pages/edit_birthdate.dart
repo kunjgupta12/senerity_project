@@ -27,7 +27,6 @@ class EditbirthdateFormPageState extends State<EditbirthdateFormPage> {
     String formattedbirthdate = "" +
         birthdate.substring(0, 2) +
         "/ " +
-      
         birthdate.substring(2, 4) +
         "/ " +
         birthdate.substring(4, 8) +
@@ -101,4 +100,3 @@ class EditbirthdateFormPageState extends State<EditbirthdateFormPage> {
         ));
   }
 }
-

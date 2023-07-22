@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '986954955333',
     projectId: 'senerity-3930a',
     storageBucket: 'senerity-3930a.appspot.com',
-    iosClientId: '986954955333-eq6foa7aj4q1pcgh2u9kpn42mc1u59or.apps.googleusercontent.com',
+    iosClientId:
+        '986954955333-eq6foa7aj4q1pcgh2u9kpn42mc1u59or.apps.googleusercontent.com',
     iosBundleId: 'com.example.untitled5',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '986954955333',
     projectId: 'senerity-3930a',
     storageBucket: 'senerity-3930a.appspot.com',
-    iosClientId: '986954955333-eq6foa7aj4q1pcgh2u9kpn42mc1u59or.apps.googleusercontent.com',
+    iosClientId:
+        '986954955333-eq6foa7aj4q1pcgh2u9kpn42mc1u59or.apps.googleusercontent.com',
     iosBundleId: 'com.example.untitled5',
   );
 }

@@ -13,7 +13,8 @@ class EditcityandcountryFormPage extends StatefulWidget {
   }
 }
 
-class EditcityandcountryFormPageState extends State<EditcityandcountryFormPage> {
+class EditcityandcountryFormPageState
+    extends State<EditcityandcountryFormPage> {
   final _formKey = GlobalKey<FormState>();
   final firstcityController = TextEditingController();
   final secondcountryController = TextEditingController();
@@ -67,8 +68,7 @@ class EditcityandcountryFormPageState extends State<EditcityandcountryFormPage> 
                               }
                               return null;
                             },
-                            decoration:
-                                InputDecoration(labelText: 'City'),
+                            decoration: InputDecoration(labelText: 'City'),
                             controller: firstcityController,
                           ))),
                   Padding(

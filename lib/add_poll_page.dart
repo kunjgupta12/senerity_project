@@ -10,8 +10,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-
-
 class AddPollScreen extends StatefulWidget {
   const AddPollScreen({Key? key}) : super(key: key);
 
@@ -106,12 +104,12 @@ class _AddPostScreenState extends State<AddPollScreen> {
         body: SingleChildScrollView(
           child: Padding(
             padding:
-            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
             child: Column(
               children: [
                 InkWell(
                   onTap: () {
-                  //  dialog(context);
+                    //  dialog(context);
                   },
                   child: Center(
                     child: Container(
@@ -119,25 +117,25 @@ class _AddPostScreenState extends State<AddPollScreen> {
                       width: MediaQuery.of(context).size.width * .9,
                       child: _image != null
                           ? ClipRect(
-                        child: Image.file(
-                          _image!.absolute,
-                          height: 100,
-                          width: 100,
-                          fit: BoxFit.fitHeight,
-                        ),
-                      )
+                              child: Image.file(
+                                _image!.absolute,
+                                height: 100,
+                                width: 100,
+                                fit: BoxFit.fitHeight,
+                              ),
+                            )
                           : Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        width: 100,
-                        height: 100,
-                        child: Icon(
-                          Icons.camera_alt,
-                          color: Colors.deepOrange,
-                        ),
-                      ),
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade200,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              width: 100,
+                              height: 100,
+                              child: Icon(
+                                Icons.camera_alt,
+                                color: Colors.deepOrange,
+                              ),
+                            ),
                     ),
                   ),
                 ),
@@ -146,52 +144,52 @@ class _AddPostScreenState extends State<AddPollScreen> {
                 ),
                 Form(
                     child: Column(
-                      children: [
-                        TextFormField(
-                          controller: titleController,
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            labelText: 'Title',
-                            hintText: 'Enter post title',
-                            border: OutlineInputBorder(),
-                            hintStyle: TextStyle(
-                                color: Colors.grey, fontWeight: FontWeight.normal),
-                            labelStyle: TextStyle(
-                                color: Colors.grey, fontWeight: FontWeight.normal),
-                          ),
-                          onChanged: (value) {
-                            title = value;
-                          },
-                          validator: (value) {
-                            return value!.isEmpty ? 'enter title' : null;
-                          },
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        TextFormField(
-                          controller: descriptionController,
-                          keyboardType: TextInputType.text,
-                          minLines: 1,
-                          maxLines: 5,
-                          decoration: InputDecoration(
-                            labelText: 'Description',
-                            hintText: 'Enter post description',
-                            border: OutlineInputBorder(),
-                            hintStyle: TextStyle(
-                                color: Colors.grey, fontWeight: FontWeight.normal),
-                            labelStyle: TextStyle(
-                                color: Colors.grey, fontWeight: FontWeight.normal),
-                          ),
-                          onChanged: (value) {
-                            description = value;
-                          },
-                          validator: (value) {
-                            return value!.isEmpty ? 'enter description' : null;
-                          },
-                        ),
-                      ],
-                    )),
+                  children: [
+                    TextFormField(
+                      controller: titleController,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        labelText: 'Title',
+                        hintText: 'Enter post title',
+                        border: OutlineInputBorder(),
+                        hintStyle: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.normal),
+                        labelStyle: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.normal),
+                      ),
+                      onChanged: (value) {
+                        title = value;
+                      },
+                      validator: (value) {
+                        return value!.isEmpty ? 'enter title' : null;
+                      },
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    TextFormField(
+                      controller: descriptionController,
+                      keyboardType: TextInputType.text,
+                      minLines: 1,
+                      maxLines: 5,
+                      decoration: InputDecoration(
+                        labelText: 'Description',
+                        hintText: 'Enter post description',
+                        border: OutlineInputBorder(),
+                        hintStyle: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.normal),
+                        labelStyle: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.normal),
+                      ),
+                      onChanged: (value) {
+                        description = value;
+                      },
+                      validator: (value) {
+                        return value!.isEmpty ? 'enter description' : null;
+                      },
+                    ),
+                  ],
+                )),
                 SizedBox(
                   height: 30,
                 ),
@@ -213,7 +211,6 @@ class _AddPostScreenState extends State<AddPollScreen> {
                         final User? user = _auth.currentUser;
 
                         postRef.child('Post List').child(date.toString()).set({
-
                           'pId': date.toString(),
                           //'pImage': newUrl.toString(),
                           'pTime': date.toString(),
@@ -221,7 +218,6 @@ class _AddPostScreenState extends State<AddPollScreen> {
                           'pDescription': descriptionController.text.toString(),
                           'uEmail': user?.email.toString(),
                           'uid': user?.uid.toString(),
-
                         }).then((value) {
                           toastMessage('Post published');
                           Navigator.push(
@@ -244,7 +240,7 @@ class _AddPostScreenState extends State<AddPollScreen> {
                         toastMessage(e.toString());
                       }
                     }),
-  ],
+              ],
             ),
           ),
         ),

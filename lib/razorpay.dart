@@ -5,7 +5,6 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:untitled5/gethelp.dart';
 import 'package:untitled5/signup_page.dart';
 
-
 class paymemnt extends StatefulWidget {
   paymemnt({Key? key}) : super(key: key);
 
@@ -16,7 +15,7 @@ class paymemnt extends StatefulWidget {
 class _HomePageState extends State<paymemnt> {
   late var _razorpay;
   var amountController = TextEditingController();
-int index=1;
+  int index = 1;
 
   @override
   void initState() {
@@ -35,11 +34,9 @@ int index=1;
     Navigator.push(context, MaterialPageRoute(builder: (context) => gethelp()));
   }
 
-
   void _handlePaymentError(PaymentFailureResponse response) {
     // Do something when payment fails
     print("Payment Fail");
-
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
@@ -74,30 +71,27 @@ int index=1;
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-
             CupertinoButton(
                 color: Colors.grey,
                 child: Text("Pay Amount 100 for 15 min"),
                 onPressed: () {
                   ///Make payment
 
-                    var options = {
-                      'key': "rzp_test_ALdrxH7AP4NuvJ",
+                  var options = {
+                    'key': "rzp_test_ALdrxH7AP4NuvJ",
 
-                      'amount': 10000,
-                      'name': 'Serenity',
-                      'description': 'Conference',
-                      'timeout': 3000, // in seconds
-                      'prefill': {
-                        'contact': '8787878787',
-                        'email': 'email',
-                        'name':'kunj',
-                      }
-                    };
-                    _razorpay.open(options);
-
-                }
-                ),
+                    'amount': 10000,
+                    'name': 'Serenity',
+                    'description': 'Conference',
+                    'timeout': 3000, // in seconds
+                    'prefill': {
+                      'contact': '8787878787',
+                      'email': 'email',
+                      'name': 'kunj',
+                    }
+                  };
+                  _razorpay.open(options);
+                }),
             CupertinoButton(
                 color: Colors.grey,
                 child: Text("Pay Amount 200 for 45 min"),
@@ -114,13 +108,11 @@ int index=1;
                     'prefill': {
                       'contact': '8787878787',
                       'email': 'email',
-                      'name':'kunj',
+                      'name': 'kunj',
                     }
                   };
                   _razorpay.open(options);
-
-                }
-            ),
+                }),
             CupertinoButton(
                 color: Colors.grey,
                 child: Text("Pay Amount 300 for 1 hr"),
@@ -140,10 +132,7 @@ int index=1;
                     }
                   };
                   _razorpay.open(options);
-
-                }
-            ),
-
+                }),
           ],
         ),
       ),

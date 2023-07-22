@@ -30,7 +30,6 @@ class MyAppp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
         title: title,
-
         theme: ThemeData(primarySwatch: Colors.blue),
         home: MainPage(),
       );
@@ -65,11 +64,8 @@ class _MainPageState extends State<MainPage> {
                 text: 'Select File',
                 icon: Icons.attach_file,
                 onClicked: selectFile,
-
               ),
               SizedBox(height: 8),
-
-
               Text(
                 fileName,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
@@ -132,5 +128,4 @@ class _MainPageState extends State<MainPage> {
           }
         },
       );
-
 }

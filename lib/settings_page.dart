@@ -19,8 +19,6 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
       body: Container(
         padding: EdgeInsets.only(left: 16, top: 25, right: 16),
         child: ListView(
@@ -55,16 +53,16 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 10,
             ),
             InkWell(
-
               onTap: () {
                 navigateSecondPage(ForgotPasswordPage());
               },
-
-              child: Text("Reset Password",style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-color: Colors.black45
-              ),),
+              child: Text(
+                "Reset Password",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black45),
+              ),
             ),
             buildAccountOptionRow(context, "Content settings"),
             buildAccountOptionRow(context, "Social"),
@@ -95,40 +93,38 @@ color: Colors.black45
             SizedBox(
               height: 10,
             ),
-
             buildNotificationOptionRow("Account activity", true),
-
             SizedBox(
               height: 50,
             ),
-            Center(child: Text("Contact Developer for more assistance",style: TextStyle(
-              fontWeight: FontWeight.w600,
-              color: Colors.black54,
-              fontSize: 30,
-            ),)),
+            Center(
+                child: Text(
+              "Contact Developer for more assistance",
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.black54,
+                fontSize: 30,
+              ),
+            )),
             SizedBox(
               height: 100,
             ),
-
-                Center(
-                  child: RichText(
-                      text: TextSpan(
-                          text: "",
-                          style: TextStyle(color: Colors.grey[500], fontSize: 20),
-                          children: [
-                            TextSpan(
-                                text: "Sign out",
-                                style: TextStyle(
-                                    color: Colors.black87,
-                                    fontSize: 40,
-
-                                    fontWeight: FontWeight.bold),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () => Get.to(() => Loginpage()))
-                          ])),
-                )
-
-
+            Center(
+              child: RichText(
+                  text: TextSpan(
+                      text: "",
+                      style: TextStyle(color: Colors.grey[500], fontSize: 20),
+                      children: [
+                    TextSpan(
+                        text: "Sign out",
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => Get.to(() => Loginpage()))
+                  ])),
+            )
           ],
         ),
       ),
@@ -204,9 +200,11 @@ color: Colors.black45
       ),
     );
   }
+
   FutureOr onGoBack(dynamic value) {
     setState(() {});
   }
+
   void navigateSecondPage(Widget editForm) {
     Route route = MaterialPageRoute(builder: (context) => editForm);
     Navigator.push(context, route).then(onGoBack);

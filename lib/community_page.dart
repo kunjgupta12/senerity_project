@@ -21,19 +21,11 @@ class HomeScreen extends StatefulWidget {
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
-
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int index = 0;
-  final screens = [
-    HomeScreen(),
-    paymemnt(),
-    doctor(),
-    ProfilePage(),
-    SettingsPage(),
-  ];
   final databaseReference = FirebaseDatabase.instance.ref().child('Posts');
+
   FirebaseAuth auth = FirebaseAuth.instance;
 
   TextEditingController searchController = TextEditingController();
@@ -42,54 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-    // body: screens[index],
-      bottomNavigationBar: NavigationBarTheme(
-
-        data: NavigationBarThemeData(
-          indicatorColor: Colors.blue,
-          labelTextStyle: MaterialStateProperty.all(
-            TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-          ),
-        ),
-        child: NavigationBar(
-
-          height: 60,
-          selectedIndex: 0,
-          onDestinationSelected: (index) => setState(() => this.index = index),
-
-          destinations: [
-            NavigationDestination
-              (
-              icon: Icon(
-                Icons.chat,
-              ),
-
-              label: 'Community',
-            ),
-            
-            NavigationDestination(
-              icon: Icon(Icons.help),
-              label: 'Get Help',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.emergency, weight: 400),
-              label: 'Appointment',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.settings),
-              label: 'Settings',
-            ),
-
-          ],
-
-        ),
-      ),
-
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text('New Blogs'),
@@ -115,28 +59,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
               },
               child: Icon(Icons.logout_outlined)),
-          InkWell(
-            onTap: () {
-              {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => profilepage()));
-              }
-            },
-            child: Icon(Icons.adf_scanner),
-          ),
           SizedBox(
             width: 20,
           ),
         ],
       ),
       body: Padding(
-
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             TextFormField(
               controller: searchController,
               keyboardType: TextInputType.emailAddress,
@@ -157,7 +90,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Expanded(
               child: FirebaseAnimatedList(
-
                 query: databaseReference.child('Post List'),
                 itemBuilder: (BuildContext context, DataSnapshot snapshot,
                     Animation<double> animation, int index) {
@@ -219,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 10,
                             ),
-                        /*   Padding(
+                            /*   Padding(
                               padding:
                               const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Text(
@@ -234,9 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),*/
                           ],
-
                         ),
-
                       ),
                     );
                   } else if (tempTitle
@@ -293,7 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 10,
                             ),
-                    /*        Padding(
+                            /*        Padding(
                               padding:
                               const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Text(

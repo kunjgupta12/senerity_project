@@ -86,8 +86,8 @@ class EditbloodtypeFormPageState extends State<EditbloodtypeFormPage> {
                               }
                               return null;
                             },
-                            decoration:
-                                const InputDecoration(labelText: 'Antigen Kind'),
+                            decoration: const InputDecoration(
+                                labelText: 'Antigen Kind'),
                             controller: secondbloodtypeController,
                           )))
                 ],

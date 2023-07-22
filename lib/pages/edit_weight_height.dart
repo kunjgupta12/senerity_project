@@ -13,7 +13,8 @@ class EditweightandheightFormPage extends StatefulWidget {
   }
 }
 
-class EditweightandheightFormPageState extends State<EditweightandheightFormPage> {
+class EditweightandheightFormPageState
+    extends State<EditweightandheightFormPage> {
   final _formKey = GlobalKey<FormState>();
   final firstweightController = TextEditingController();
   final secondheightController = TextEditingController();
@@ -67,8 +68,7 @@ class EditweightandheightFormPageState extends State<EditweightandheightFormPage
                               }
                               return null;
                             },
-                            decoration:
-                                InputDecoration(labelText: ' Weight'),
+                            decoration: InputDecoration(labelText: ' Weight'),
                             controller: firstweightController,
                           ))),
                   Padding(
@@ -86,8 +86,8 @@ class EditweightandheightFormPageState extends State<EditweightandheightFormPage
                               }
                               return null;
                             },
-                            decoration: const InputDecoration(
-                                labelText: 'Height'),
+                            decoration:
+                                const InputDecoration(labelText: 'Height'),
                             controller: secondheightController,
                           )))
                 ],
@@ -105,9 +105,11 @@ class EditweightandheightFormPageState extends State<EditweightandheightFormPage
                             if (_formKey.currentState!.validate() &&
                                 isNumeric(firstweightController.text +
                                     secondheightController.text)) {
-                              updateUserValue(firstweightController.text + " kg "
-                                  " -- " +
-                                  secondheightController.text + " Cm ");
+                              updateUserValue(firstweightController.text +
+                                  " kg "
+                                      " -- " +
+                                  secondheightController.text +
+                                  " Cm ");
                               Navigator.pop(context);
                             }
                           },
