@@ -13,7 +13,7 @@ import 'package:untitled5/pages/edit_weight_height.dart';
 import 'package:untitled5/pages/edit_city_country.dart';
 import 'package:untitled5/pages/edit_phone.dart';
 import '../user/user.dart';
-import '../widgets/display_image_widget.dart';
+
 import '../user/user_data.dart';
 
 // This class handles the Page to dispaly the user's info on the "Edit Profile" Screen
