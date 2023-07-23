@@ -1,14 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-
 import 'package:untitled5/gethelp.dart';
-import 'package:untitled5/signup_page.dart';
-
-import 'doctor_slot.dart';
 
 class doctor extends StatefulWidget {
   doctor({Key? key}) : super(key: key);
@@ -36,8 +31,7 @@ class _HomePageState extends State<doctor> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
 
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => doctorslot()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => gethelp()));
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {

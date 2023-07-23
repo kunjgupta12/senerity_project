@@ -56,6 +56,7 @@ class Signaling {
 
     await roomRef.set(roomWithOffer);
     var roomId = roomRef.id;
+
     print('New room created with SDK offer. Room ID: $roomId');
     currentRoomText = 'Current room is $roomId - You are the caller!';
     // Created a Room

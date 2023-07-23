@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:untitled5/email_auth.dart';
 
 import 'package:untitled5/nav_bar.dart';
 import 'package:untitled5/signaling..dart';
@@ -11,6 +13,7 @@ import 'package:untitled5/signaling..dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(gethelp());
 }
 
@@ -23,6 +26,7 @@ class gethelp extends StatefulWidget {
 
 class _gethelpState extends State<gethelp> {
   var _razorpay = Razorpay();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,6 +44,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  late User user;
+  late String currentUId;
+  late String currentEmail;
   Signaling signaling = Signaling();
   RTCVideoRenderer _localRenderer = RTCVideoRenderer();
   RTCVideoRenderer _remoteRenderer = RTCVideoRenderer();
@@ -50,8 +58,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     _localRenderer.initialize();
     _remoteRenderer.initialize();
-
-    Timer(Duration(seconds: 30), () {
+    user = auth.currentUser!;
+    currentUId = user.toString();
+    Timer(Duration(seconds: 3000), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => profilepage()));
 
@@ -74,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Column(
         children: [
+          // Text(currentUId),
           SizedBox(height: 20),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,

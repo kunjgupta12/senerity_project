@@ -31,9 +31,13 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignuppageState extends State<SignupPage> {
-  FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
   var emailController = TextEditingController();
   var passwordcontroller = TextEditingController();
+  late User user;
+  late String currentUId;
+  late String currentEmail;
 
   List images = [
     "g.png",
@@ -45,6 +49,7 @@ class _SignuppageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -160,15 +165,6 @@ class _SignuppageState extends State<SignupPage> {
               onTap: () {
                 AuthController.instance.register(emailController.text.trim(),
                     passwordcontroller.text.trim());
-                final User? user = auth.currentUser;
-                CollectionReference collref =
-                    FirebaseFirestore.instance.collection('Users');
-
-                collref.add({
-                  'password': passwordcontroller.text,
-                  'email': emailController.text,
-                  'uid': user?.uid.toString(),
-                });
               },
               child: Container(
                 width: w * 0.38,

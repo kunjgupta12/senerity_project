@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled5/Upload_Page.dart';
+
 import 'package:untitled5/email_authstep.dart';
 import 'package:untitled5/login_page.dart';
 import 'package:untitled5/nav_bar.dart';
@@ -11,9 +12,11 @@ import 'package:untitled5/welcome_page.dart';
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   late Rx<User?> _user;
-  FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   bool isEmailVerified = false;
-
+  late User user;
+  late String currentUId;
+  late String currentEmail;
   @override
   void onReady() {
     super.onReady();
@@ -27,10 +30,7 @@ class AuthController extends GetxController {
     if (user == null) {
       print("login page");
       Get.offAll(() => Loginpage());
-    } else if (isEmailVerified!) {
-      Get.offAll(() => MainPage());
     } else {
-      bool check = false;
       Get.offAll(() => Welcomepage(email: user.email!));
     }
   }
@@ -45,7 +45,18 @@ class AuthController extends GetxController {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
+
       Get.offAll(() => EmailVerificationScreen());
+      user = auth.currentUser!;
+
+      CollectionReference collref =
+          FirebaseFirestore.instance.collection('Users');
+
+      collref.add({
+        'password': password,
+        'email': email,
+        'uid': user.uid.toString(),
+      });
     } catch (e) {
       Get.snackbar(
         "About user",
