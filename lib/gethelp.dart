@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _localRenderer.initialize();
     _remoteRenderer.initialize();
     user = auth.currentUser!;
-    currentUId = user.toString();
+    currentUId = user.uid.toString();
     Timer(Duration(seconds: 3000), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => profilepage()));
@@ -69,6 +70,15 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
     super.initState();
+  }
+
+  void senddata() {
+    CollectionReference collref =
+        FirebaseFirestore.instance.collection('Users joined ');
+
+    collref.add({
+      'uid': user.uid.toString(),
+    });
   }
 
   @override
@@ -83,7 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Column(
         children: [
-          // Text(currentUId),
           SizedBox(height: 20),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -109,6 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   roomId = await signaling.createRoom(_remoteRenderer);
                   textEditingController.text = roomId!;
                   setState(() {});
+                  senddata();
                 },
                 style: ButtonStyle(
                   backgroundColor:
@@ -184,6 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
+          Text(user.uid),
           SizedBox(height: 8)
         ],
       ),

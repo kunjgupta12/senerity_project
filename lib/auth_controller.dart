@@ -30,15 +30,9 @@ class AuthController extends GetxController {
     if (user == null) {
       print("login page");
       Get.offAll(() => Loginpage());
-    } else {
-      Get.offAll(() => Welcomepage(email: user.email!));
-    }
-  }
-
-  void checkEmailVerified() async {
-    await FirebaseAuth.instance.currentUser?.reload();
-
-    isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+    } /* else  {
+     Get.offAll(() => Welcomepage(email: user.email!));
+  }*/
   }
 
   void register(String email, password) async {
@@ -78,7 +72,11 @@ class AuthController extends GetxController {
   void login(String email, password) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
-      Get.offAll(profilepage());
+      if (isEmailVerified) {
+        Get.offAll(profilepage());
+      } else {
+        Get.offAll(EmailVerificationScreen());
+      }
     } catch (e) {
       Get.snackbar(
         "About Login",

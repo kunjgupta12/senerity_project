@@ -1,8 +1,12 @@
 import 'dart:async';
 import 'package:untitled5/Upload_Page.dart';
+import 'package:untitled5/community_page.dart';
 import 'package:untitled5/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled5/nav_bar.dart';
+import 'package:untitled5/pages/profile_page.dart';
+import 'package:untitled5/welcome_page.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({Key? key}) : super(key: key);
@@ -20,27 +24,17 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     // TODO: implement initState
     super.initState();
     FirebaseAuth.instance.currentUser?.sendEmailVerification();
-    timer = Timer.periodic(
-        const Duration(seconds: 30), (_) => checkEmailVerified());
+    timer =
+        Timer.periodic(const Duration(seconds: 3), (_) => checkEmailVerified());
   }
 
-  checkEmailVerified() async {
+  Future checkEmailVerified() async {
     await FirebaseAuth.instance.currentUser?.reload();
 
     setState(() {
       isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
     });
-
-    if (isEmailVerified) {
-      bool done = true;
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MainPage()));
-      // TODO: implement your code after email verification
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Email Successfully Verified")));
-
-      timer?.cancel();
-    }
+    if (isEmailVerified) timer?.cancel();
   }
 
   @override
@@ -55,10 +49,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     return SafeArea(
       child: Scaffold(
         body: isEmailVerified
-            ? const Center(
-                child: Text("Email Successfully Verified",
-                    style: TextStyle(fontWeight: FontWeight.w600)),
-              )
+            ? profilepage()
             : SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -108,6 +99,9 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                         },
                       ),
                     ),
+                    TextButton(
+                        onPressed: () => FirebaseAuth.instance.signOut(),
+                        child: Text('Cancel'))
                   ],
                 ),
               ),
