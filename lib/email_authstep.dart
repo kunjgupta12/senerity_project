@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'package:untitled5/Upload_Page.dart';
-import 'package:untitled5/community_page.dart';
 import 'package:untitled5/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +16,7 @@ class EmailVerificationScreen extends StatefulWidget {
 
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   bool isEmailVerified = false;
+  bool done=false;
   Timer? timer;
   @override
   void initState() {
@@ -33,8 +32,17 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
 
     setState(() {
       isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+
     });
     if (isEmailVerified) timer?.cancel();
+  }
+  Future sendverificationEmail() async{
+    try{
+      final user=FirebaseAuth.instance.currentUser!;
+      await user.sendEmailVerification();
+    }catch(e){
+
+    }
   }
 
   @override

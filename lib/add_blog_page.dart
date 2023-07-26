@@ -97,8 +97,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
       inAsyncCall: showSpinner,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.blueGrey,
           automaticallyImplyLeading: true,
-          title: Text('Upload Blog'),
+          title: Text('Upload post'),
           centerTitle: true,
         ),
         body: SingleChildScrollView(

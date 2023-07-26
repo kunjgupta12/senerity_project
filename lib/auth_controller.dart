@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:untitled5/email_authstep.dart';
 import 'package:untitled5/login_page.dart';
 import 'package:untitled5/nav_bar.dart';
+import 'package:untitled5/signup_page.dart';
 import 'package:untitled5/welcome_page.dart';
 
 class AuthController extends GetxController {
@@ -30,9 +31,14 @@ class AuthController extends GetxController {
     if (user == null) {
       print("login page");
       Get.offAll(() => Loginpage());
-    } /* else  {
-     Get.offAll(() => Welcomepage(email: user.email!));
-  }*/
+    }  /*else if(!isEmailVerified)  {
+     Get.offAll(() => SignupPage());
+  } else if(isEmailVerified){
+      Get.offAll(()=> profilepage());
+     }*/
+else{
+  EmailVerificationScreen();
+    }
   }
 
   void register(String email, password) async {
