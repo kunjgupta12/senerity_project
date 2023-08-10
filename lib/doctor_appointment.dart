@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:untitled5/gethelp.dart';
+
 import 'package:untitled5/slot_booking.dart';
 
 class doctor extends StatefulWidget {
@@ -32,7 +32,8 @@ class _HomePageState extends State<doctor> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) => slotsbooking()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => slotsbooking()));
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -118,6 +119,7 @@ class _HomePageState extends State<doctor> {
                                           'name': 'Serenity',
                                           'description': 'Conference',
                                           'timeout': 3000, // in seconds
+
                                           'prefill': {
                                             'contact': '8787878787',
                                             'email': 'email',

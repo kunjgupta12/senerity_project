@@ -33,7 +33,7 @@ class _profilepageState extends State<profilepage> {
         data: NavigationBarThemeData(
           indicatorColor: Colors.blue,
           labelTextStyle: MaterialStateProperty.all(
-            TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+            TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
           ),
         ),
         child: NavigationBar(

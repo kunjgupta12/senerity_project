@@ -8,18 +8,16 @@ class UserData {
   static const _keyUser = 'user';
 
   static User myUser = User(
-    image:
-        "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
-    name: 'Your Name',
-    birthdate: 'MM/DD/YYYY',
-    bloodtype: 'A,B,O or AB - Positive or Negative ',
-    weightandheight: ' 80 kg -- 180 cm ',
-    cityandcountry: 'India-Delhi ',
-    email: 'test.test@gmail.com',
-    phone: '+919245594852',
-    aboutMeDescription:
-        'Tell About Yourself'
-  );
+      image:
+          "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
+      name: 'Your Name',
+      birthdate: 'MM/DD/YYYY',
+      bloodtype: 'A,B,O or AB - Positive or Negative ',
+      weightandheight: ' 80 kg -- 180 cm ',
+      cityandcountry: 'India-Delhi ',
+      email: 'test.test@gmail.com',
+      phone: '+919245594852',
+      aboutMeDescription: 'Tell About Yourself');
 
   static Future init() async =>
       _preferences = await SharedPreferences.getInstance();

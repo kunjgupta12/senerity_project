@@ -16,7 +16,7 @@ class EmailVerificationScreen extends StatefulWidget {
 
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   bool isEmailVerified = false;
-  bool done=false;
+  bool done = false;
   Timer? timer;
   @override
   void initState() {
@@ -32,17 +32,15 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
 
     setState(() {
       isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
-
     });
     if (isEmailVerified) timer?.cancel();
   }
-  Future sendverificationEmail() async{
-    try{
-      final user=FirebaseAuth.instance.currentUser!;
-      await user.sendEmailVerification();
-    }catch(e){
 
-    }
+  Future sendverificationEmail() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser!;
+      await user.sendEmailVerification();
+    } catch (e) {}
   }
 
   @override

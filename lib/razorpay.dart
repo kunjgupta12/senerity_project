@@ -86,8 +86,6 @@ class _HomePageState extends State<paymemnt> {
                     'timeout': 3000, // in seconds
                     'prefill': {
                       'contact': '8787878787',
-                      'email': 'email',
-                      'name': 'kunj',
                     }
                   };
                   _razorpay.open(options);
@@ -107,8 +105,6 @@ class _HomePageState extends State<paymemnt> {
                     'timeout': 3000, // in seconds
                     'prefill': {
                       'contact': '8787878787',
-                      'email': 'email',
-                      'name': 'kunj',
                     }
                   };
                   _razorpay.open(options);
