@@ -134,7 +134,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                               height: 100,
                               child: Icon(
                                 Icons.camera_alt,
-                                color: Colors.deepOrange,
+                                color: Colors.blueGrey,
                               ),
                             ),
                     ),

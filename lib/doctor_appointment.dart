@@ -84,8 +84,10 @@ class _HomePageState extends State<doctor> {
                       itemBuilder: (context, index) {
                         return Card(
                           child: ListTile(
-                            horizontalTitleGap: 10,
+                            horizontalTitleGap: 100,
+
                             title: SelectableText(
+
                               snapshot.data!.docs[index]['name'].toString(),
                               style: TextStyle(
                                 color: Colors.blueGrey,

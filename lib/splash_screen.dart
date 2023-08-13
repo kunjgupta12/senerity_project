@@ -7,6 +7,7 @@ class splashscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       width: double.maxFinite,
       height: double.maxFinite,
       color: Colors.white,
