@@ -129,27 +129,39 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 20,
             ),
             buildNotificationOptionRow("Account activity", false),
-            SizedBox(height: 10,),
+       //     SizedBox(height: 10,),
               MaterialButton(
 
-             
+
               onPressed:()async {
                 final url = Uri.parse(
-                  'https://dev-yakuza.posstree.com/en/',
+                  'https://www.instagram.com/spk.psy/',
                 );
                 if (await canLaunchUrl(url)) {
-                  launchUrl(url);
+                  launchUrl(url,mode: LaunchMode.inAppWebView);
+
                 } else {
                   // ignore: avoid_print
                   print("Can't open  $url");
                 }
               },
-              child: Text(
-                "Contact Developer for more assistance",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black45),
+              child: Row(
+                children: [
+
+                  Text(
+                    " Recent Post",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black45),
+                  ),
+                  SizedBox(
+                    width: 5,),
+                  Image(image:
+                  AssetImage("img/img_2.png"),
+                      height: 30,
+                      fit: BoxFit.fitWidth),
+                ],
               ),
             ),
             SizedBox(

@@ -95,6 +95,7 @@ class _HomePageState extends State<doctor> {
                             subtitle: Row(children: [
                               Text(
                                 snapshot.data!.docs[index]['email'].toString(),
+
                                 style: TextStyle(
                                   fontSize: 20,
                                 ),
@@ -108,6 +109,7 @@ class _HomePageState extends State<doctor> {
                                       color: Colors.grey,
                                       child: Text("Book  Appointment"),
                                       onPressed: () {
+
                                         ///Make payment
 
                                         var options = {
