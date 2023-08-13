@@ -31,7 +31,7 @@ class _LoginpageState extends State<Loginpage> {
         child: Column(
           children: [
             SizedBox(
-              height: w*.09,
+              height: w * .09,
             ),
             Container(
               width: w * 0.5,
@@ -155,7 +155,7 @@ class _LoginpageState extends State<Loginpage> {
               ),
             ),
             SizedBox(
-              height: h*.2,
+              height: h * .2,
             ),
             GestureDetector(
               onTap: () {
@@ -181,17 +181,20 @@ class _LoginpageState extends State<Loginpage> {
                 ),
               ),
             ),
-              SizedBox(height: h*.25,),
+            SizedBox(
+              height: h * .25,
+            ),
             RichText(
                 text: TextSpan(
                     text: "Don\'t have an account?",
-                    style: TextStyle(color: Colors.grey[500], fontSize: w*.05),
+                    style:
+                        TextStyle(color: Colors.grey[500], fontSize: w * .05),
                     children: [
                   TextSpan(
                       text: "Create one for Free!!",
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: w*.05,
+                          fontSize: w * .05,
                           fontWeight: FontWeight.bold),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () => Get.to(() => SignupPage()))

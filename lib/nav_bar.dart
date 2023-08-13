@@ -22,7 +22,7 @@ class _profilepageState extends State<profilepage> {
     HomeScreen(),
     paymemnt(),
     doctor(),
-  //  ProfilePage(),
+    //  ProfilePage(),
     SettingsPage(),
   ];
   @override
@@ -55,7 +55,7 @@ class _profilepageState extends State<profilepage> {
               icon: Icon(Icons.emergency, weight: 400),
               label: 'Appointment',
             ),
-        /*    NavigationDestination(
+            /*    NavigationDestination(
               icon: Icon(Icons.person),
               label: 'Profile',
             ),*/

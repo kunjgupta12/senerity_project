@@ -6,7 +6,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:untitled5/email_auth.dart';
 
 import 'package:untitled5/nav_bar.dart';
 import 'package:untitled5/signaling..dart';
@@ -61,6 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
     _remoteRenderer.initialize();
     user = auth.currentUser!;
     currentUId = user.uid.toString();
+
+
     Timer(Duration(seconds: 3000), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => profilepage()));

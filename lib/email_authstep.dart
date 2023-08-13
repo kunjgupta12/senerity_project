@@ -3,8 +3,6 @@ import 'package:untitled5/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/nav_bar.dart';
-import 'package:untitled5/pages/profile_page.dart';
-import 'package:untitled5/welcome_page.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({Key? key}) : super(key: key);
@@ -107,7 +105,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                     ),
                     TextButton(
                         onPressed: () => FirebaseAuth.instance.signOut(),
-                        child: Text('Cancel'))
+                        child: Text('Sign Out'))
                   ],
                 ),
               ),

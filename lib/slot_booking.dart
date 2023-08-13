@@ -16,8 +16,8 @@ class slotsbooking extends StatefulWidget {
 }
 
 class _slotsbookingState extends State<slotsbooking> {
-  final firestore=
-  FirebaseFirestore.instance.collection('doctor details').snapshots();
+  final firestore =
+      FirebaseFirestore.instance.collection('doctor details').snapshots();
 
   late User user;
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -134,12 +134,12 @@ class _slotsbookingState extends State<slotsbooking> {
                         ),
                       );
                     }
-               /*     final firestore=     FirebaseFirestore.instance.collection('doctor details').doc('');
+                    /*     final firestore=     FirebaseFirestore.instance.collection('doctor details').doc('');
                     firestore.update({
                       'name':'kunj',
                     });
 */
-               },
+                  },
                   child: Text("Book")),
             ],
           ),

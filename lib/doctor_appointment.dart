@@ -85,9 +85,7 @@ class _HomePageState extends State<doctor> {
                         return Card(
                           child: ListTile(
                             horizontalTitleGap: 100,
-
                             title: SelectableText(
-
                               snapshot.data!.docs[index]['name'].toString(),
                               style: TextStyle(
                                 color: Colors.blueGrey,

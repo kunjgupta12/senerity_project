@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -9,22 +11,36 @@ import 'package:untitled5/ForgotPasswordPage.dart';
 
 import 'package:untitled5/login_page.dart';
 import 'package:untitled5/razorpay.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+
 
 class SettingsPage extends StatefulWidget {
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  final firestore =
+  FirebaseFirestore.instance.collection('Users').snapshots();
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  late User user;
+  late String currentUId;
+  late String currentEmail;
   @override
   Widget build(BuildContext context) {
+    user = auth.currentUser!;
+    currentUId = user.uid.toString();
+    currentEmail=user.email.toString();
     return Scaffold(
       body: Container(
         padding: EdgeInsets.only(left: 16, top: 25, right: 16),
         child: ListView(
           children: [
+
             Text(
-              "Settings",
+              "Profile",
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
             ),
             SizedBox(
@@ -34,7 +50,7 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 Icon(
                   Icons.person,
-                  color: Colors.blue,
+                  color: Colors.blueGrey,
                 ),
                 SizedBox(
                   width: 8,
@@ -47,12 +63,32 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             Divider(
               height: 15,
-              thickness: 2,
+              thickness: 4,
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
-            InkWell(
+
+
+            Text(
+              "Unique User Id: "+
+              user.uid,
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black45),
+            ),
+            SizedBox(height: 10,),
+            Text(
+              "Email Id: "+
+                  currentEmail,
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black45),
+            ),
+            SizedBox(height: 10,)
+,            InkWell(
               onTap: () {
                 navigateSecondPage(ForgotPasswordPage());
               },
@@ -64,8 +100,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     color: Colors.black45),
               ),
             ),
-            buildAccountOptionRow(context, "Content settings"),
-            buildAccountOptionRow(context, "Social"),
+
             buildAccountOptionRow(context, "Language"),
             buildAccountOptionRow(context, "Privacy and security"),
             SizedBox(
@@ -75,7 +110,7 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 Icon(
                   Icons.volume_up_outlined,
-                  color: Colors.blue,
+                  color: Colors.blueGrey,
                 ),
                 SizedBox(
                   width: 8,
@@ -88,27 +123,39 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             Divider(
               height: 15,
-              thickness: 2,
+              thickness: 4,
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
-            buildNotificationOptionRow("Account activity", true),
+            buildNotificationOptionRow("Account activity", false),
+            SizedBox(height: 10,),
+              MaterialButton(
+
+             
+              onPressed:()async {
+                final url = Uri.parse(
+                  'https://dev-yakuza.posstree.com/en/',
+                );
+                if (await canLaunchUrl(url)) {
+                  launchUrl(url);
+                } else {
+                  // ignore: avoid_print
+                  print("Can't open  $url");
+                }
+              },
+              child: Text(
+                "Contact Developer for more assistance",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black45),
+              ),
+            ),
             SizedBox(
               height: 50,
             ),
-            Center(
-                child: Text(
-              "Contact Developer for more assistance",
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: Colors.black54,
-                fontSize: 30,
-              ),
-            )),
-            SizedBox(
-              height: 100,
-            ),
+
             Center(
               child: RichText(
                   text: TextSpan(
@@ -146,8 +193,10 @@ class _SettingsPageState extends State<SettingsPage> {
             scale: 0.7,
             child: CupertinoSwitch(
               value: isActive,
+
               onChanged: (bool val) {},
-            ))
+            )
+        )
       ],
     );
   }
