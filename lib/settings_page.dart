@@ -10,7 +10,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:untitled5/ForgotPasswordPage.dart';
 
 import 'package:untitled5/login_page.dart';
-import 'package:untitled5/razorpay.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -149,7 +149,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
 
                   Text(
-                    " Recent Post",
+                    "Soch Pe Kharoch",
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
@@ -161,6 +161,38 @@ class _SettingsPageState extends State<SettingsPage> {
                   AssetImage("img/img_2.png"),
                       height: 30,
                       fit: BoxFit.fitWidth),
+                ],
+              ),
+            ),
+            MaterialButton(
+
+
+              onPressed:()async {
+                final url = Uri.parse(
+                  'tel:+91 9411310301',
+                );
+                if (await canLaunchUrl(url)) {
+                  launchUrl(url,mode: LaunchMode.platformDefault);
+
+                } else {
+                  // ignore: avoid_print
+                  print("Can't open  $url");
+                }
+              },
+              child:  Row(
+                children: [
+
+                  Text(
+                    "Contact",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black45),
+                  ),
+                  SizedBox(
+                    width: 15,),
+                  Icon(Icons.call)
+
                 ],
               ),
             ),
