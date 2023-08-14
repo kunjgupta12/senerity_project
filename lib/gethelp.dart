@@ -61,7 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
     user = auth.currentUser!;
     currentUId = user.uid.toString();
 
-
     Timer(Duration(seconds: 3000), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => profilepage()));

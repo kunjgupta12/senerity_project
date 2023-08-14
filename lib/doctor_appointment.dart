@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
-import 'package:untitled5/slot_booking.dart';
-
 class doctor extends StatefulWidget {
   doctor({Key? key}) : super(key: key);
 
@@ -14,12 +12,17 @@ class doctor extends StatefulWidget {
 }
 
 class _HomePageState extends State<doctor> {
+  final TextEditingController _date = TextEditingController();
+  final TextEditingController _time = TextEditingController();
+
+  DateTime dateTime = DateTime.now();
   final firestore =
       FirebaseFirestore.instance.collection('doctor details').snapshots();
+bool m=false;
   late var _razorpay;
-
   @override
   void initState() {
+     m=false;
     // TODO: implement initState
     _razorpay = Razorpay();
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
@@ -32,12 +35,14 @@ class _HomePageState extends State<doctor> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
 
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => slotsbooking()));
+      m = true;
+
+
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
     // Do something when payment fails
+    m = false;
     print("Payment Fail");
   }
 
@@ -86,31 +91,115 @@ class _HomePageState extends State<doctor> {
                           child: ListTile(
                             horizontalTitleGap: 100,
                             title: SelectableText(
-                              snapshot.data!.docs[index]['name'].toString(),
+                              "Dr." +
+                                  snapshot.data!.docs[index]['name'].toString(),
                               style: TextStyle(
                                 color: Colors.blueGrey,
                                 fontSize: 30,
                               ),
                             ),
-                            subtitle: Row(children: [
+                            subtitle: Column(children: [
                               Text(
-                                snapshot.data!.docs[index]['email'].toString(),
-
+                                'Email:' +
+                                    snapshot.data!.docs[index]['email']
+                                        .toString(),
                                 style: TextStyle(
                                   fontSize: 20,
                                 ),
                               ),
                               SizedBox(
-                                height: 100,
+                                height: 10,
+                              ),
+                              Text(
+                                'Price:' +
+                                    snapshot.data!.docs[index]['price']
+                                        .toString(),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                              TextField(
+                                controller: _date,
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    suffixIcon: InkWell(
+                                      child: Icon(Icons.date_range),
+                                      onTap: () async {
+                                        final DateTime? newlySelectedDate =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: dateTime,
+                                          firstDate: DateTime.now(),
+                                          lastDate: DateTime(2095),
+                                        );
+
+                                        if (newlySelectedDate == null) {
+                                          return;
+                                        }
+
+                                        setState(() {
+                                          dateTime = newlySelectedDate;
+                                          _date.text =
+                                              "${dateTime.year}/${dateTime.month}/${dateTime.day}";
+                                        });
+                                      },
+                                    ),
+                                    label: Text("Enter Date")),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              TextField(
+                                controller: _time,
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    suffixIcon: InkWell(
+                                      child: const Icon(
+                                        Icons.lock_clock,
+                                      ),
+                                      onTap: () async {
+                                        final TimeOfDay? slectedTime =
+                                            await showTimePicker(
+                                                context: context,
+                                                initialTime: TimeOfDay.now());
+
+                                        if (slectedTime == null) {
+                                          return;
+                                        }
+
+                                        _time.text =
+                                            "${slectedTime.hour}:${slectedTime.minute}:${slectedTime.period.toString()}";
+
+                                        DateTime newDT = DateTime(
+                                          dateTime.year,
+                                          dateTime.month,
+                                          dateTime.day,
+                                          slectedTime.hour,
+                                          slectedTime.minute,
+                                        );
+                                        setState(() {
+                                          dateTime = newDT;
+                                        });
+                                      },
+                                    ),
+                                    label: Text("Enter Time")),
+                              ),
+                              SizedBox(
+                                height: 20,
                               ),
                               Container(
-                                child: Center(
-                                  child: CupertinoButton(
-                                      color: Colors.grey,
-                                      child: Text("Book  Appointment"),
-                                      onPressed: () {
+                                child: CupertinoButton(
+                                    color: Colors.grey,
+                                    child: Text("Book  Appointment"),
+                                    onPressed: () {
+                                      ///Make payment
+                                      if (_date.text != "" &&
+                                          _time.text != "") {
 
-                                        ///Make payment
 
                                         var options = {
                                           'key': "rzp_test_ALdrxH7AP4NuvJ",
@@ -125,11 +214,25 @@ class _HomePageState extends State<doctor> {
                                           'prefill': {
                                             'contact': '8787878787',
                                             'email': 'email',
+
                                           }
+
                                         };
                                         _razorpay.open(options);
-                                      }),
-                                ),
+
+                                      if (m = false) {
+                                        String kunj =
+                                            snapshot.data!.docs[index].id;
+                                        final doc = FirebaseFirestore.instance
+                                            .collection('doctor details')
+                                            .doc(kunj);
+
+                                        doc.update({
+                                          'date': _date.text,
+                                          'time': _time.text,
+                                        });
+                                      }}
+                                    }),
                               ),
                             ]),
                           ),
@@ -142,6 +245,7 @@ class _HomePageState extends State<doctor> {
     );
   }
 
+  void book() {}
   @override
   void dispose() {
     // TODO: implement dispose

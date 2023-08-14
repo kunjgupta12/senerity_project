@@ -14,16 +14,13 @@ import 'package:untitled5/login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-
 class SettingsPage extends StatefulWidget {
-
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  final firestore =
-  FirebaseFirestore.instance.collection('Users').snapshots();
+  final firestore = FirebaseFirestore.instance.collection('Users').snapshots();
   final FirebaseAuth auth = FirebaseAuth.instance;
   late User user;
   late String currentUId;
@@ -32,13 +29,12 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     user = auth.currentUser!;
     currentUId = user.uid.toString();
-    currentEmail=user.email.toString();
+    currentEmail = user.email.toString();
     return Scaffold(
       body: Container(
         padding: EdgeInsets.only(left: 16, top: 25, right: 16),
         child: ListView(
           children: [
-
             Text(
               "Profile",
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
@@ -69,26 +65,27 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 20,
             ),
 
-
             Text(
-              "Unique User Id: "+
-              user.uid,
+              "Unique User Id: " + user.uid,
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                   color: Colors.black45),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Text(
-              "Email Id: "+
-                  currentEmail,
+              "Email Id: " + currentEmail,
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                   color: Colors.black45),
             ),
-            SizedBox(height: 10,)
-,            InkWell(
+            SizedBox(
+              height: 10,
+            ),
+            InkWell(
               onTap: () {
                 navigateSecondPage(ForgotPasswordPage());
               },
@@ -129,17 +126,14 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 20,
             ),
             buildNotificationOptionRow("Account activity", false),
-       //     SizedBox(height: 10,),
-              MaterialButton(
-
-
-              onPressed:()async {
+            //     SizedBox(height: 10,),
+            MaterialButton(
+              onPressed: () async {
                 final url = Uri.parse(
                   'https://www.instagram.com/spk.psy/',
                 );
                 if (await canLaunchUrl(url)) {
-                  launchUrl(url,mode: LaunchMode.inAppWebView);
-
+                  launchUrl(url, mode: LaunchMode.inAppWebView);
                 } else {
                   // ignore: avoid_print
                   print("Can't open  $url");
@@ -147,7 +141,6 @@ class _SettingsPageState extends State<SettingsPage> {
               },
               child: Row(
                 children: [
-
                   Text(
                     "Soch Pe Kharoch",
                     style: TextStyle(
@@ -156,32 +149,29 @@ class _SettingsPageState extends State<SettingsPage> {
                         color: Colors.black45),
                   ),
                   SizedBox(
-                    width: 5,),
-                  Image(image:
-                  AssetImage("img/img_2.png"),
+                    width: 5,
+                  ),
+                  Image(
+                      image: AssetImage("img/img_2.png"),
                       height: 30,
                       fit: BoxFit.fitWidth),
                 ],
               ),
             ),
             MaterialButton(
-
-
-              onPressed:()async {
+              onPressed: () async {
                 final url = Uri.parse(
                   'tel:+91 9411310301',
                 );
                 if (await canLaunchUrl(url)) {
-                  launchUrl(url,mode: LaunchMode.platformDefault);
-
+                  launchUrl(url, mode: LaunchMode.platformDefault);
                 } else {
                   // ignore: avoid_print
                   print("Can't open  $url");
                 }
               },
-              child:  Row(
+              child: Row(
                 children: [
-
                   Text(
                     "Contact",
                     style: TextStyle(
@@ -190,9 +180,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         color: Colors.black45),
                   ),
                   SizedBox(
-                    width: 15,),
+                    width: 15,
+                  ),
                   Icon(Icons.call)
-
                 ],
               ),
             ),
@@ -237,10 +227,8 @@ class _SettingsPageState extends State<SettingsPage> {
             scale: 0.7,
             child: CupertinoSwitch(
               value: isActive,
-
               onChanged: (bool val) {},
-            )
-        )
+            ))
       ],
     );
   }
