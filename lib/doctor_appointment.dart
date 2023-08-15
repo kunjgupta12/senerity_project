@@ -18,11 +18,11 @@ class _HomePageState extends State<doctor> {
   DateTime dateTime = DateTime.now();
   final firestore =
       FirebaseFirestore.instance.collection('doctor details').snapshots();
-  bool m = false;
+  late bool m;
   late var _razorpay;
   @override
   void initState() {
-    m = false;
+
     // TODO: implement initState
     _razorpay = Razorpay();
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
@@ -35,7 +35,7 @@ class _HomePageState extends State<doctor> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
 
-    m = true;
+    m == true;
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -71,6 +71,11 @@ class _HomePageState extends State<doctor> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Book Doctor Appointment',
+        ),
+        backgroundColor: Colors.blueGrey,
+      ),
       body: Column(
         children: [
           StreamBuilder<QuerySnapshot>(
@@ -219,7 +224,7 @@ class _HomePageState extends State<doctor> {
                                         final doc = FirebaseFirestore.instance
                                             .collection('doctor details')
                                             .doc(kunj);
-                                        if (m = true) {
+                                        if ( m=true) {
                                           doc.update({
                                             'date': _date.text,
                                             'time': _time.text,
