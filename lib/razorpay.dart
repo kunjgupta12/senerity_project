@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:untitled5/gethelp.dart';
+import 'package:untitled5/gethelp_30.dart';
 import 'package:untitled5/signup_page.dart';
 int value=0;
 class paymemnt extends StatefulWidget {
@@ -294,7 +295,11 @@ class _HomePageState extends State<paymemnt> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
 if(value==10000){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => gethelp()));}
+    Navigator.push(context, MaterialPageRoute(builder: (context) => gethelp()));
+}
+if(value==20000){
+  Navigator.push(context, MaterialPageRoute(builder: (context) => gethelp30()));
+}
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {

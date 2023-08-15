@@ -14,17 +14,17 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(gethelp());
+  runApp(gethelp30());
 }
 
-class gethelp extends StatefulWidget {
-  const gethelp({super.key});
+class gethelp30 extends StatefulWidget {
+  const gethelp30({super.key});
 
   @override
-  State<gethelp> createState() => _gethelpState();
+  State<gethelp30> createState() => _gethelpState();
 }
 
-class _gethelpState extends State<gethelp> {
+class _gethelpState extends State<gethelp30> {
   var _razorpay = Razorpay();
 
   @override
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
     currentUId = user.uid.toString();
 
     Timer(Duration(
-    minutes: 15), () {
+        minutes: 30), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => profilepage()));
 
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void senddata() {
     CollectionReference collref =
-        FirebaseFirestore.instance.collection('Users joined ');
+    FirebaseFirestore.instance.collection('Users joined ');
 
     collref.add({
       'uid': user.uid.toString(),
@@ -104,10 +104,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black87),
+                  MaterialStateProperty.all<Color>(Colors.black87),
                 ),
                 child: Text(
-                  "Open camera & microphone",
+                  "Open camera & microphone for 30min",
                   style: TextStyle(color: Colors.blueGrey, fontSize: 20),
                 ),
               ),
@@ -123,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black87),
+                  MaterialStateProperty.all<Color>(Colors.black87),
                 ),
                 child: Text(
                   "Create room",
@@ -143,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black87),
+                  MaterialStateProperty.all<Color>(Colors.black87),
                 ),
                 child: Text(
                   "Join room",
@@ -159,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black87),
+                  MaterialStateProperty.all<Color>(Colors.black87),
                 ),
                 child: Text(
                   "Hangup",

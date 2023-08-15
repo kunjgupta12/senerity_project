@@ -173,7 +173,7 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Row(
                 children: [
                   Text(
-                    "Contact",
+                    "Customer Care",
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
