@@ -18,11 +18,11 @@ class _HomePageState extends State<doctor> {
   DateTime dateTime = DateTime.now();
   final firestore =
       FirebaseFirestore.instance.collection('doctor details').snapshots();
-bool m=false;
+  bool m = false;
   late var _razorpay;
   @override
   void initState() {
-     m=false;
+    m = false;
     // TODO: implement initState
     _razorpay = Razorpay();
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
@@ -35,9 +35,7 @@ bool m=false;
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
 
-      m = true;
-
-
+    m = true;
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -199,8 +197,6 @@ bool m=false;
                                       ///Make payment
                                       if (_date.text != "" &&
                                           _time.text != "") {
-
-
                                         var options = {
                                           'key': "rzp_test_ALdrxH7AP4NuvJ",
 
@@ -214,24 +210,22 @@ bool m=false;
                                           'prefill': {
                                             'contact': '8787878787',
                                             'email': 'email',
-
                                           }
-
                                         };
                                         _razorpay.open(options);
 
-                                      if (m = false) {
                                         String kunj =
                                             snapshot.data!.docs[index].id;
                                         final doc = FirebaseFirestore.instance
                                             .collection('doctor details')
                                             .doc(kunj);
-
-                                        doc.update({
-                                          'date': _date.text,
-                                          'time': _time.text,
-                                        });
-                                      }}
+                                        if (m = true) {
+                                          doc.update({
+                                            'date': _date.text,
+                                            'time': _time.text,
+                                          });
+                                        }
+                                      }
                                     }),
                               ),
                             ]),
@@ -245,7 +239,6 @@ bool m=false;
     );
   }
 
-  void book() {}
   @override
   void dispose() {
     // TODO: implement dispose
