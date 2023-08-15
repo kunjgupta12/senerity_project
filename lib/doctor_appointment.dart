@@ -22,7 +22,6 @@ class _HomePageState extends State<doctor> {
   late var _razorpay;
   @override
   void initState() {
-
     // TODO: implement initState
     _razorpay = Razorpay();
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
@@ -72,7 +71,8 @@ class _HomePageState extends State<doctor> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Book Doctor Appointment',
+        title: Text(
+          'Book Doctor Appointment',
         ),
         backgroundColor: Colors.blueGrey,
       ),
@@ -224,7 +224,7 @@ class _HomePageState extends State<doctor> {
                                         final doc = FirebaseFirestore.instance
                                             .collection('doctor details')
                                             .doc(kunj);
-                                        if ( m=true) {
+                                        if (m = true) {
                                           doc.update({
                                             'date': _date.text,
                                             'time': _time.text,

@@ -10,6 +10,8 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:untitled5/nav_bar.dart';
 import 'package:untitled5/signaling..dart';
 
+int _remainingTime = 900; //initial time in seconds
+late Timer _timer;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -59,10 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
     _localRenderer.initialize();
     _remoteRenderer.initialize();
     user = auth.currentUser!;
+    _startTimer();
     currentUId = user.uid.toString();
 
-    Timer(Duration(
-    minutes: 15), () {
+    Timer(Duration(minutes: 15), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => profilepage()));
 
@@ -71,6 +73,19 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
     super.initState();
+  }
+
+  void _startTimer() {
+    //   _timer.cancel();
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_remainingTime > 0) {
+          _remainingTime--;
+        } else {
+          _timer.cancel();
+        }
+      });
+    });
   }
 
   void senddata() {
@@ -83,18 +98,19 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
-  void dispose() {
-    _localRenderer.dispose();
-    _remoteRenderer.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Conference',
+          style: TextStyle(),
+        ),
+        backgroundColor: Colors.blueGrey,
+      ),
       body: Column(
         children: [
-          SizedBox(height: 20),
+          Text("Remaining time: $_remainingTime seconds"),
+          SizedBox(height: 10),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -200,5 +216,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _localRenderer.dispose();
+    _remoteRenderer.dispose();
+    _startTimer();
+    super.dispose();
   }
 }

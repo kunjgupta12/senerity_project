@@ -61,8 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
     user = auth.currentUser!;
     currentUId = user.uid.toString();
 
-    Timer(Duration(
-        minutes: 30), () {
+    Timer(Duration(minutes: 30), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => profilepage()));
 
@@ -75,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void senddata() {
     CollectionReference collref =
-    FirebaseFirestore.instance.collection('Users joined ');
+        FirebaseFirestore.instance.collection('Users joined ');
 
     collref.add({
       'uid': user.uid.toString(),
@@ -104,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.black87),
+                      MaterialStateProperty.all<Color>(Colors.black87),
                 ),
                 child: Text(
                   "Open camera & microphone for 30min",
@@ -123,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.black87),
+                      MaterialStateProperty.all<Color>(Colors.black87),
                 ),
                 child: Text(
                   "Create room",
@@ -143,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.black87),
+                      MaterialStateProperty.all<Color>(Colors.black87),
                 ),
                 child: Text(
                   "Join room",
@@ -159,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.black87),
+                      MaterialStateProperty.all<Color>(Colors.black87),
                 ),
                 child: Text(
                   "Hangup",

@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:untitled5/gethelp.dart';
 import 'package:untitled5/gethelp_30.dart';
 import 'package:untitled5/signup_page.dart';
-int value=0;
+
+int value = 0;
+
 class paymemnt extends StatefulWidget {
   paymemnt({Key? key}) : super(key: key);
 
@@ -74,9 +77,8 @@ class _HomePageState extends State<paymemnt> {
                     ),
                   ),
                   onPressed: () {
-                    value=10000;
+                    value = 10000;
                     var options = {
-
                       'key': "rzp_test_ALdrxH7AP4NuvJ",
 
                       'amount': value,
@@ -99,7 +101,28 @@ class _HomePageState extends State<paymemnt> {
                       // fontSize: 10,
                     ),
                   ),
-                  onPressed: () {/* ... */},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(heading),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text("Option 1"),
+                              ],
+                            ),
+                            actions: [
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text("Close")),
+                            ],
+                          );
+                        });
+                  },
                 )
               ],
             )
@@ -160,7 +183,7 @@ class _HomePageState extends State<paymemnt> {
                     ),
                   ),
                   onPressed: () {
-                     value = 20000;
+                    value = 20000;
                     var options = {
                       'key': "rzp_test_ALdrxH7AP4NuvJ",
 
@@ -184,7 +207,28 @@ class _HomePageState extends State<paymemnt> {
                       // fontSize: 10,
                     ),
                   ),
-                  onPressed: () {/* ... */},
+                  onPressed: () {
+                    /* ... */ showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(heading),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text("Option 1"),
+                              ],
+                            ),
+                            actions: [
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text("Close")),
+                            ],
+                          );
+                        });
+                  },
                 )
               ],
             )
@@ -245,7 +289,7 @@ class _HomePageState extends State<paymemnt> {
                     ),
                   ),
                   onPressed: () {
-                    value=40000;
+                    value = 40000;
                     var options = {
                       'key': "rzp_test_ALdrxH7AP4NuvJ",
 
@@ -269,7 +313,33 @@ class _HomePageState extends State<paymemnt> {
                       // fontSize: 10,
                     ),
                   ),
-                  onPressed: () {/* ... */},
+                  onPressed: () {
+                    /* ... */
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(heading),
+                            backgroundColor: Colors.white,
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text("Option 1"),
+                              ],
+                            ),
+                            actions: [
+                              MaterialButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text(
+                                    "Close",
+                                    style: TextStyle(),
+                                  )),
+                            ],
+                          );
+                        });
+                  },
                 )
               ],
             )
@@ -294,12 +364,14 @@ class _HomePageState extends State<paymemnt> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-if(value==10000){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => gethelp()));
-}
-if(value==20000){
-  Navigator.push(context, MaterialPageRoute(builder: (context) => gethelp30()));
-}
+    if (value == 10000) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => gethelp()));
+    }
+    if (value == 20000) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => gethelp30()));
+    }
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
