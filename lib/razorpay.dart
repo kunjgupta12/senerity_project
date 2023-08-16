@@ -114,7 +114,7 @@ class _HomePageState extends State<paymemnt> {
                               ],
                             ),
                             actions: [
-                              ElevatedButton(
+                              MaterialButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
@@ -220,7 +220,7 @@ class _HomePageState extends State<paymemnt> {
                               ],
                             ),
                             actions: [
-                              ElevatedButton(
+                              MaterialButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },

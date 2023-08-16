@@ -33,14 +33,6 @@ class AuthController extends GetxController {
       Get.offAll(() => Loginpage());
     }
 
-    /*else if(!isEmailVerified)  {
-     Get.offAll(() => SignupPage());
-  } else if(isEmailVerified){
-      Get.offAll(()=> profilepage());
-     }*/
-/*else{
-  EmailVerificationScreen();
-    }*/
   }
 
   void register(String email, password) async {

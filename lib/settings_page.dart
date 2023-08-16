@@ -64,7 +64,6 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 20,
             ),
-
             Text(
               "Unique User Id: " + user.uid,
               style: TextStyle(
@@ -97,7 +96,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     color: Colors.black45),
               ),
             ),
-
             buildAccountOptionRow(context, "Language"),
             buildAccountOptionRow(context, "Privacy and security"),
             SizedBox(
@@ -123,10 +121,31 @@ class _SettingsPageState extends State<SettingsPage> {
               thickness: 4,
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             buildNotificationOptionRow("Account activity", false),
-            //     SizedBox(height: 10,),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.support_agent,
+                  color: Colors.blueGrey,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "Support",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Divider(
+              height: 15,
+              thickness: 4,
+            ),
             MaterialButton(
               onPressed: () async {
                 final url = Uri.parse(
@@ -139,7 +158,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   print("Can't open  $url");
                 }
               },
-              child: Row(
+              child: Column(
                 children: [
                   Text(
                     "Soch Pe Kharoch",
@@ -151,10 +170,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   SizedBox(
                     width: 5,
                   ),
-                  Image(
+                  /*   Image(
                       image: AssetImage("img/img_2.png"),
                       height: 30,
                       fit: BoxFit.fitWidth),
+                      */
                 ],
               ),
             ),
@@ -189,7 +209,6 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 50,
             ),
-
             Center(
               child: RichText(
                   text: TextSpan(
