@@ -7,10 +7,12 @@ import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:untitled5/nav_bar.dart';
+import 'package:untitled5/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+
+//  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(MyApp());
 }
 
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: profilepage(),
+      home: splashscreen(),
     );
   }
 }

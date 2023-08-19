@@ -17,13 +17,16 @@ class paymemnt extends StatefulWidget {
 }
 
 class _HomePageState extends State<paymemnt> {
+
   Card buildCard() {
+
     var heading = 'Assistance';
     var subheading = 'Time: 15mins';
     var cardImage = NetworkImage(
         'https://contenthub-static.grammarly.com/blog/wp-content/uploads/2021/06/informational-interviews-760x406.jpeg');
     var supportingText = 'Quick support from our end for 15minutes...';
     return Card(
+
         elevation: 4.0,
         child: Column(
           children: [
@@ -77,7 +80,7 @@ class _HomePageState extends State<paymemnt> {
                     ),
                   ),
                   onPressed: () {
-                    value = 10000;
+                    value = 6900;
                     var options = {
                       'key': "rzp_test_ALdrxH7AP4NuvJ",
 
@@ -183,7 +186,7 @@ class _HomePageState extends State<paymemnt> {
                     ),
                   ),
                   onPressed: () {
-                    value = 20000;
+                    value = 12900;
                     var options = {
                       'key': "rzp_test_ALdrxH7AP4NuvJ",
 
@@ -289,7 +292,7 @@ class _HomePageState extends State<paymemnt> {
                     ),
                   ),
                   onPressed: () {
-                    value = 40000;
+                    value = 17900;
                     var options = {
                       'key': "rzp_test_ALdrxH7AP4NuvJ",
 

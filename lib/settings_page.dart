@@ -158,7 +158,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   print("Can't open  $url");
                 }
               },
-              child: Column(
+              child: Row(
                 children: [
                   Text(
                     "Soch Pe Kharoch",
@@ -170,11 +170,10 @@ class _SettingsPageState extends State<SettingsPage> {
                   SizedBox(
                     width: 5,
                   ),
-                  /*   Image(
+                  Image(
                       image: AssetImage("img/img_2.png"),
                       height: 30,
                       fit: BoxFit.fitWidth),
-                      */
                 ],
               ),
             ),

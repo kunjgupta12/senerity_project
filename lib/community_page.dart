@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:untitled5/drawer.dart';
 
 import 'package:untitled5/login_page.dart';
 
@@ -27,11 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
       appBar: AppBar(
+
         backgroundColor: Colors.blueGrey,
         automaticallyImplyLeading: false,
         title: Text('New Blogs'),
         centerTitle: true,
+
         actions: [
           InkWell(
               onTap: () {
@@ -57,10 +61,15 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 20,
           ),
         ],
+
       ),
+
+
       body: Padding(
+
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
         child: Container(
+
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("img/img_1.png"),

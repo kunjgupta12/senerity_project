@@ -32,7 +32,6 @@ class AuthController extends GetxController {
       print("login page");
       Get.offAll(() => Loginpage());
     }
-
   }
 
   void register(String email, password) async {

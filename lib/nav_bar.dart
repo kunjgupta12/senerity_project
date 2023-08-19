@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/Upload_Page.dart';
 import 'package:untitled5/doctor_appointment.dart';
+import 'package:untitled5/drawer.dart';
 import 'package:untitled5/gethelp.dart';
 
 import 'package:untitled5/razorpay.dart';
@@ -29,6 +30,7 @@ class _profilepageState extends State<profilepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[index],
+      drawer: drawer(),
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
           indicatorColor: Colors.blue,
@@ -38,7 +40,7 @@ class _profilepageState extends State<profilepage> {
         ),
         child: NavigationBar(
           height: 60,
-          selectedIndex: 0,
+          selectedIndex: index,
           onDestinationSelected: (index) => setState(() => this.index = index),
           destinations: [
             NavigationDestination(
@@ -49,11 +51,11 @@ class _profilepageState extends State<profilepage> {
             ),
             NavigationDestination(
               icon: Icon(Icons.help),
-              label: 'Get Help',
+              label: 'SnapHelp',
             ),
             NavigationDestination(
               icon: Icon(Icons.emergency, weight: 400),
-              label: 'Appointment',
+              label: 'MediMeet',
             ),
             /*    NavigationDestination(
               icon: Icon(Icons.person),
