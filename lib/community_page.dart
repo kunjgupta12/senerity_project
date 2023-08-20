@@ -18,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey kunj = GlobalKey();
   final databaseReference = FirebaseDatabase.instance.ref().child('Posts');
 
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -28,14 +29,25 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      drawer: drawer(),
       appBar: AppBar(
-
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.menu,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
         backgroundColor: Colors.blueGrey,
         automaticallyImplyLeading: false,
         title: Text('New Blogs'),
         centerTitle: true,
-
         actions: [
           InkWell(
               onTap: () {
@@ -61,15 +73,10 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 20,
           ),
         ],
-
       ),
-
-
       body: Padding(
-
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
         child: Container(
-
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("img/img_1.png"),

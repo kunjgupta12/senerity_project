@@ -23,14 +23,14 @@ class _profilepageState extends State<profilepage> {
     HomeScreen(),
     paymemnt(),
     doctor(),
-    //  ProfilePage(),
-    SettingsPage(),
+    //  SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {
+    var scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-      body: screens[index],
       drawer: drawer(),
+      body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
           indicatorColor: Colors.blue,
@@ -57,14 +57,10 @@ class _profilepageState extends State<profilepage> {
               icon: Icon(Icons.emergency, weight: 400),
               label: 'MediMeet',
             ),
-            /*    NavigationDestination(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),*/
-            NavigationDestination(
+            /*  NavigationDestination(
               icon: Icon(Icons.settings),
               label: 'Settings',
-            ),
+            ),*/
           ],
         ),
       ),

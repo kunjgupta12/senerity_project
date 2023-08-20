@@ -17,16 +17,13 @@ class paymemnt extends StatefulWidget {
 }
 
 class _HomePageState extends State<paymemnt> {
-
   Card buildCard() {
-
     var heading = 'Assistance';
     var subheading = 'Time: 15mins';
     var cardImage = NetworkImage(
         'https://contenthub-static.grammarly.com/blog/wp-content/uploads/2021/06/informational-interviews-760x406.jpeg');
     var supportingText = 'Quick support from our end for 15minutes...';
     return Card(
-
         elevation: 4.0,
         child: Column(
           children: [
