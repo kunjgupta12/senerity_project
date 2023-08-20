@@ -7,7 +7,7 @@ import 'package:untitled5/gethelp.dart';
 
 import 'package:untitled5/razorpay.dart';
 
-import 'package:untitled5/settings_page.dart';
+//import 'package:untitled5/settings_page.dart';
 import 'community_page.dart';
 
 class profilepage extends StatefulWidget {
@@ -33,7 +33,7 @@ class _profilepageState extends State<profilepage> {
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-          indicatorColor: Colors.blue,
+          indicatorColor: Colors.blueGrey,
           labelTextStyle: MaterialStateProperty.all(
             TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
           ),

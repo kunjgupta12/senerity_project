@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             width: 20,
           ),
-          InkWell(
+          /*  InkWell(
               onTap: () {
                 auth.signOut().then((value) {
                   Navigator.push(context,
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   });
                 });
               },
-              child: Icon(Icons.logout_outlined)),
+              child: Icon(Icons.logout_outlined)),*/
           SizedBox(
             width: 20,
           ),
