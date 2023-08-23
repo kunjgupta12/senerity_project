@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/Upload_Page.dart';
 import 'package:untitled5/doctor_appointment.dart';
-import 'package:untitled5/drawer.dart';
-import 'package:untitled5/gethelp.dart';
 
 import 'package:untitled5/razorpay.dart';
 
@@ -29,7 +27,6 @@ class _profilepageState extends State<profilepage> {
   Widget build(BuildContext context) {
     var scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-      drawer: drawer(),
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
@@ -44,17 +41,27 @@ class _profilepageState extends State<profilepage> {
           onDestinationSelected: (index) => setState(() => this.index = index),
           destinations: [
             NavigationDestination(
-              icon: Icon(
-                Icons.chat,
+              icon: Image.asset(
+                "img/community_page.png",
+                height: 40,
+                width: 45,
               ),
               label: 'Community',
             ),
             NavigationDestination(
-              icon: Icon(Icons.help),
+              icon: Image.asset(
+                "img/SnapHelp.png",
+                height: 40,
+                width: 45,
+              ),
               label: 'SnapHelp',
             ),
             NavigationDestination(
-              icon: Icon(Icons.emergency, weight: 400),
+              icon: Image.asset(
+                "img/MediMeet.png",
+                height: 40,
+                width: 45,
+              ),
               label: 'MediMeet',
             ),
             /*  NavigationDestination(

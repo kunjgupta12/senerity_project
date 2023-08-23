@@ -25,7 +25,7 @@ class _splashscreenState extends State<splashscreen>
     Firebase.initializeApp().then((value) => Get.put(AuthController()));
     Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_) => const profilepage(),
+        builder: (_) => profilepage(),
       ));
     });
   }
@@ -43,20 +43,18 @@ class _splashscreenState extends State<splashscreen>
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.width;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
-      child: Container(
-          width: w,
-          height: h,
-          //  width: double.maxFinite,
-          // height: double.maxFinite,
+    return Container(
+      width: w,
+      height: h,
+      //  width: double.maxFinite,
+      // height: double.maxFinite,
 
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("img/img_1.png"),
-              fit: BoxFit.cover,
-            ),
-          )),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("img/Opening Page background.png"),
+          fit: BoxFit.fill,
+        ),
+      ),
     );
   }
 }

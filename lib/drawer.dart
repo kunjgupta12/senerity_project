@@ -24,7 +24,7 @@ class drawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
+        //padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
@@ -32,10 +32,6 @@ class drawer extends StatelessWidget {
             ),
             child: Text(
               "Unique User Id: " + user.uid,
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black45),
             ),
           ),
           Text(
@@ -46,8 +42,21 @@ class drawer extends StatelessWidget {
                 color: Colors.black45),
           ),
           ListTile(
-            leading: Icon(
-              Icons.security,
+            leading: Image.asset(
+              "img/My Profile.png",
+              height: 40,
+              width: 45,
+            ),
+            title: const Text('Profile'),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Image.asset(
+              "img/Security.png",
+              height: 40,
+              width: 45,
             ),
             title: const Text('Security'),
             onTap: () {
@@ -55,8 +64,10 @@ class drawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(
-              Icons.help_outlined,
+            leading: Image.asset(
+              "img/support.png",
+              height: 40,
+              width: 45,
             ),
             title: const Text('Support'),
             onTap: () {
@@ -64,8 +75,10 @@ class drawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(
-              Icons.fingerprint,
+            leading: Image.asset(
+              "img/Privacy policy.png",
+              height: 40,
+              width: 45,
             ),
             title: const Text('Privacy Policy'),
             onTap: () {
@@ -73,8 +86,10 @@ class drawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(
-              Icons.book,
+            leading: Image.asset(
+              "img/Terms of service.png",
+              height: 40,
+              width: 45,
             ),
             title: const Text('Terms of service'),
             onTap: () {

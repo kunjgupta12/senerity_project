@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         title: Text('New Blogs'),
         centerTitle: true,
-        actions: [
+        /*actions: [
           InkWell(
               onTap: () {
                 Navigator.push(context,
@@ -72,8 +72,18 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             width: 20,
           ),
-        ],
+        ],*/
       ),
+      floatingActionButton: FloatingActionButton(
+        clipBehavior: Clip.hardEdge,
+        backgroundColor: Colors.blueGrey,
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddPostScreen()));
+        },
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ), // This trailing comma makes,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
         child: Container(

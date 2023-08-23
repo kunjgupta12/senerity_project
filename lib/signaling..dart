@@ -205,7 +205,9 @@ class Signaling {
     if (remoteStream != null) {
       remoteStream!.getTracks().forEach((track) => track.stop());
     }
-    if (peerConnection != null) peerConnection!.close();
+    if (peerConnection != null) {
+      peerConnection!.close();
+    }
 
     if (roomId != null) {
       var db = FirebaseFirestore.instance;

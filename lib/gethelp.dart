@@ -1,12 +1,10 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-
 import 'package:untitled5/nav_bar.dart';
 import 'package:untitled5/signaling..dart';
 
@@ -192,7 +190,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(child: RTCVideoView(_localRenderer, mirror: true)),
-                  Expanded(child: RTCVideoView(_remoteRenderer)),
+                  Expanded(
+                      child: RTCVideoView(
+                    _remoteRenderer,
+                    mirror: true,
+                  )),
                 ],
               ),
             ),
@@ -211,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          Text(user.uid),
+          //Text(user.uid),
           SizedBox(height: 8)
         ],
       ),

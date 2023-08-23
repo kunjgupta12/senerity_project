@@ -364,11 +364,11 @@ class _HomePageState extends State<paymemnt> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-    if (value == 10000) {
+    if (value == 6900) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => gethelp()));
     }
-    if (value == 20000) {
+    if (value == 12900) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => gethelp30()));
     }
