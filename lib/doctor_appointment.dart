@@ -71,8 +71,11 @@ class _HomePageState extends State<doctor> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+
         title: Text(
-          'Book Doctor Appointment',
+
+          'MediMeet',
         ),
         backgroundColor: Colors.blueGrey,
       ),

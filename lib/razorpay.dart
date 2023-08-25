@@ -406,7 +406,8 @@ class _HomePageState extends State<paymemnt> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Get Help'),
+        title: Text('SnapHelp'),
+        centerTitle: true,
         backgroundColor: Colors.blueGrey,
       ),
       body: Container(
