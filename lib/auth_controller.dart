@@ -48,7 +48,6 @@ class AuthController extends GetxController {
       collref.add({
         'password': password,
         'email': email,
-
         'uid': user.uid.toString(),
       });
     } catch (e) {

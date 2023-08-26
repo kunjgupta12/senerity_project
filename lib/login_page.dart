@@ -24,26 +24,22 @@ class _LoginpageState extends State<Loginpage> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.width;
     return Scaffold(
-
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-
       body: Container(
-decoration: BoxDecoration(
-  image: DecorationImage(
-    image: AssetImage("img/Opening Page background.png"),
-    fit: BoxFit.fill,
-  ),
-),
-       // physics: BouncingScrollPhysics(),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("img/Opening Page background.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        // physics: BouncingScrollPhysics(),
         child: Column(
-
           children: [
             SizedBox(
               height: w * .09,
             ),
             Container(
-
               width: w * 0.35,
               height: h * 0.35,
               decoration: BoxDecoration(
@@ -51,7 +47,6 @@ decoration: BoxDecoration(
                       image: AssetImage("img/logo.png"),
                       fit: BoxFit.fitHeight)),
             ),
-
             Container(
               margin: const EdgeInsets.only(left: 20, right: 20),
               width: w,
@@ -61,9 +56,7 @@ decoration: BoxDecoration(
                   Center(
                     child: Text(
                       "Serenity",
-
                       style: TextStyle(
-
                         fontFamily: 'JosefinSans',
                         fontSize: 50,
                         decoration: TextDecoration.underline,
@@ -72,26 +65,30 @@ decoration: BoxDecoration(
                       ),
                     ),
                   ),
-                  SizedBox(height: w*.2,),
+                  SizedBox(
+                    height: w * .2,
+                  ),
                   Text(
                     "Hey There!",
                     style: TextStyle(
                       fontFamily: 'JosefinSans',
-                        fontSize: w*.1,
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.w600,
-                       // color: Color.fromRGBO(10, 10, 3, 0.8)
-                       ),
+                      fontSize: w * .1,
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w600,
+                      // color: Color.fromRGBO(10, 10, 3, 0.8)
+                    ),
                   ),
                   Text(
                     "Lets go back to your personal space",
                     style: TextStyle(
-                        fontFamily: 'Montserrat',
-                    fontSize: 20, color: Colors.black,
-                   // fontWeight: FontWeight.w600
-                      ),
+                      fontFamily: 'Montserrat',
+                      fontSize: 20, color: Colors.black,
+                      // fontWeight: FontWeight.w600
+                    ),
                   ),
-                  SizedBox(height: 40,),
+                  SizedBox(
+                    height: 40,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -173,9 +170,11 @@ decoration: BoxDecoration(
                         },
                         child: Text(
                           "Forgot Password?",
-
-                          style:
-                              TextStyle(fontFamily:"Montserrat",fontSize: 20, color: Colors.black,fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                              fontFamily: "Montserrat",
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600),
                         ),
                       )
                     ],
@@ -195,12 +194,10 @@ decoration: BoxDecoration(
                 width: w * 0.38,
                 height: h * .15,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                  color: Colors.black
-                  //  image: DecorationImage(
-                   //     image: AssetImage("img/img.png"), fit: BoxFit.fill)
-                )
-                  ,
+                    borderRadius: BorderRadius.circular(30), color: Colors.black
+                    //  image: DecorationImage(
+                    //     image: AssetImage("img/img.png"), fit: BoxFit.fill)
+                    ),
                 child: Center(
                   child: Text(
                     "Login",
@@ -220,8 +217,11 @@ decoration: BoxDecoration(
             RichText(
                 text: TextSpan(
                     text: "Don\'t have an account?",
-                    style:
-                        TextStyle(fontFamily:"Montserrat",color: Colors.grey[500], fontSize: w * .045,fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                        fontFamily: "Montserrat",
+                        color: Colors.grey[500],
+                        fontSize: w * .045,
+                        fontWeight: FontWeight.w600),
                     children: [
                   TextSpan(
                       text: "Create one for Free!!",

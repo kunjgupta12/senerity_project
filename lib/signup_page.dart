@@ -32,7 +32,7 @@ class SignupPage extends StatefulWidget {
 
 class _SignuppageState extends State<SignupPage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-var nameController=TextEditingController();
+  var nameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordcontroller = TextEditingController();
   late User user;
@@ -53,7 +53,6 @@ var nameController=TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -64,7 +63,7 @@ var nameController=TextEditingController();
         child: Column(
           children: [
             SizedBox(
-              height: w*.09,
+              height: w * .09,
             ),
             Container(
               width: w * .35,
@@ -83,9 +82,7 @@ var nameController=TextEditingController();
                   Center(
                     child: Text(
                       "Serenity",
-
                       style: TextStyle(
-
                         fontFamily: 'JosefinSans',
                         fontSize: 50,
                         decoration: TextDecoration.underline,
@@ -94,20 +91,27 @@ var nameController=TextEditingController();
                       ),
                     ),
                   ),
-                  SizedBox(height: w*.2,),
+                  SizedBox(
+                    height: w * .2,
+                  ),
                   Text(
                     "Hey Guest",
-                    style: TextStyle( fontFamily: 'JosefinSans',
-                        fontSize: w*.1,  decoration: TextDecoration.underline,fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontFamily: 'JosefinSans',
+                        fontSize: w * .1,
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "Create your Account",
-                    style: TextStyle(fontSize: 20,fontFamily: 'Montserrat', color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Montserrat',
+                        color: Colors.black),
                   ),
                   SizedBox(
                     height: 40,
                   ),
-
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -121,7 +125,6 @@ var nameController=TextEditingController();
                         ]),
                     child: TextFormField(
                       controller: nameController,
-
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                           hintText: "Name",
@@ -132,16 +135,18 @@ var nameController=TextEditingController();
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
-                              BorderSide(color: Colors.white, width: 1.0)),
+                                  BorderSide(color: Colors.white, width: 1.0)),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
-                              BorderSide(color: Colors.white, width: 1.0)),
+                                  BorderSide(color: Colors.white, width: 1.0)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30))),
                     ),
                   ),
-SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -219,21 +224,20 @@ SizedBox(height: 10,),
             ),
             GestureDetector(
               onTap: () {
-                if(
-              nameController!=" "
-              ){
-                AuthController.instance.register(emailController.text.trim(),
-                    passwordcontroller.text.trim());}
+                if (nameController != " ") {
+                  AuthController.instance.register(emailController.text.trim(),
+                      passwordcontroller.text.trim());
+                }
               },
               child: Container(
                 width: w * 0.38,
                 height: h * .15,
                 decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(30),
-                    //image: DecorationImage(
-                     //   image: AssetImage("img/img.png"), fit: BoxFit.fill)
-              ),
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(30),
+                  //image: DecorationImage(
+                  //   image: AssetImage("img/img.png"), fit: BoxFit.fill)
+                ),
                 child: Center(
                   child: Text(
                     "Create",
@@ -248,15 +252,18 @@ SizedBox(height: 10,),
               ),
             ),
             SizedBox(
-              height: w*.25,
+              height: w * .25,
             ),
             RichText(
                 text: TextSpan(
                     recognizer: TapGestureRecognizer()
                       ..onTap = () => Get.back(),
                     text: 'Have an account?',
-                    style: TextStyle(fontFamily:"Montserrat",color: Colors.grey[500], fontSize: w * .05,fontWeight: FontWeight.w600))),
-
+                    style: TextStyle(
+                        fontFamily: "Montserrat",
+                        color: Colors.grey[500],
+                        fontSize: w * .05,
+                        fontWeight: FontWeight.w600))),
           ],
         ),
       ),

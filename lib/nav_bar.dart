@@ -16,12 +16,13 @@ class profilepage extends StatefulWidget {
 }
 
 class _profilepageState extends State<profilepage> {
+
   int index = 0;
   final screens = [
     HomeScreen(),
     paymemnt(),
     doctor(),
-    //  SettingsPage(),
+
   ];
   @override
   Widget build(BuildContext context) {
@@ -30,12 +31,16 @@ class _profilepageState extends State<profilepage> {
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
+
           indicatorColor: Colors.blueGrey,
           labelTextStyle: MaterialStateProperty.all(
-            TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            TextStyle(fontSize: 12, fontWeight: FontWeight.w800,
+              fontFamily: 'SourceCodePro',),
           ),
         ),
         child: NavigationBar(
+
+          backgroundColor: Colors.white,
           height: 60,
           selectedIndex: index,
           onDestinationSelected: (index) => setState(() => this.index = index),
@@ -64,10 +69,7 @@ class _profilepageState extends State<profilepage> {
               ),
               label: 'MediMeet',
             ),
-            /*  NavigationDestination(
-              icon: Icon(Icons.settings),
-              label: 'Settings',
-            ),*/
+
           ],
         ),
       ),

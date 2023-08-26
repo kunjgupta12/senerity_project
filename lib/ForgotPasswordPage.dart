@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled5/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
 
@@ -115,7 +116,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ],
               ),
               SizedBox(
-                height: w*.04,
+                height: w * .04,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -155,19 +156,22 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                            return Loginpage();
-                          }));
+                        return Loginpage();
+                      }));
                     },
                     child: Text(
                       "Remember?",
-
-                      style:
-                      TextStyle(fontFamily:"Montserrat",fontSize: 20, color: Colors.grey[500]),
+                      style: TextStyle(
+                          fontFamily: "Montserrat",
+                          fontSize: 20,
+                          color: Colors.grey[500]),
                     ),
                   )
                 ],
               ),
-              SizedBox(height: 80,),
+              SizedBox(
+                height: 80,
+              ),
               GestureDetector(
                 onTap: () {
                   passwordreset();

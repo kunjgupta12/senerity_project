@@ -91,15 +91,10 @@ class _HomePageState extends State<doctor> {
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Text(
-
           'MediMeet',
           style: TextStyle(
-              fontFamily: 'JosefinSans',
-              fontSize: 25,
-              color: Colors.black
-          ),
+              fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
         ),
-
       ),
       body: Column(
         children: [

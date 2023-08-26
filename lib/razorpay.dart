@@ -427,13 +427,12 @@ class _HomePageState extends State<paymemnt> {
         ),
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        title: Text('SnapHelp',style: TextStyle(
-            fontFamily: 'JosefinSans',
-            fontSize: 25,
-            color: Colors.black
-        ),),
+        title: Text(
+          'SnapHelp',
+          style: TextStyle(
+              fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
+        ),
         centerTitle: true,
-
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
