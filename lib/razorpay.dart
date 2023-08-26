@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:untitled5/drawer.dart';
 import 'package:untitled5/gethelp.dart';
 import 'package:untitled5/gethelp_30.dart';
 import 'package:untitled5/signup_page.dart';
@@ -31,6 +32,7 @@ class _HomePageState extends State<paymemnt> {
               title: Text(
                 heading,
                 style: TextStyle(
+                  fontFamily: 'SourceCodePro',
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
                   fontSize: 25,
@@ -144,6 +146,7 @@ class _HomePageState extends State<paymemnt> {
               title: Text(
                 heading,
                 style: TextStyle(
+                  fontFamily: 'SourceCodePro',
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
                   fontSize: 25,
@@ -250,6 +253,7 @@ class _HomePageState extends State<paymemnt> {
               title: Text(
                 heading,
                 style: TextStyle(
+                  fontFamily: 'SourceCodePro',
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
                   fontSize: 25,
@@ -405,10 +409,31 @@ class _HomePageState extends State<paymemnt> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      drawer: drawer(),
       appBar: AppBar(
-        title: Text('SnapHelp'),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        title: Text('SnapHelp',style: TextStyle(
+            fontFamily: 'JosefinSans',
+            fontSize: 25,
+            color: Colors.black
+        ),),
         centerTitle: true,
-        backgroundColor: Colors.blueGrey,
+
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:untitled5/drawer.dart';
 
 class doctor extends StatefulWidget {
   doctor({Key? key}) : super(key: key);
@@ -70,14 +71,35 @@ class _HomePageState extends State<doctor> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      drawer: drawer(),
       appBar: AppBar(
         centerTitle: true,
-
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
         title: Text(
 
           'MediMeet',
+          style: TextStyle(
+              fontFamily: 'JosefinSans',
+              fontSize: 25,
+              color: Colors.black
+          ),
         ),
-        backgroundColor: Colors.blueGrey,
+
       ),
       body: Column(
         children: [

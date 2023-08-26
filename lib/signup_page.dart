@@ -102,7 +102,7 @@ var nameController=TextEditingController();
                   ),
                   Text(
                     "Create your Account",
-                    style: TextStyle(fontSize: 20,fontFamily: 'Montserrat', color: Colors.grey[500]),
+                    style: TextStyle(fontSize: 20,fontFamily: 'Montserrat', color: Colors.black),
                   ),
                   SizedBox(
                     height: 40,

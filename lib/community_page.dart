@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return IconButton(
               icon: const Icon(
                 Icons.menu,
+color: Colors.black,
               ),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
@@ -44,9 +45,13 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
         ),
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        title: Text('New Blogs'),
+        title: Text('Community',style: TextStyle(
+            fontFamily: 'JosefinSans',
+          fontSize: 25,
+          color: Colors.black
+        ),),
         centerTitle: true,
         /*actions: [
           InkWell(
@@ -85,15 +90,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Icon(Icons.add),
       ), // This trailing comma makes,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("img/img_1.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Column(
+
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
+        child:  Column(
+
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -285,7 +285,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-        ),
+
       ),
     );
   }

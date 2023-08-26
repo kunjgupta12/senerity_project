@@ -87,7 +87,9 @@ decoration: BoxDecoration(
                     "Lets go back to your personal space",
                     style: TextStyle(
                         fontFamily: 'Montserrat',
-                    fontSize: 20, color: Colors.grey[500]),
+                    fontSize: 20, color: Colors.black,
+                   // fontWeight: FontWeight.w600
+                      ),
                   ),
                   SizedBox(height: 40,),
                   Container(
@@ -173,7 +175,7 @@ decoration: BoxDecoration(
                           "Forgot Password?",
 
                           style:
-                              TextStyle(fontFamily:"Montserrat",fontSize: 20, color: Colors.grey[500]),
+                              TextStyle(fontFamily:"Montserrat",fontSize: 20, color: Colors.black,fontWeight: FontWeight.w600),
                         ),
                       )
                     ],
@@ -219,7 +221,7 @@ decoration: BoxDecoration(
                 text: TextSpan(
                     text: "Don\'t have an account?",
                     style:
-                        TextStyle(fontFamily:"Montserrat",color: Colors.grey[500], fontSize: w * .045),
+                        TextStyle(fontFamily:"Montserrat",color: Colors.grey[500], fontSize: w * .045,fontWeight: FontWeight.w600),
                     children: [
                   TextSpan(
                       text: "Create one for Free!!",
