@@ -169,7 +169,7 @@ class drawer extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 120,
+            height: 60,
           ),
           ListTile(
             leading: Icon(
