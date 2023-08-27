@@ -61,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
     user = auth.currentUser!;
     _startTimer();
     currentUId = user.uid.toString();
+    signaling.openUserMedia(_localRenderer, _remoteRenderer);
 
     Timer(Duration(minutes: 15), () {
       Navigator.pushReplacement(
@@ -85,6 +86,17 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
   }
+  @override
+  void dispose() {
+    _localRenderer.dispose();
+    _remoteRenderer.dispose();
+    var db = FirebaseFirestore.instance;
+    var roomRef = db.collection('rooms').doc(roomId);
+    roomRef.delete();
+    signaling.hangUp(_localRenderer);
+    super.dispose();
+  }
+
 
   void senddata() {
     CollectionReference collref =
@@ -93,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
     collref.add({
       'uid': user.uid.toString(),
     });
+
   }
 
   @override
@@ -112,16 +125,17 @@ class _MyHomePageState extends State<MyHomePage> {
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              ElevatedButton(
+             ElevatedButton(
                 onPressed: () {
                   signaling.openUserMedia(_localRenderer, _remoteRenderer);
                 },
                 style: ButtonStyle(
+
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.black87),
                 ),
                 child: Text(
-                  "Open camera & microphone",
+                  "Open microphone",
                   style: TextStyle(color: Colors.blueGrey, fontSize: 20),
                 ),
               ),
@@ -193,7 +207,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(
                       child: RTCVideoView(
                     _remoteRenderer,
-                    mirror: true,
+
                   )),
                 ],
               ),
@@ -218,13 +232,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
-  }
+  }}
 
-  @override
-  void dispose() {
-    _localRenderer.dispose();
-    _remoteRenderer.dispose();
-    _startTimer();
-    super.dispose();
-  }
-}
+

@@ -116,7 +116,7 @@ flutter:
             weight: 600
       - family: SourceCodePro
         fonts:
-          - asset: fonts/SourceCodePro.ttf
+          - asset: fonts/CodecPro-Regular.ttf
             weight: 600
 #  #   - family: Trajan Pro
   #     fonts:
