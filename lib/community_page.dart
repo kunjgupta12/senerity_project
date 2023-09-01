@@ -2,16 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled5/drawer.dart';
-import 'package:untitled5/email_authstep.dart';
-import 'package:untitled5/gethelp.dart';
-import 'package:untitled5/gethelp_30.dart';
-
-import 'package:untitled5/login_page.dart';
 
 import 'add_blog_page.dart';
+
+User? user = auth.currentUser;
+FirebaseAuth auth = FirebaseAuth.instance;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,10 +22,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey kunj = GlobalKey();
-  final databaseReference = FirebaseDatabase.instance.ref().child('Posts');
+  var databaseReference = FirebaseDatabase.instance.ref().child('Posts');
 
-  FirebaseAuth auth = FirebaseAuth.instance;
-
+  final comment = TextEditingController();
   TextEditingController searchController = TextEditingController();
   String search = "";
 
@@ -56,31 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
               fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
         ),
         centerTitle: true,
-        /*actions: [
-          InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AddPostScreen()));
-              },
-              child: Icon(Icons.add)),
-          SizedBox(
-            width: 20,
-          ),
-          /*  InkWell(
-              onTap: () {
-                auth.signOut().then((value) {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Loginpage()));
-                  setState(() {
-                    Loginpage;
-                  });
-                });
-              },
-              child: Icon(Icons.logout_outlined)),*/
-          SizedBox(
-            width: 20,
-          ),
-        ],*/
       ),
       floatingActionButton: FloatingActionButton(
         clipBehavior: Clip.hardEdge,
@@ -135,13 +109,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.all(10.0),
                       child: Container(
                         decoration: BoxDecoration(
-                            border: Border.all(width: 2),
+                            //border: Border.all(width: 2),
+                            border: Border.all(
+                                style: BorderStyle.solid,
+                                strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.grey.shade100,
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SizedBox(
+                              height: 10,
+                            ),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 8.0),
@@ -187,7 +167,113 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 10,
                             ),
-
+                            Text(
+                              "Comment:" +
+                                  snapshot.child("pcomment").value!.toString(),
+                              style: TextStyle(
+                                fontFamily: 'SourceCodePro',
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black54,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      icon: Image.asset(
+                                      "img/Expand thread.png",
+                                        height: 30,
+                                        width: 30,
+                                      ),
+                                      iconSize: 1,
+                                      onPressed: () {
+                                        showMyDialog(snapshot
+                                            .child("pId")
+                                            .value
+                                            .toString());
+                                      },
+                                    ),
+                                    Text(
+                                      'Expand Thread',
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        fontFamily: 'SourceCodePro',
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black54,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: Image.asset(
+                                          "img/Important.png",
+                                          height: 30,
+                                          width: 30,
+                                        ),
+                                        iconSize: 1,
+                                        onPressed: () {
+                                          final postRef = FirebaseDatabase
+                                              .instance
+                                              .ref()
+                                              .child('Posts');
+                                          postRef
+                                              .child('Post List')
+                                              .child(tempTitle)
+                                              .child("comment")
+                                              .update({"value": 1});
+                                        }),
+                                    Text(
+                                      'Important',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontFamily: 'SourceCodePro',
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black54,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    IconButton(
+                                      icon: Image.asset(
+                                        "img/Share.png",
+                                        height: 30,
+                                        width: 30,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddPostScreen()));
+                                        });
+                                      },
+                                    ),
+                                    Text(
+                                      'Share',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontFamily: 'SourceCodePro',
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black54,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ),
@@ -274,5 +360,48 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  void toastMessage(String message) {
+    Fluttertoast.showToast(
+        msg: message.toString(),
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.SNACKBAR,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.white,
+        textColor: Colors.black,
+        fontSize: 16.0);
+  }
+
+  Future<void> showMyDialog(String date) async {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Comment"),
+            content: Container(
+              child: TextField(
+                controller: comment,
+                decoration: InputDecoration(hintText: "Comment"),
+              ),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    databaseReference
+                        .child('Post List')
+                        .child(date)
+                        .child('pcomment')
+                        .set({
+                      user?.uid: comment.text
+                        }).then((value) {
+                      toastMessage("Commented");
+                    });
+                  },
+                  child: Text("Comment"))
+            ],
+          );
+        });
   }
 }

@@ -101,7 +101,7 @@ class drawer extends StatelessWidget {
               Icons.lock_reset,
             ),
             title: const Text('Reset Password'),
-            onTap: ()  {
+            onTap: () {
               //    navigateSecondPage(ForgotPasswordPage());
               Navigator.push(
                   context,

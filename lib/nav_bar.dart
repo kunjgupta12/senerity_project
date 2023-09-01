@@ -16,7 +16,6 @@ class profilepage extends StatefulWidget {
 }
 
 class _profilepageState extends State<profilepage> {
-
   int index = 0;
   final screens = [
     HomeScreen(),
@@ -32,7 +31,7 @@ class _profilepageState extends State<profilepage> {
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(displayWidth * .009),
         height: displayWidth * .165,
-        width: displayWidth*.09,
+        width: displayWidth * .09,
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
@@ -59,11 +58,12 @@ class _profilepageState extends State<profilepage> {
             backgroundColor: Colors.white12,
             height: 60,
             selectedIndex: index,
-            onDestinationSelected: (index) => setState(() => this.index = index),
+            onDestinationSelected: (index) =>
+                setState(() => this.index = index),
             destinations: [
               NavigationDestination(
                 icon: Image.asset(
-                  "img/community_page.png",
+                  "img/Community page.png",
                   height: 40,
                   width: 45,
                 ),

@@ -86,6 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
   }
+
   @override
   void dispose() {
     _localRenderer.dispose();
@@ -97,7 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-
   void senddata() {
     CollectionReference collref =
         FirebaseFirestore.instance.collection('Users joined ');
@@ -105,7 +105,6 @@ class _MyHomePageState extends State<MyHomePage> {
     collref.add({
       'uid': user.uid.toString(),
     });
-
   }
 
   @override
@@ -125,12 +124,11 @@ class _MyHomePageState extends State<MyHomePage> {
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-             ElevatedButton(
+              ElevatedButton(
                 onPressed: () {
                   signaling.openUserMedia(_localRenderer, _remoteRenderer);
                 },
                 style: ButtonStyle(
-
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.black87),
                 ),
@@ -207,7 +205,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(
                       child: RTCVideoView(
                     _remoteRenderer,
-
                   )),
                 ],
               ),
@@ -232,6 +229,5 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
-  }}
-
-
+  }
+}

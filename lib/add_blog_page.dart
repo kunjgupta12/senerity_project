@@ -3,11 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled5/community_page.dart';
+import 'package:untitled5/nav_bar.dart';
 import 'package:untitled5/roundbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
+String date = DateTime.now().millisecondsSinceEpoch.toString();
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({Key? key}) : super(key: key);
@@ -26,7 +29,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   File? _image;
   String title = "", description = "";
   final picker = ImagePicker();
-
+  int important = 1;
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
@@ -201,8 +204,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       });
 
                       try {
-                        int date = DateTime.now().microsecondsSinceEpoch;
-
                         Reference ref = FirebaseStorage.instance
                             .ref('/blog_app_firebase/$date');
                         UploadTask uploadTask = ref.putFile(_image!.absolute);
@@ -210,7 +211,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         var newUrl = await ref.getDownloadURL();
                         final User? user = _auth.currentUser;
 
-                        postRef.child('Post List').child(date.toString()).set({
+                        postRef.child('Post List').child(date).set({
                           'pId': date.toString(),
                           'pImage': newUrl.toString(),
                           'pTime': date.toString(),
@@ -218,13 +219,13 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           'pDescription': descriptionController.text.toString(),
                           'uEmail': user?.email.toString(),
                           'uid': user?.uid.toString(),
-//'pcomment':user?.comment.toString(),
+
                         }).then((value) {
                           toastMessage('Post published sucessfully');
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
+                                  builder: (context) => profilepage()));
                           setState(() {
                             showSpinner = false;
                           });
@@ -252,7 +253,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   void toastMessage(String message) {
     Fluttertoast.showToast(
         msg: message.toString(),
-        toastLength: Toast.LENGTH_SHORT,
+        toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.SNACKBAR,
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.white,
