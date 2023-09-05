@@ -63,7 +63,7 @@ class _profilepageState extends State<profilepage> {
             destinations: [
               NavigationDestination(
                 icon: Image.asset(
-                  "img/Community page.png",
+                  "img/community.png",
                   height: 40,
                   width: 45,
                 ),

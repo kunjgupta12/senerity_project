@@ -11,6 +11,8 @@ class drawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double displayWidth = MediaQuery.of(context).size.width;
+    double displayheight = MediaQuery.of(context).size.height;
     final firestore =
         FirebaseFirestore.instance.collection('Users').snapshots();
     final FirebaseAuth auth = FirebaseAuth.instance;
@@ -22,169 +24,180 @@ class drawer extends StatelessWidget {
     currentUId = user.uid.toString();
     currentEmail = user.email.toString();
     return Drawer(
-      child: ListView(
-        // Important: Remove any padding from the ListView.
-        //padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blueGrey,
+width:displayWidth*.72,
+
+      child: Container(
+
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.all(4),
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.black54,
+              ),
+              child: Text(
+                "Unique User Id: " + user.uid+
+                    "   Email Id: " + currentEmail,
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white),
+              ),
             ),
-            child: Text(
-              "Unique User Id: " + user.uid,
+            ListTile(
+              leading: Image.asset(
+                "img/My profile.png",
+                height:displayheight*.5,
+                width: displayWidth*.1,
+              ),
+              title: const Text('Profile',style: TextStyle(
+
+              ),),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-          ),
-          Text(
-            "Email Id: " + currentEmail,
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                color: Colors.black45),
-          ),
-          ListTile(
-            leading: Image.asset(
-              "img/My Profile.png",
-              height: 40,
-              width: 45,
+            ListTile(
+              leading: Image.asset(
+                "img/Security.png",
+                height: 40,
+                width:  displayWidth*.1,
+              ),
+              title: const Text('Security'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            title: const Text('Profile'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Image.asset(
-              "img/Security.png",
-              height: 40,
-              width: 45,
+            ListTile(
+              leading: Image.asset(
+                "img/Support.png",
+                height: 40,
+                width: displayWidth*.1,
+              ),
+              title: const Text('Support'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            title: const Text('Security'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Image.asset(
-              "img/support.png",
-              height: 40,
-              width: 45,
+            ListTile(
+              leading: Image.asset(
+                "img/Privacy.png",
+                height: 40,
+                width:displayWidth*.1 ,
+              ),
+              title: const Text('Privacy Policy'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            title: const Text('Support'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Image.asset(
-              "img/Privacy policy.png",
-              height: 40,
-              width: 45,
+            ListTile(
+              leading: Image.asset(
+                "img/Terms of service.png",
+                height: 40,
+                width: displayWidth*.1,
+              ),
+              title: const Text('Terms of service'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            title: const Text('Privacy Policy'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Image.asset(
-              "img/Terms of service.png",
-              height: 40,
-              width: 45,
+            ListTile(
+              leading: Icon(
+                Icons.lock_reset,
+              ),
+              title: const Text('Reset Password'),
+              onTap: () {
+                //    navigateSecondPage(ForgotPasswordPage());
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ForgotPasswordPage()));
+              },
             ),
-            title: const Text('Terms of service'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.lock_reset,
+            MaterialButton(
+              onPressed: () async {
+                final url = Uri.parse(
+                  'https://www.instagram.com/spk.psy/',
+                );
+                if (await canLaunchUrl(url)) {
+                  launchUrl(url, mode: LaunchMode.inAppWebView);
+                } else {
+                  // ignore: avoid_print
+                  print("Can't open  $url");
+                }
+              },
+              child: Row(
+                children: [
+                  Image(
+                      image: AssetImage("img/img_2.png"),
+                      height: 30,
+                      fit: BoxFit.fitWidth),
+                  SizedBox(
+                    width: 26,
+                  ),
+                  Text(
+                    "Insta Handle",
+                   /* style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black45),*/
+                  ),
+
+
+                ],
+              ),
             ),
-            title: const Text('Reset Password'),
-            onTap: () {
-              //    navigateSecondPage(ForgotPasswordPage());
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ForgotPasswordPage()));
-            },
-          ),
-          MaterialButton(
-            onPressed: () async {
-              final url = Uri.parse(
-                'https://www.instagram.com/spk.psy/',
-              );
-              if (await canLaunchUrl(url)) {
-                launchUrl(url, mode: LaunchMode.inAppWebView);
-              } else {
-                // ignore: avoid_print
-                print("Can't open  $url");
-              }
-            },
-            child: Row(
-              children: [
-                Text(
-                  "Soch Pe Kharoch",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black45),
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Image(
-                    image: AssetImage("img/img_2.png"),
-                    height: 30,
-                    fit: BoxFit.fitWidth),
-              ],
+            MaterialButton(
+              onPressed: () async {
+                final url = Uri.parse(
+                  'tel:+91 9411310301',
+                );
+                if (await canLaunchUrl(url)) {
+                  launchUrl(url, mode: LaunchMode.platformDefault);
+                } else {
+                  // ignore: avoid_print
+                  print("Can't open  $url");
+                }
+              },
+              child: Row(
+                children: [
+
+                  Icon(Icons.call),
+                  SizedBox(
+                    width: 26,
+                  ),
+                  Text(
+                    "Contact Us",
+                 /*   style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black45),*/
+                  ),
+
+                ],
+              ),
             ),
-          ),
-          MaterialButton(
-            onPressed: () async {
-              final url = Uri.parse(
-                'tel:+91 9411310301',
-              );
-              if (await canLaunchUrl(url)) {
-                launchUrl(url, mode: LaunchMode.platformDefault);
-              } else {
-                // ignore: avoid_print
-                print("Can't open  $url");
-              }
-            },
-            child: Row(
-              children: [
-                Text(
-                  "Customer Care",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black45),
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                Icon(Icons.call)
-              ],
+            SizedBox(
+              height: displayheight*.10,
             ),
-          ),
-          SizedBox(
-            height: 60,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.logout,
+            ListTile(
+              leading: Image.asset(
+                "img/signout.png",
+                height: 40,
+                width: displayWidth*.1,
+              ),
+              title: const Text('Signout'),
+              onTap: () {
+                //    navigateSecondPage(ForgotPasswordPage());
+                auth.signOut().then((value) {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Loginpage()));
+                });
+              },
             ),
-            title: const Text('Signout'),
-            onTap: () {
-              //    navigateSecondPage(ForgotPasswordPage());
-              auth.signOut().then((value) {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Loginpage()));
-              });
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
