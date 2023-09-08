@@ -5,9 +5,13 @@ import 'package:untitled5/auth_controller.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter/cupertino.dart';
+import 'package:untitled5/booking_page.dart';
+import 'package:untitled5/doctor_appointment.dart';
+import 'package:untitled5/doctor_details.dart';
 
 import 'package:untitled5/nav_bar.dart';
 import 'package:untitled5/splash_screen.dart';
+import 'package:untitled5/success.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +31,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: splashscreen(),
+      initialRoute: '/',
+      routes: {
+        'doc_details': (context) => const DoctorDetails(),
+        'booking_page': (context) => const BookingPage(),
+        'main': (context) => const profilepage(),
+        'success_booking': (context) => const SuccessPage(),
+      },
     );
   }
 }

@@ -219,7 +219,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           'pDescription': descriptionController.text.toString(),
                           'uEmail': user?.email.toString(),
                           'uid': user?.uid.toString(),
-
                         }).then((value) {
                           toastMessage('Post published sucessfully');
                           Navigator.push(

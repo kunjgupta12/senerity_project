@@ -33,7 +33,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: drawer(),
       appBar: AppBar(
-
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -85,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(300),
                 ),
                 hintText: 'Show only',
-                prefixIcon:const  Icon(
+                prefixIcon: const Icon(
                   Icons.search_outlined,
                   color: Colors.blueGrey,
                 ),
@@ -120,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
+                        const    SizedBox(
                               height: 10,
                             ),
                             Padding(
@@ -168,20 +167,25 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 10,
                             ),
-                            TextButton( child: Text(
-                              "Comment:" +
-                                  snapshot.child("pcomment").value!.toString(),
-                              style: TextStyle(
-                                fontFamily: 'SourceCodePro',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black54,
+                            TextButton(
+                              child: Text(
+                                "Comment:" +
+                                    snapshot
+                                        .child("pcomment")
+                                        .value!
+                                        .toString(),
+                                style: TextStyle(
+                                  fontFamily: 'SourceCodePro',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black54,
+                                ),
                               ),
-                            ),onPressed: (){showMyDialogReply(snapshot
-                                .child("pId")
-                                .value
-                                .toString());
-                            },),
+                              onPressed: () {
+                                showMyDialogReply(
+                                    snapshot.child("pId").value.toString());
+                              },
+                            ),
                             Text(
                               "Comment:" +
                                   snapshot.child("pcomment").value!.toString(),
@@ -196,10 +200,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 Row(
                                   children: [
-
                                     IconButton(
                                       icon: Image.asset(
-                                      "img/Expand thread.png",
+                                        "img/Expand thread.png",
                                         height: 30,
                                         width: 30,
                                       ),
@@ -220,20 +223,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: Colors.black54,
                                       ),
                                     ),
-
                                   ],
                                 ),
                                 SizedBox(
                                   width: 10,
                                 ),
-
                                 Row(
                                   children: <Widget>[
                                     IconButton(
-
-
                                         icon: Image.asset(
-                                          color: _hasBeenPressed ? Colors.blue : Colors.black,
+                                          color: _hasBeenPressed
+                                              ? Colors.blue
+                                              : Colors.black,
                                           "img/Important.png",
                                           height: 30,
                                           width: 30,
@@ -243,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           setState(() {
                                             _hasBeenPressed = !_hasBeenPressed;
                                           });
-                                        /*  final postRef = FirebaseDatabase
+                                          /*  final postRef = FirebaseDatabase
                                               .instance
                                               .ref()
                                               .child('Posts');
@@ -253,7 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               .child("comment")
                                               .update({"value": 1});*/
                                         }),
-                                  const  Text(
+                                    const Text(
                                       'Important',
                                       style: TextStyle(
                                         fontSize: 12,
@@ -416,10 +417,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     databaseReference
                         .child('Post List')
                         .child(date)
-                        .child('pcomment').child(datec)
-                        .set({
-                      user?.uid: comment.text
-                        }).then((value) {
+                        .child('pcomment')
+                        .child(datec)
+                        .set({user?.uid: comment.text}).then((value) {
                       toastMessage("Commented");
                     });
                   },
@@ -448,10 +448,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     databaseReference
                         .child('Post List')
                         .child(date)
-                        .child('pcomment').child(datec).child('reply')
-                        .set({
-                      user?.uid: comment.text
-                    }).then((value) {
+                        .child('pcomment')
+                        .child(datec)
+                        .child('reply')
+                        .set({user?.uid: comment.text}).then((value) {
                       toastMessage("Commented");
                     });
                   },
