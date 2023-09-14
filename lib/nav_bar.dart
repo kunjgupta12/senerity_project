@@ -33,15 +33,14 @@ class _profilepageState extends State<profilepage> {
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(displayheight * .012),
         height: displayheight * .065,
-        width: displayWidth*.5,
+        width: displayWidth * .5,
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(.6),
-              blurRadius: 10,
-spreadRadius: 7
-            ),
+                color: Colors.black.withOpacity(.6),
+                blurRadius: 10,
+                spreadRadius: 7),
           ],
           borderRadius: BorderRadius.circular(60),
         ),
@@ -66,7 +65,7 @@ spreadRadius: 7
               NavigationDestination(
                 icon: Image.asset(
                   "img/community.png",
-                  height: displayheight*.04,
+                  height: displayheight * .04,
                   width: displayWidth * .08,
                 ),
                 label: 'Community',
@@ -74,7 +73,7 @@ spreadRadius: 7
               NavigationDestination(
                 icon: Image.asset(
                   "img/SnapHelp.png",
-                  height:displayheight*.04,
+                  height: displayheight * .04,
                   width: displayWidth * .08,
                 ),
                 label: 'SnapHelp',
@@ -82,7 +81,7 @@ spreadRadius: 7
               NavigationDestination(
                 icon: Image.asset(
                   "img/MediMeet.png",
-                  height: displayheight*.04,
+                  height: displayheight * .04,
                   width: displayWidth * .08,
                 ),
                 label: 'MediMeet',

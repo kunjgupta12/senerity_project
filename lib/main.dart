@@ -14,7 +14,8 @@ import 'package:untitled5/splash_screen.dart';
 import 'package:untitled5/success.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+
+  
 
 //  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(MyApp());
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
       home: splashscreen(),
       initialRoute: '/',
       routes: {
-        'doc_details': (context) => const DoctorDetails(),
+        // 'doc_details': (context) => DoctorDetails(productName: productName[index],),
         'booking_page': (context) => const BookingPage(),
         'main': (context) => const profilepage(),
         'success_booking': (context) => const SuccessPage(),

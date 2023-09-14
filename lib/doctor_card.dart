@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:untitled5/doctor_details.dart';
+import 'package:untitled5/product_itm.dart';
+
+final firestore = FirebaseFirestore.instance.collection('product').snapshots();
 
 class DoctorCard extends StatelessWidget {
   const DoctorCard({super.key, required this.route});
@@ -7,17 +12,91 @@ class DoctorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+    double displayWidth = MediaQuery.of(context).size.width;
+    double displayheight = MediaQuery.of(context).size.height;
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 10,
-      ),
-      height: 150,
+      height: displayheight * .45,
       child: GestureDetector(
-        child: Card(
-          elevation: 5,
-          color: Colors.white,
-          child: Row(
+        child: Column(
+          children: [
+            StreamBuilder<QuerySnapshot>(
+                stream: firestore,
+                builder: (BuildContext value,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    return CircularProgressIndicator();
+                  if (snapshot.hasError) return Text(('Some error'));
+
+                  return Expanded(
+                    child: ListView.builder(
+                        itemCount: snapshot.data!.docs.length,
+                        itemBuilder: (context, index) {
+
+                          DocumentSnapshot data = snapshot.data!.docs[index];
+                          return ProductItem(
+                            productName: data['productName'],
+                            productPrice: data['productPrice'],
+                          );
+
+
+                          /* return Card(
+                            child: ListTile(
+                              horizontalTitleGap: 100,
+                              title: Text(
+                                "Dr." +
+                                    snapshot.data!.docs[index]['name']
+                                        .toString(),
+                                style: TextStyle(
+                                  color: Colors.blueGrey,
+                                  fontSize: 30,
+                                ),
+                              ),
+                              subtitle: Column(
+                                children: [
+                                  SizedBox(
+                                    width: 60,
+                                    child: Image.asset(
+                                      'img/profile.png',
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Email: ' + snapshot.data!.docs[index]['email']
+                                            .toString(),
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+
+                                ],
+                              ),
+                              trailing: Text(
+                                  'Price:' +
+                                      snapshot.data!.docs[index]['price']
+                                          .toString(),
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                              onTap: (){
+
+
+
+
+                              },
+
+                              ),
+
+                            );*/
+                        }),
+                  );
+                }),
+          ],
+        ),
+        /*  child: Row(
             children: [
               SizedBox(
                 width: 100,
@@ -26,6 +105,8 @@ class DoctorCard extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
               ),
+
+
               const Flexible(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -71,10 +152,16 @@ class DoctorCard extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
+          ),*/
+
         onTap: () {
-          Navigator.of(context).pushNamed(route);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => DoctorDetails(
+                      productName: firestore.toString(), productPrice: 'productPrice')));
+
+          ///      Navigator.of(context).pushNamed(route);
         },
       ),
     );

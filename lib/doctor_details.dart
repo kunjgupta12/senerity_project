@@ -1,10 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled5/button.dart';
 import 'package:untitled5/custom_appbar.dart';
 
 class DoctorDetails extends StatefulWidget {
-  const DoctorDetails({super.key});
+  final String productName;
+  final String productPrice;
+
+  DoctorDetails({
+    super.key,
+    required this.productName,
+    required this.productPrice,
+  });
 
   @override
   State<DoctorDetails> createState() => _DoctorDetailsState();
@@ -14,9 +22,11 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   bool isFav = false;
   @override
   Widget build(BuildContext context) {
+    double displayWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: CustomAppBar(
-        appTitle: 'Doctor Details',
+        appTitle: widget.productName,
         icon: const FaIcon(Icons.arrow_back_ios_new),
         actions: [
           IconButton(
@@ -34,7 +44,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            const AboutDoctor(),
+            AboutDoctor(),
             const SizedBox(
               height: 20,
             ),
@@ -43,7 +53,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             Padding(
               padding: const EdgeInsets.all(20),
               child: Button(
-                width: double.infinity,
+                width: displayWidth * .85,
                 title: 'Book Appointment',
                 onPressed: () {
                   Navigator.of(context).pushNamed('booking_page');
@@ -67,6 +77,9 @@ class AboutDoctor extends StatelessWidget {
       width: double.infinity,
       child: const Column(
         children: <Widget>[
+          SizedBox(
+            height: 25,
+          ),
           CircleAvatar(
             radius: 65.0,
             backgroundImage: AssetImage('img/profile.png'),
@@ -202,7 +215,7 @@ class InfoCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Colors.deepPurple,
+          color: Colors.black45,
         ),
         padding: const EdgeInsets.symmetric(
           vertical: 15,

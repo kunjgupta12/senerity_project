@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:untitled5/button.dart';
 import 'package:untitled5/custom_appbar.dart';
@@ -11,7 +12,53 @@ class BookingPage extends StatefulWidget {
   State<BookingPage> createState() => _BookingPageState();
 }
 
+late var _razorpay;
+
 class _BookingPageState extends State<BookingPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    _razorpay = Razorpay();
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    super.initState();
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    // Do something when payment succeeds
+
+    Navigator.of(context).pushNamed('success_booking');
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    // Do something when payment fails
+    print("Payment Fail");
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    // Do something when an external wallet is selected
+    @override
+    void dispose() {
+      super.dispose();
+
+      _razorpay.clear();
+    }
+
+    var options = {
+      "key": "empty",
+      "amount": 'empty',
+      "name": 'empty',
+      "Description": 'empty',
+    };
+    try {
+      _razorpay.open(options);
+    } catch (e) {
+      debugPrint('error');
+    }
+  }
+
   CalendarFormat _format = CalendarFormat.month;
   DateTime _focusDay = DateTime.now();
   DateTime _currentDay = DateTime.now();
@@ -108,7 +155,18 @@ class _BookingPageState extends State<BookingPage> {
                 width: double.infinity,
                 title: 'Make Appointment',
                 onPressed: () {
-                  Navigator.of(context).pushNamed('success_booking');
+                  var options = {
+                    'key': "rzp_test_ALdrxH7AP4NuvJ",
+
+                    'amount': 10000,
+                    'name': 'Serenity',
+                    'description': 'Conference',
+                    'timeout': 3000, // in seconds
+                    'prefill': {
+                      'contact': '8787878787',
+                    }
+                  };
+                  _razorpay.open(options);
                 },
                 disable: _timeSelected && _dateSelected ? false : true,
               ),
@@ -156,5 +214,12 @@ class _BookingPageState extends State<BookingPage> {
         });
       }),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _razorpay.clear();
+    super.dispose();
   }
 }

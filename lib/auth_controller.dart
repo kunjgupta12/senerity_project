@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled5/email_auth_register.dart';
 
 import 'package:untitled5/email_authstep.dart';
 import 'package:untitled5/login_page.dart';
@@ -39,7 +40,7 @@ class AuthController extends GetxController {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
 
-      Get.offAll(() => EmailVerificationScreen());
+      Get.offAll(() => EmailVerificationScreenregister());
       user = auth.currentUser!;
 
       CollectionReference collref =
@@ -78,6 +79,7 @@ class AuthController extends GetxController {
         Get.offAll(EmailVerificationScreen());
       }
     } catch (e) {
+
       Get.snackbar(
         "About Login",
         "Login message",

@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                        const    SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Padding(
@@ -167,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 10,
                             ),
-                            TextButton(
+                         /*   TextButton(
                               child: Text(
                                 "Comment:" +
                                     snapshot
@@ -195,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black54,
                               ),
-                            ),
+                            ),*/
                             Row(
                               children: [
                                 Row(

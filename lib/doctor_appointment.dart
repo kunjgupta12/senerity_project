@@ -1,9 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:untitled5/doctor_card.dart';
 import 'package:untitled5/drawer.dart';
 import 'package:untitled5/appointment_status.dart';
@@ -16,7 +12,6 @@ class doctor extends StatefulWidget {
 }
 
 class _HomePageState extends State<doctor> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,8 +51,6 @@ class _HomePageState extends State<doctor> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-
-
                 const Text(
                   'Todays Appointment',
                   style: TextStyle(
@@ -82,13 +75,15 @@ class _HomePageState extends State<doctor> {
                 const SizedBox(
                   height: 25,
                 ),
-                Column(
+                DoctorCard(route: 'doc_details'),
+                /*   Column(
+
                   children: List.generate(10, (index) {
                     return const DoctorCard(
                       route: 'doc_details',
                     );
                   }),
-                ),
+                ),*/
               ],
             ),
           ),
