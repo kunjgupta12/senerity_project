@@ -91,13 +91,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void dispose() {
     _localRenderer.dispose();
     _remoteRenderer.dispose();
-    var db = FirebaseFirestore.instance;
+    /*   var db = FirebaseFirestore.instance;
     var roomRef = db.collection('rooms').doc(roomId);
     roomRef.delete();
-    signaling.hangUp(_localRenderer);
+    signaling.hangUp(_localRenderer);*/
     super.dispose();
   }
-
+/*
   void senddata() {
     CollectionReference collref =
         FirebaseFirestore.instance.collection('Users joined ');
@@ -105,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
     collref.add({
       'uid': user.uid.toString(),
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   roomId = await signaling.createRoom(_remoteRenderer);
                   textEditingController.text = roomId!;
                   setState(() {});
-                  senddata();
+                  //   senddata();
                 },
                 style: ButtonStyle(
                   backgroundColor:
@@ -201,11 +201,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(child: RTCVideoView(_localRenderer, mirror: true)),
                   Expanded(
                       child: RTCVideoView(
-                    _remoteRenderer,
+                    _localRenderer,
+                    mirror: true,
                   )),
+                  Expanded(child: RTCVideoView(_remoteRenderer)),
                 ],
               ),
             ),
