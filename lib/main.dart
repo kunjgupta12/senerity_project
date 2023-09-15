@@ -14,9 +14,6 @@ import 'package:untitled5/splash_screen.dart';
 import 'package:untitled5/success.dart';
 
 void main() async {
-
-  
-
 //  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(MyApp());
 }

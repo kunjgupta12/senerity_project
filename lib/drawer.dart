@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled5/gethelp.dart';
 import 'package:untitled5/login_page.dart';
+import 'package:untitled5/profile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'ForgotPasswordPage.dart';
@@ -23,7 +25,7 @@ class drawer extends StatelessWidget {
     user = auth.currentUser!;
     currentUId = user.uid.toString();
     currentEmail = user.email.toString();
-    number=user.phoneNumber.toString();
+    number = user.phoneNumber.toString();
     return Drawer(
       width: displayWidth * .72,
       child: Container(
@@ -36,13 +38,19 @@ class drawer extends StatelessWidget {
                 color: Colors.black54,
               ),
               child: Text(
-                " Unique User Id: " +  user.uid + '\n'+ " Email Id: " + currentEmail  + '\n'+  " Mobile Number:"+number,
+                " Unique User Id: " +
+                    user.uid +
+                    '\n' +
+                    " Email Id: " +
+                    currentEmail +
+                    '\n' +
+                    " Mobile Number:" +
+                    number,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                     color: Colors.white),
               ),
-
             ),
             ListTile(
               leading: Image.asset(
@@ -51,14 +59,12 @@ class drawer extends StatelessWidget {
                 width: displayWidth * .07,
               ),
               title: const Text(
-                'Profile',
+                'Profile & Location ',
                 style: TextStyle(),
               ),
               onTap: () {
-           /*     Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>));*/
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Homepagee()));
               },
             ),
             ListTile(
@@ -80,7 +86,9 @@ class drawer extends StatelessWidget {
               ),
               title: const Text('Support'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => gethelp()));
+
               },
             ),
             ListTile(
@@ -105,80 +113,8 @@ class drawer extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-            ListTile(
-              leading: Icon(
-                Icons.lock_reset,
-              ),
-              title: const Text('Reset Password'),
-              onTap: () {
-                //    navigateSecondPage(ForgotPasswordPage());
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ForgotPasswordPage()));
-              },
-            ),
-            MaterialButton(
-              onPressed: () async {
-                final url = Uri.parse(
-                  'https://www.instagram.com/spk.psy/',
-                );
-                if (await canLaunchUrl(url)) {
-                  launchUrl(url, mode: LaunchMode.inAppWebView);
-                } else {
-                  // ignore: avoid_print
-                  print("Can't open  $url");
-                }
-              },
-              child: Row(
-                children: [
-                  Image(
-                      image: AssetImage("img/img_2.png"),
-                      height: 30,
-                      fit: BoxFit.fitWidth),
-                  SizedBox(
-                    width: 26,
-                  ),
-                  Text(
-                    "Insta Handle",
-                    /* style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black45),*/
-                  ),
-                ],
-              ),
-            ),
-            MaterialButton(
-              onPressed: () async {
-                final url = Uri.parse(
-                  'tel:+91 9411310301',
-                );
-                if (await canLaunchUrl(url)) {
-                  launchUrl(url, mode: LaunchMode.platformDefault);
-                } else {
-                  // ignore: avoid_print
-                  print("Can't open  $url");
-                }
-              },
-              child: Row(
-                children: [
-                  Icon(Icons.call),
-                  SizedBox(
-                    width: 26,
-                  ),
-                  Text(
-                    "Contact Us",
-                    /*   style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black45),*/
-                  ),
-                ],
-              ),
-            ),
             SizedBox(
-              height: displayheight * .10,
+              height: displayheight * .0001,
             ),
             ListTile(
               leading: Image.asset(

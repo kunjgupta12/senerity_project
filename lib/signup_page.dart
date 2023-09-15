@@ -280,10 +280,9 @@ class _SignuppageState extends State<SignupPage> {
                             color: Colors.grey[500],
                             fontSize: w * .05,
                             fontWeight: FontWeight.w600))),
-
               ],
             ),
-              ],
+          ],
         ),
       ),
     );

@@ -170,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 10,
                             ),
-                         /*   TextButton(
+                            /*   TextButton(
                               child: Text(
                                 "Comment:" +
                                     snapshot
@@ -229,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 SizedBox(
-                                  width: displayWidth*.03,
+                                  width: displayWidth * .03,
                                 ),
                                 Row(
                                   children: <Widget>[
@@ -269,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 SizedBox(
-                                  width:displayWidth*.03,
+                                  width: displayWidth * .03,
                                 ),
                                 Row(
                                   children: <Widget>[
@@ -280,7 +280,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         width: 30,
                                       ),
                                       onPressed: () {
-                                    /*    setState(() {
+                                        /*    setState(() {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(

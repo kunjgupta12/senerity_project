@@ -79,7 +79,6 @@ class AuthController extends GetxController {
         Get.offAll(EmailVerificationScreen());
       }
     } catch (e) {
-
       Get.snackbar(
         "About Login",
         "Login message",

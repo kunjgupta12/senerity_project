@@ -12,8 +12,6 @@ class DoctorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     double displayWidth = MediaQuery.of(context).size.width;
     double displayheight = MediaQuery.of(context).size.height;
     return Container(
@@ -31,26 +29,26 @@ class DoctorCard extends StatelessWidget {
 
                   return Expanded(
                     child: ListView.builder(
-
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
-
                           DocumentSnapshot data = snapshot.data!.docs[index];
                           return ListTile(
-                              subtitle:ProductItem(
-                            productName: data['productName'],
-                            productPrice: data['productPrice'],
-                          ),
+                            subtitle: ProductItem(
+                              productName: data['productName'],
+                              productPrice: data['productPrice'],
+                            ),
                             trailing: IconButton(
-                            icon: Icon(Icons.directions),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DoctorDetails(
-                                        productName:  data['productName'], productPrice: data['productPrice'])));
-                          },),
-
+                              icon: Icon(Icons.directions),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DoctorDetails(
+                                            productName: data['productName'],
+                                            productPrice:
+                                                data['productPrice'])));
+                              },
+                            ),
                           );
                           /* return Card(
                             child: ListTile(
@@ -102,8 +100,7 @@ class DoctorCard extends StatelessWidget {
                               ),
 
                             );*/
-                        }
-                        ),
+                        }),
                   );
                 }),
           ],
@@ -167,8 +164,6 @@ class DoctorCard extends StatelessWidget {
           ),*/
 
         onTap: () {
-
-
           ///      Navigator.of(context).pushNamed(route);
         },
       ),

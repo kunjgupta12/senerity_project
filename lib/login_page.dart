@@ -238,10 +238,10 @@ class _LoginpageState extends State<Loginpage> {
                             fontWeight: FontWeight.bold),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => Get.to(() => SignupPage()))
-
-                  ]
-                  )),
-              SizedBox(height: w*.1,),
+                  ])),
+              SizedBox(
+                height: w * .1,
+              ),
               RichText(
                   text: TextSpan(
                       recognizer: TapGestureRecognizer()
@@ -252,7 +252,6 @@ class _LoginpageState extends State<Loginpage> {
                           color: Colors.grey[500],
                           fontSize: w * .05,
                           fontWeight: FontWeight.w600))),
-
             ],
           ),
         ),
