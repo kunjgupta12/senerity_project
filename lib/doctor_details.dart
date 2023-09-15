@@ -54,7 +54,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
               padding: const EdgeInsets.all(20),
               child: Button(
                 width: displayWidth * .85,
-                title: 'Book Appointment',
+                title: widget.productPrice,
                 onPressed: () {
                   Navigator.of(context).pushNamed('booking_page');
                 },

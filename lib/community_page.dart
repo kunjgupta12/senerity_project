@@ -30,6 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _hasBeenPressed = false;
   @override
   Widget build(BuildContext context) {
+    double displayWidth = MediaQuery.of(context).size.width;
+    double displayheight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       drawer: drawer(),
       appBar: AppBar(
@@ -226,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width: displayWidth*.03,
                                 ),
                                 Row(
                                   children: <Widget>[
@@ -266,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width:displayWidth*.03,
                                 ),
                                 Row(
                                   children: <Widget>[
@@ -277,13 +280,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                         width: 30,
                                       ),
                                       onPressed: () {
-                                        setState(() {
+                                    /*    setState(() {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       AddPostScreen()));
-                                        });
+                                        });*/
                                       },
                                     ),
                                     const Text(

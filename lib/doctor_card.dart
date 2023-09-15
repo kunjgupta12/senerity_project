@@ -31,16 +31,27 @@ class DoctorCard extends StatelessWidget {
 
                   return Expanded(
                     child: ListView.builder(
+
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
 
                           DocumentSnapshot data = snapshot.data!.docs[index];
-                          return ProductItem(
+                          return ListTile(
+                              subtitle:ProductItem(
                             productName: data['productName'],
                             productPrice: data['productPrice'],
+                          ),
+                            trailing: IconButton(
+                            icon: Icon(Icons.directions),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DoctorDetails(
+                                        productName:  data['productName'], productPrice: data['productPrice'])));
+                          },),
+
                           );
-
-
                           /* return Card(
                             child: ListTile(
                               horizontalTitleGap: 100,
@@ -91,7 +102,8 @@ class DoctorCard extends StatelessWidget {
                               ),
 
                             );*/
-                        }),
+                        }
+                        ),
                   );
                 }),
           ],
@@ -155,11 +167,7 @@ class DoctorCard extends StatelessWidget {
           ),*/
 
         onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => DoctorDetails(
-                      productName: firestore.toString(), productPrice: 'productPrice')));
+
 
           ///      Navigator.of(context).pushNamed(route);
         },

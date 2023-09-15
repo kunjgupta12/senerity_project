@@ -62,7 +62,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                     const SizedBox(height: 30),
                     const Center(
                       child: Text(
-                        'Check your \n Email',
+                        'Verifying...  \n ',
                         textAlign: TextAlign.center,
                       ),
                     ),

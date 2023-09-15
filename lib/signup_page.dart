@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import 'package:untitled5/auth_controller.dart';
+import 'package:untitled5/home.dart';
 import 'package:untitled5/welcome_page.dart';
 
 String? validateEmail(String? value) {
@@ -254,17 +255,35 @@ class _SignuppageState extends State<SignupPage> {
             SizedBox(
               height: w * .25,
             ),
-            RichText(
-                text: TextSpan(
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () => Get.back(),
-                    text: 'Have an account?',
-                    style: TextStyle(
-                        fontFamily: "Montserrat",
-                        color: Colors.grey[500],
-                        fontSize: w * .05,
-                        fontWeight: FontWeight.w600))),
-          ],
+            Column(
+              children: [
+                RichText(
+                    text: TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => Get.back(),
+                        text: 'Have an account?',
+                        style: TextStyle(
+                            fontFamily: "Montserrat",
+                            color: Colors.grey[500],
+                            fontSize: w * .05,
+                            fontWeight: FontWeight.w600))),
+                SizedBox(
+                  height: w * .055,
+                ),
+                RichText(
+                    text: TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => Get.to(() => Home()),
+                        text: 'Create With Mobile number',
+                        style: TextStyle(
+                            fontFamily: "Montserrat",
+                            color: Colors.grey[500],
+                            fontSize: w * .05,
+                            fontWeight: FontWeight.w600))),
+
+              ],
+            ),
+              ],
         ),
       ),
     );

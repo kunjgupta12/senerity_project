@@ -54,7 +54,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreenregiste
     return SafeArea(
       child: Scaffold(
         body: isEmailVerified
-            ? Home()
+            ? profilepage()
             : SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

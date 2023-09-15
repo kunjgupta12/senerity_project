@@ -19,10 +19,11 @@ class drawer extends StatelessWidget {
     late User user;
     late String currentUId;
     late String currentEmail;
-
+    late String number;
     user = auth.currentUser!;
     currentUId = user.uid.toString();
     currentEmail = user.email.toString();
+    number=user.phoneNumber.toString();
     return Drawer(
       width: displayWidth * .72,
       child: Container(
@@ -35,12 +36,13 @@ class drawer extends StatelessWidget {
                 color: Colors.black54,
               ),
               child: Text(
-                "Unique User Id: " + user.uid + "   Email Id: " + currentEmail,
+                " Unique User Id: " +  user.uid + '\n'+ " Email Id: " + currentEmail  + '\n'+  " Mobile Number:"+number,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                     color: Colors.white),
               ),
+
             ),
             ListTile(
               leading: Image.asset(
@@ -53,7 +55,10 @@ class drawer extends StatelessWidget {
                 style: TextStyle(),
               ),
               onTap: () {
-                Navigator.pop(context);
+           /*     Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>));*/
               },
             ),
             ListTile(

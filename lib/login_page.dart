@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:untitled5/auth_controller.dart';
+import 'package:untitled5/home.dart';
 import 'package:untitled5/signup_page.dart';
 
 import 'ForgotPasswordPage.dart';
@@ -237,7 +238,21 @@ class _LoginpageState extends State<Loginpage> {
                             fontWeight: FontWeight.bold),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => Get.to(() => SignupPage()))
-                  ]))
+
+                  ]
+                  )),
+              SizedBox(height: w*.1,),
+              RichText(
+                  text: TextSpan(
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () => Get.to(() => Home()),
+                      text: 'Login With Mobile number',
+                      style: TextStyle(
+                          fontFamily: "Montserrat",
+                          color: Colors.grey[500],
+                          fontSize: w * .05,
+                          fontWeight: FontWeight.w600))),
+
             ],
           ),
         ),
