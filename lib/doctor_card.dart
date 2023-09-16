@@ -33,11 +33,11 @@ class DoctorCard extends StatelessWidget {
                         itemBuilder: (context, index) {
                           DocumentSnapshot data = snapshot.data!.docs[index];
                           return ListTile(
-                            subtitle: ProductItem(
+                            title: ProductItem(
                               productName: data['productName'],
                               productPrice: data['productPrice'],
                             ),
-                            trailing: IconButton(
+                         /*   trailing: IconButton(
                               icon: Icon(Icons.directions),
                               onPressed: () {
                                 Navigator.push(
@@ -48,7 +48,7 @@ class DoctorCard extends StatelessWidget {
                                             productPrice:
                                                 data['productPrice'])));
                               },
-                            ),
+                            ),*/
                           );
                           /* return Card(
                             child: ListTile(

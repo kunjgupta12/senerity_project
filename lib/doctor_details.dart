@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled5/button.dart';
 import 'package:untitled5/custom_appbar.dart';
+import 'package:untitled5/product_itm.dart';
 
 class DoctorDetails extends StatefulWidget {
-  final String productName;
-  final String productPrice;
-
   DoctorDetails({
     super.key,
     required this.productName,
     required this.productPrice,
   });
-
+  final String productName;
+  final String productPrice;
   @override
   State<DoctorDetails> createState() => _DoctorDetailsState();
 }
@@ -23,11 +22,11 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
-
+    final String kunj = widget.productName.toString();
     return Scaffold(
       appBar: CustomAppBar(
-        appTitle: widget.productName,
-        icon: const FaIcon(Icons.arrow_back_ios_new),
+        appTitle: 'Dr. ' + widget.productName,
+        icon: FaIcon(Icons.arrow_back_ios_new),
         actions: [
           IconButton(
             onPressed: () {
@@ -41,220 +40,136 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ),
         ],
       ),
-      body : Column(
-          children: <Widget>[
-        Container(
-        width: double.infinity,
-          child: const Column(
-            children: [
-              SizedBox(
-                height: 25,
-              ),
-              CircleAvatar(
-                radius: 65.0,
-                backgroundImage: AssetImage('img/profile.png'),
-                backgroundColor: Colors.white,
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Text(
-           '',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+      body: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 25,
                 ),
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              SizedBox(
-                width: 150,
-                child: Text(
-                  'MBBS(AIIMS Delhi), MRCP(AIIMS Delhi)',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 15,
-                  ),
-                  softWrap: true,
-                  textAlign: TextAlign.center,
+                CircleAvatar(
+                  radius: 65.0,
+                  backgroundImage: AssetImage('img/profile.png'),
+                  backgroundColor: Colors.white,
                 ),
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              SizedBox(
-                width: 150,
-                child: Text(
-                  'Fortis Hospital',
+                SizedBox(
+                  height: 50,
+                ),
+                Text(
+                  'Dr. ' + kunj,
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 15,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
-                  softWrap: true,
-                  textAlign: TextAlign.center,
                 ),
-              ),
-            ],
-          ),
-        ),
-            //AboutDoctor(),
-            const SizedBox(
-              height: 20,
-            ),
-            const DetailBody(),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Button(
-                width: displayWidth * .85,
-                title: widget.productPrice,
-                onPressed: () {
-                  Navigator.of(context).pushNamed('booking_page');
-                },
-                disable: false,
-              ),
-            ),
-          ],
-
-      ),
-    );
-  }
-}
-
-class AboutDoctor extends StatelessWidget {
-
-  const AboutDoctor({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: const Column(
-        children: <Widget>[
-          SizedBox(
-            height: 25,
-          ),
-          CircleAvatar(
-            radius: 65.0,
-            backgroundImage: AssetImage('img/profile.png'),
-            backgroundColor: Colors.white,
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          Text(
-            'Dr Nishant',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+                SizedBox(
+                  height: 25,
+                ),
+                SizedBox(
+                  width: 150,
+                  child: Text(
+                    'MBBS(AIIMS Delhi), MRCP(AIIMS Delhi)',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 15,
+                    ),
+                    softWrap: true,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                SizedBox(
+                  width: 150,
+                  child: Text(
+                    'Fortis Hospital',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    softWrap: true,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
             ),
           ),
+          //AboutDoctor(),
           SizedBox(
-            height: 25,
+            height: 20,
           ),
-          SizedBox(
-            width: 150,
-            child: Text(
-              'MBBS(AIIMS Delhi), MRCP(AIIMS Delhi)',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 15,
-              ),
-              softWrap: true,
-              textAlign: TextAlign.center,
+          Container(
+            padding: const EdgeInsets.all(10),
+            child:  Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                SizedBox(
+                  height: 25,
+                ),
+                Row(
+                  children: <Widget>[
+                    InfoCard(
+                      label: 'Price',
+                      value: widget.productPrice,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    InfoCard(
+                      label: 'Experiences',
+                      value: '11 years',
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    InfoCard(
+                      label: 'Rating',
+                      value: '4.6',
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Text(
+                  'About Doctor',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  'Dr. Nishant is an experienced Dentist Specialist at Fortis, graduated since 2008, and completed his/her training at Sungai Buloh General Hospital.',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    height: 1.5,
+                  ),
+                  softWrap: true,
+                  textAlign: TextAlign.justify,
+                )
+              ],
             ),
           ),
-          SizedBox(
-            height: 25,
-          ),
-          SizedBox(
-            width: 150,
-            child: Text(
-              'Fortis Hospital',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-              ),
-              softWrap: true,
-              textAlign: TextAlign.center,
+
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Button(
+              width: displayWidth * .85,
+              title: 'Book Appointment',
+              onPressed: () {
+                Navigator.of(context).pushNamed('booking_page');
+              },
+              disable: false,
             ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class DetailBody extends StatelessWidget {
-  const DetailBody({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          SizedBox(
-            height: 25,
-          ),
-          DoctorInfo(),
-          SizedBox(
-            height: 50,
-          ),
-          Text(
-            'About Doctor',
-            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          Text(
-            'Dr. Nishant is an experienced Dentist Specialist at Fortis, graduated since 2008, and completed his/her training at Sungai Buloh General Hospital.',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              height: 1.5,
-            ),
-            softWrap: true,
-            textAlign: TextAlign.justify,
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class DoctorInfo extends StatelessWidget {
-  const DoctorInfo({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-      children: <Widget>[
-        InfoCard(
-          label: 'Patients',
-          value: '69',
-        ),
-        SizedBox(
-          width: 15,
-        ),
-        InfoCard(
-          label: 'Experiences',
-          value: '11 years',
-        ),
-        SizedBox(
-          width: 15,
-        ),
-        InfoCard(
-          label: 'Rating',
-          value: '4.6',
-        ),
-      ],
     );
   }
 }
