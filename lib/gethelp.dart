@@ -62,14 +62,15 @@ class _MyHomePageState extends State<MyHomePage> {
     _startTimer();
     currentUId = user.uid.toString();
     signaling.openUserMedia(_localRenderer, _remoteRenderer);
-
+    signaling.onAddRemoteStream = ((stream) {
+      _remoteRenderer.srcObject = stream;
+      setState(() {});
+    });
     Timer(Duration(minutes: 15), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => profilepage()));
 
-      signaling.onAddRemoteStream = ((stream) {
-        _remoteRenderer.srcObject = stream;
-      });
+
     });
     super.initState();
   }

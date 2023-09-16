@@ -41,10 +41,66 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Column(
+      body : Column(
           children: <Widget>[
-            AboutDoctor(),
+        Container(
+        width: double.infinity,
+          child: const Column(
+            children: [
+              SizedBox(
+                height: 25,
+              ),
+              CircleAvatar(
+                radius: 65.0,
+                backgroundImage: AssetImage('img/profile.png'),
+                backgroundColor: Colors.white,
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Text(
+           '',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              SizedBox(
+                width: 150,
+                child: Text(
+                  'MBBS(AIIMS Delhi), MRCP(AIIMS Delhi)',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 15,
+                  ),
+                  softWrap: true,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              SizedBox(
+                width: 150,
+                child: Text(
+                  'Fortis Hospital',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  softWrap: true,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          ),
+        ),
+            //AboutDoctor(),
             const SizedBox(
               height: 20,
             ),
@@ -62,13 +118,14 @@ class _DoctorDetailsState extends State<DoctorDetails> {
               ),
             ),
           ],
-        ),
+
       ),
     );
   }
 }
 
 class AboutDoctor extends StatelessWidget {
+
   const AboutDoctor({super.key});
 
   @override
