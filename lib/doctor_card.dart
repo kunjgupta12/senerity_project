@@ -3,7 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled5/doctor_details.dart';
 import 'package:untitled5/product_itm.dart';
 
-final firestore = FirebaseFirestore.instance.collection('product').snapshots();
+final firestore =
+    FirebaseFirestore.instance.collection('doctor details').snapshots();
 
 class DoctorCard extends StatelessWidget {
   const DoctorCard({super.key, required this.route});
@@ -34,10 +35,13 @@ class DoctorCard extends StatelessWidget {
                           DocumentSnapshot data = snapshot.data!.docs[index];
                           return ListTile(
                             title: ProductItem(
-                              productName: data['productName'],
-                              productPrice: data['productPrice'],
+                              Degree: data['Degree'],
+                              name: data['name'],
+                              price: data['price'],
+                              Experience: data['Experience'],
+                              registraionnumber: data['registraionnumber'],
                             ),
-                         /*   trailing: IconButton(
+                            /*   trailing: IconButton(
                               icon: Icon(Icons.directions),
                               onPressed: () {
                                 Navigator.push(

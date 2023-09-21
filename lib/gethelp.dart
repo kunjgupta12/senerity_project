@@ -69,8 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
     Timer(Duration(minutes: 15), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => profilepage()));
-
-
     });
     super.initState();
   }

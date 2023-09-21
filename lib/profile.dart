@@ -130,7 +130,7 @@ class _HomepageState extends State<Homepagee> {
               SizedBox(
                 height: 10,
               ),
-              _profileName( user.uid ),
+              _profileName(user.uid),
               SizedBox(
                 height: 14,
               ),
@@ -181,8 +181,8 @@ class _HomepageState extends State<Homepagee> {
     return Container(
       width: MediaQuery.of(context).size.width * 0.80, //80% of width,
       child: Center(
-        child: Text('UId: '+
-          name,
+        child: Text(
+          'UId: ' + name,
           style: TextStyle(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
         ),
@@ -220,7 +220,7 @@ class _HomepageState extends State<Homepagee> {
             //row for each deatails
             ListTile(
               leading: Icon(Icons.email),
-              title: Text( currentEmail.toString()),
+              title: Text(currentEmail.toString()),
             ),
             Divider(
               height: 0.6,
@@ -228,7 +228,9 @@ class _HomepageState extends State<Homepagee> {
             ),
             ListTile(
               leading: Icon(Icons.phone),
-              title: Text(number.toString(),),
+              title: Text(
+                number.toString(),
+              ),
             ),
             Divider(
               height: 0.6,

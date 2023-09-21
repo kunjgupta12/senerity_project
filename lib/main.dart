@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         // 'doc_details': (context) => DoctorDetails(productName: productName[index],),
-        'booking_page': (context) => const BookingPage(),
+        // 'booking_page': (context) => BookingPage(),
         'main': (context) => const profilepage(),
         'success_booking': (context) => const SuccessPage(),
       },

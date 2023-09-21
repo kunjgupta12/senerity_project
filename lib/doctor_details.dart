@@ -1,18 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:untitled5/booking_page.dart';
 import 'package:untitled5/button.dart';
 import 'package:untitled5/custom_appbar.dart';
 import 'package:untitled5/product_itm.dart';
 
 class DoctorDetails extends StatefulWidget {
-  DoctorDetails({
-    super.key,
-    required this.productName,
-    required this.productPrice,
-  });
-  final String productName;
-  final String productPrice;
+  DoctorDetails(
+      {super.key,
+      required this.name,
+      required this.price,
+      required this.registrationnumber,
+      required this.Experience,
+      required this.Degree});
+  final String name;
+  final String price;
+  final String registrationnumber;
+  final String Experience;
+  final String Degree;
   @override
   State<DoctorDetails> createState() => _DoctorDetailsState();
 }
@@ -22,10 +28,10 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
-    final String kunj = widget.productName.toString();
+    final String kunj = widget.name.toString();
     return Scaffold(
       appBar: CustomAppBar(
-        appTitle: 'Dr. ' + widget.productName,
+        appTitle: 'Dr. ' + widget.name,
         icon: FaIcon(Icons.arrow_back_ios_new),
         actions: [
           IconButton(
@@ -71,7 +77,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 SizedBox(
                   width: 150,
                   child: Text(
-                    'MBBS(AIIMS Delhi), MRCP(AIIMS Delhi)',
+                    widget.Degree,
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 15,
@@ -105,7 +111,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ),
           Container(
             padding: const EdgeInsets.all(10),
-            child:  Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 SizedBox(
@@ -115,21 +121,21 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   children: <Widget>[
                     InfoCard(
                       label: 'Price',
-                      value: widget.productPrice,
+                      value: widget.price,
                     ),
                     SizedBox(
                       width: 15,
                     ),
                     InfoCard(
                       label: 'Experiences',
-                      value: '11 years',
+                      value: widget.Experience,
                     ),
                     SizedBox(
                       width: 15,
                     ),
                     InfoCard(
-                      label: 'Rating',
-                      value: '4.6',
+                      label: 'Registration number',
+                      value: widget.registrationnumber,
                     ),
                   ],
                 ),
@@ -144,7 +150,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   height: 25,
                 ),
                 Text(
-                  'Dr. Nishant is an experienced Dentist Specialist at Fortis, graduated since 2008, and completed his/her training at Sungai Buloh General Hospital.',
+                  widget.price,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     height: 1.5,
@@ -163,7 +169,14 @@ class _DoctorDetailsState extends State<DoctorDetails> {
               width: displayWidth * .85,
               title: 'Book Appointment',
               onPressed: () {
-                Navigator.of(context).pushNamed('booking_page');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BookingPage(
+                              name: widget.name,
+                              price: widget.price,
+                              registraionnumber: widget.registrationnumber,
+                            )));
               },
               disable: false,
             ),

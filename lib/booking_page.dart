@@ -1,13 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:untitled5/button.dart';
+import 'package:untitled5/community_page.dart';
 import 'package:untitled5/custom_appbar.dart';
 
-class BookingPage extends StatefulWidget {
-  const BookingPage({super.key});
+User? user = auth.currentUser;
+FirebaseAuth auth = FirebaseAuth.instance;
 
+class BookingPage extends StatefulWidget {
+  BookingPage(
+      {super.key,
+      required this.name,
+      required this.price,
+      required this.registraionnumber});
+  final String name;
+  final String price;
+  final String registraionnumber;
   @override
   State<BookingPage> createState() => _BookingPageState();
 }
@@ -28,8 +40,12 @@ class _BookingPageState extends State<BookingPage> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-
     Navigator.of(context).pushNamed('success_booking');
+    FirebaseFirestore.instance
+        .collection('doctor details')
+        .doc(widget.registraionnumber)
+        .collection('bookings')
+        .add({'kunj': 'kunj'});
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -155,10 +171,12 @@ class _BookingPageState extends State<BookingPage> {
                 width: double.infinity,
                 title: 'Make Appointment',
                 onPressed: () {
+                  final p = double.parse(widget.price) * 100;
+                  String pp = p.toString();
                   var options = {
                     'key': "rzp_test_ALdrxH7AP4NuvJ",
 
-                    'amount': 10000,
+                    'amount': pp,
                     'name': 'Serenity',
                     'description': 'Conference',
                     'timeout': 3000, // in seconds

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled5/T@C.dart';
 import 'package:untitled5/gethelp.dart';
 import 'package:untitled5/login_page.dart';
 import 'package:untitled5/profile.dart';
@@ -109,7 +110,10 @@ class drawer extends StatelessWidget {
               ),
               title: const Text('Terms of service'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const terms_condition()));
               },
             ),
             SizedBox(
