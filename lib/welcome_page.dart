@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:untitled5/auth_controller.dart';
-import 'package:untitled5/Upload_Page.dart';
 import 'package:untitled5/community_page.dart';
 import 'package:untitled5/nav_bar.dart';
 import 'package:untitled5/signup_page.dart';
-import 'package:untitled5/button_widget.dart';
-
 class Welcomepage extends StatelessWidget {
   String email;
   Welcomepage({Key? key, required this.email}) : super(key: key);

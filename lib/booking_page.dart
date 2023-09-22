@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:untitled5/button.dart';
-import 'package:untitled5/community_page.dart';
 import 'package:untitled5/custom_appbar.dart';
 
 User? user = auth.currentUser;
@@ -27,6 +26,7 @@ class BookingPage extends StatefulWidget {
 late var _razorpay;
 
 class _BookingPageState extends State<BookingPage> {
+
   @override
   void initState() {
     // TODO: implement initState
