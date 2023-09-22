@@ -26,7 +26,6 @@ class BookingPage extends StatefulWidget {
 late var _razorpay;
 
 class _BookingPageState extends State<BookingPage> {
-
   @override
   void initState() {
     // TODO: implement initState

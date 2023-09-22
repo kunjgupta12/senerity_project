@@ -16,7 +16,7 @@ class DoctorCard extends StatelessWidget {
     double displayWidth = MediaQuery.of(context).size.width;
     double displayheight = MediaQuery.of(context).size.height;
     return Container(
-      height: displayheight * .45,
+      height: displayheight * .75,
       child: GestureDetector(
         child: Column(
           children: [
@@ -35,12 +35,12 @@ class DoctorCard extends StatelessWidget {
                           DocumentSnapshot data = snapshot.data!.docs[index];
                           return ListTile(
                             title: ProductItem(
-                              Degree: data['Degree'],
-                              name: data['name'],
-                              price: data['price'],
-                              Experience: data['Experience'],
-                              registraionnumber: data['registraionnumber'],
-                            ),
+                                Degree: data['Degree'],
+                                name: data['name'],
+                                price: data['price'],
+                                Experience: data['Experience'],
+                                registraionnumber: data['registraionnumber'],
+                                image: data['image']),
                             /*   trailing: IconButton(
                               icon: Icon(Icons.directions),
                               onPressed: () {

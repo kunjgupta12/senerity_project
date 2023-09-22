@@ -51,7 +51,7 @@ class _HomePageState extends State<doctor> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                const Text(
+                /*   const Text(
                   'Todays Appointment',
                   style: TextStyle(
                     fontSize: 24,
@@ -64,7 +64,7 @@ class _HomePageState extends State<doctor> {
                 const AppointmentCard(),
                 const SizedBox(
                   height: 25,
-                ),
+                ),*/
                 const Text(
                   'Popular Doctors',
                   style: TextStyle(

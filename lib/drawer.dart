@@ -8,17 +8,47 @@ import 'package:untitled5/profile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'ForgotPasswordPage.dart';
+import 'booking_page.dart';
 
 class drawer extends StatelessWidget {
   const drawer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    Future<void> showMyDialogReply() async {
+      String k = 'kunj';
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Signout"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    auth.signOut().then((value) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Loginpage()));
+                    });
+                  },
+                  child: Text("Confirm")),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("Stay"),
+              )
+            ],
+          );
+        },
+      );
+    }
+
     double displayWidth = MediaQuery.of(context).size.width;
     double displayheight = MediaQuery.of(context).size.height;
     final firestore =
         FirebaseFirestore.instance.collection('Users').snapshots();
-    final FirebaseAuth auth = FirebaseAuth.instance;
+
     late User user;
     late String currentUId;
     late String currentEmail;
@@ -86,10 +116,7 @@ class drawer extends StatelessWidget {
                 width: displayWidth * .07,
               ),
               title: const Text('Support'),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => gethelp()));
-              },
+              onTap: () {},
             ),
             ListTile(
               leading: Image.asset(
@@ -120,20 +147,15 @@ class drawer extends StatelessWidget {
               height: displayheight * .0001,
             ),
             ListTile(
-              leading: Image.asset(
-                "img/signout.png",
-                height: 40,
-                width: displayWidth * .07,
-              ),
-              title: const Text('Signout'),
-              onTap: () {
-                //    navigateSecondPage(ForgotPasswordPage());
-                auth.signOut().then((value) {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Loginpage()));
-                });
-              },
-            ),
+                leading: Image.asset(
+                  "img/signout.png",
+                  height: 40,
+                  width: displayWidth * .07,
+                ),
+                title: const Text('Signout'),
+                onTap: () {
+                  showMyDialogReply();
+                }),
           ],
         ),
       ),

@@ -13,12 +13,14 @@ class DoctorDetails extends StatefulWidget {
       required this.price,
       required this.registrationnumber,
       required this.Experience,
-      required this.Degree});
+      required this.Degree,
+      required this.image});
   final String name;
   final String price;
   final String registrationnumber;
   final String Experience;
   final String Degree;
+  final String image;
   @override
   State<DoctorDetails> createState() => _DoctorDetailsState();
 }
@@ -57,7 +59,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 ),
                 CircleAvatar(
                   radius: 65.0,
-                  backgroundImage: AssetImage('img/profile.png'),
+                  backgroundImage: NetworkImage(widget.image),
                   backgroundColor: Colors.white,
                 ),
                 SizedBox(
