@@ -6,6 +6,7 @@ import 'package:untitled5/auth_controller.dart';
 import 'package:untitled5/community_page.dart';
 import 'package:untitled5/nav_bar.dart';
 import 'package:untitled5/signup_page.dart';
+
 class Welcomepage extends StatelessWidget {
   String email;
   Welcomepage({Key? key, required this.email}) : super(key: key);

@@ -9,12 +9,14 @@ class ProductItem extends StatefulWidget {
   final String registraionnumber;
   final String Experience;
   final String Degree;
+  final String image;
   ProductItem(
       {required this.name,
       required this.price,
       required this.registraionnumber,
       required this.Experience,
-      required this.Degree});
+      required this.Degree,
+      required this.image});
 
   @override
   _ProductItemState createState() => _ProductItemState();
@@ -25,7 +27,140 @@ class _ProductItemState extends State<ProductItem> {
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     double displayheight = MediaQuery.of(context).size.height;
-    return Padding(
+    var cardImage = NetworkImage(widget.image);
+    return Container(
+
+      // padding: new EdgeInsets.all(10.0),
+      child: Card(
+        borderOnForeground: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        color: Colors.black12,
+        elevation: 5,
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              leading: CircleAvatar(
+                radius: 35.0,
+                backgroundImage: NetworkImage(widget.image),
+                backgroundColor: Colors.white,
+
+              ),
+
+              //Image.network(cardImage.url) ,
+              title: Text(widget.name, style: TextStyle(fontSize: 40.0)),
+              subtitle: Text(widget.price, style: TextStyle(fontSize: 20.0)),
+            ),
+            ButtonBar(
+              children: <Widget>[
+                MaterialButton(
+                    color: Colors.white30,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DoctorDetails(
+                                    name: widget.name,
+                                    Degree: widget.Degree,
+                                    price: widget.price,
+                                    registrationnumber:
+                                        widget.registraionnumber,
+                                    Experience: widget.Experience,
+                                    image: widget.image,
+                                  )));
+                    },
+                    child: Text(
+                      'Book',
+                      style: TextStyle(),
+                    )),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+    /*  return Card(
+
+      elevation: 12,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      color: Colors.blueGrey,
+      child: Column(
+        children: [
+
+          ClipRRect(
+            borderRadius:  BorderRadius.only(
+              topRight: Radius.circular(20),
+              topLeft: Radius.circular(20),
+            ),
+            child:
+            Ink.image(
+            image: cardImage,
+
+              height: 200,
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+           ListTile(
+            title: Text(
+              widget.name,
+
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            subtitle: Text(
+              widget.price,
+              style: TextStyle(
+                color: Colors.grey,
+              ),
+            ),
+          ),
+          Padding(
+              padding:
+              EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: Colors.white),
+                      onPressed: () {   Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DoctorDetails(
+                                name: widget.name,
+                                Degree: widget.Degree,
+                                price: widget.price,
+                                registrationnumber:
+                                widget.registraionnumber,
+                                Experience: widget.Experience,
+                                image: widget.image,
+                              )));
+                      },
+                      child:  Text(
+                        "Book",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+
+                ],
+              ))
+        ],
+      ),
+    );*/
+    /*   return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
@@ -63,7 +198,13 @@ class _ProductItemState extends State<ProductItem> {
                         child: Text("Rs. ${widget.price}",
                             style:
                                 TextStyle(color: Colors.black38, fontSize: 20)),
-                      )
+                      ),
+                      CircleAvatar(
+                        radius: 25.0,
+                        backgroundImage: NetworkImage(widget.image),
+                        backgroundColor: Colors.white,
+                      ),
+
                     ],
                     crossAxisAlignment: CrossAxisAlignment.start,
                   ),
@@ -80,6 +221,7 @@ class _ProductItemState extends State<ProductItem> {
                                     registrationnumber:
                                         widget.registraionnumber,
                                     Experience: widget.Experience,
+                                image: widget.image,
                                   )));
                     },
                   ),
@@ -89,6 +231,6 @@ class _ProductItemState extends State<ProductItem> {
           ],
         ),
       ),
-    );
+    );*/
   }
 }
