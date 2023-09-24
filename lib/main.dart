@@ -29,13 +29,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: splashscreen(),
-      initialRoute: '/',
-      routes: {
-        // 'doc_details': (context) => DoctorDetails(productName: productName[index],),
-        // 'booking_page': (context) => BookingPage(),
-        'main': (context) => const profilepage(),
-        'success_booking': (context) => const SuccessPage(),
-      },
     );
   }
 }

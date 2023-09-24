@@ -120,26 +120,31 @@ class _splashscreenState extends State<splashscreen>
                       ),
                     ],
                   )),
-              SizedBox(height: h*.33,),
+              SizedBox(
+                height: h * .33,
+              ),
               Center(
-
                 child: Row(
                   children: [
-                    SizedBox(width: w*.1,),
-                    Text("An Initiative by",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'SourceCodepro',
-                          fontSize: w * .04,
-
-                          fontWeight: FontWeight.w300,
-                          // color: Color.fromRGBO(10, 10, 3, 0.8)
-                        ),
+                    SizedBox(
+                      width: w * .1,
                     ),
-                    Text("  SPK Welfare Foundation",
+                    Text(
+                      "An Initiative by",
                       style: TextStyle(
                         color: Colors.black,
-                        fontFamily: 'JosefinSans',//aloja
+                        fontFamily: 'SourceCodepro',
+                        fontSize: w * .04,
+
+                        fontWeight: FontWeight.w300,
+                        // color: Color.fromRGBO(10, 10, 3, 0.8)
+                      ),
+                    ),
+                    Text(
+                      "  SPK Welfare Foundation",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'JosefinSans', //aloja
                         fontSize: w * .04,
 
                         fontWeight: FontWeight.w300,
@@ -151,7 +156,6 @@ class _splashscreenState extends State<splashscreen>
               )
             ],
           )),
-      
     );
   }
 }

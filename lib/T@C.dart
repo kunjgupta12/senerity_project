@@ -42,9 +42,13 @@ class _terms_conditionState extends State<terms_condition> {
       body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Container(
+            alignment: AlignmentGeometry.lerp(
+                Alignment.bottomLeft, AlignmentDirectional.topEnd, 2),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                textDirection: TextDirection.rtl,
                 children: [
                   SizedBox(
                     height: 10,
@@ -54,7 +58,9 @@ class _terms_conditionState extends State<terms_condition> {
                     children: [
                       Text(
                         "Understanding Our Terms and Conditions",
-                        style: TextStyle(fontSize: .060 * h),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(),
                       ),
                       Text(
                           "At SPK Welfare Foundation, we’re committed to providing you with a safe and supportive environment through our app. To ensure clarity, fairness, and legal protection for both you and us, we have a set of “Terms and Conditions.”"),
@@ -99,7 +105,10 @@ class _terms_conditionState extends State<terms_condition> {
                     ),
                   ),
                   RichText(
+                    textDirection: TextDirection.ltr,
                     text: const TextSpan(
+                      text: 'What’s Included? ',
+
                       // Note: Styles for TextSpans must be explicitly defined.
                       // Child text spans will inherit styles from parent
                       style: TextStyle(
@@ -108,17 +117,15 @@ class _terms_conditionState extends State<terms_condition> {
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                            text: 'What’s Included? ',
-                            style:
-                                TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: ' Our Terms and Conditions cover:'),
+                            text: 'Our Terms and Conditions cover: ',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
                   RichText(
                     textAlign: TextAlign.start,
                     text: TextSpan(
-                      text:  "\u2022",
+                      text: "\u2022",
                       // Note: Styles for TextSpans must be explicitly defined.
                       // Child text spans will inherit styles from parent
                       style: const TextStyle(
@@ -232,10 +239,9 @@ class _terms_conditionState extends State<terms_condition> {
                   ),
                   RichText(
                     text: TextSpan(
-
                       // Note: Styles for TextSpans must be explicitly defined.
                       // Child text spans will inherit styles from parent
-                      style:  TextStyle(
+                      style: TextStyle(
                         fontSize: 14.0,
                         color: Colors.black,
                       ),
@@ -244,23 +250,27 @@ class _terms_conditionState extends State<terms_condition> {
                             text: 'How to Access Them? ',
                             style:
                                 const TextStyle(fontWeight: FontWeight.bold)),
-TextSpan(text:'You can find the complete Terms and Conditions in PDF format' ),
                         TextSpan(
-                            recognizer: TapGestureRecognizer()..onTap = ()  async {
-                        final url = Uri.parse(
-                        'https://drive.google.com/file/d/1zIdcAxqqA-jeNgodhEHcRtSNXnMEUIAl/view?usp=sharing',
-                        );
-                        if (await canLaunchUrl(url)) {
-                        launchUrl(url, mode: LaunchMode.inAppWebView);
-                        } else {
-                        // ignore: avoid_print
-                        print("Can't open  $url");
-                        }
-                        },
                             text:
-                                ' here',
+                                'You can find the complete Terms and Conditions in PDF format'),
+                        TextSpan(
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async {
+                                final url = Uri.parse(
+                                  'https://drive.google.com/file/d/1zIdcAxqqA-jeNgodhEHcRtSNXnMEUIAl/view?usp=sharing',
+                                );
+                                if (await canLaunchUrl(url)) {
+                                  launchUrl(url, mode: LaunchMode.inAppWebView);
+                                } else {
+                                  // ignore: avoid_print
+                                  print("Can't open  $url");
+                                }
+                              },
+                            text: ' here',
                             style: TextStyle(color: Colors.blue)),
-                        TextSpan(text: ' page. It’s important to read through them before you start using our app.')
+                        TextSpan(
+                            text:
+                                ' page. It’s important to read through them before you start using our app.')
                       ],
                     ),
                   ),

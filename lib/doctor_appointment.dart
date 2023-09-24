@@ -75,7 +75,7 @@ class _HomePageState extends State<doctor> {
                 const SizedBox(
                   height: 25,
                 ),
-                DoctorCard(route: 'doc_details'),
+                DoctorCard(),
                 /*   Column(
 
                   children: List.generate(10, (index) {

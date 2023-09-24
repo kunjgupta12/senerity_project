@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:untitled5/button.dart';
+import 'package:untitled5/nav_bar.dart';
 
 class SuccessPage extends StatelessWidget {
   const SuccessPage({super.key});
@@ -36,7 +37,8 @@ class SuccessPage extends StatelessWidget {
               child: Button(
                 width: double.infinity,
                 title: 'Home Page',
-                onPressed: () => Navigator.of(context).pushNamed('main'),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => profilepage())),
                 disable: false,
               ),
             ),

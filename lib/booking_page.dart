@@ -6,6 +6,8 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:untitled5/button.dart';
 import 'package:untitled5/custom_appbar.dart';
+import 'package:untitled5/success.dart';
+import 'package:intl/intl.dart';
 
 User? user = auth.currentUser;
 FirebaseAuth auth = FirebaseAuth.instance;
@@ -39,12 +41,24 @@ class _BookingPageState extends State<BookingPage> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-    Navigator.of(context).pushNamed('success_booking');
+
+    final selectedDate = _currentDay;
+    final formattedDate = DateFormat('MMMM dd, yyyy').format(selectedDate);
+    final selectedTime = (_currentIndex! + 9).toString() +
+        (_currentIndex! + 9 > 11 ? "PM" : "AM");
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SuccessPage()));
     FirebaseFirestore.instance
         .collection('doctor details')
         .doc(widget.registraionnumber)
         .collection('bookings')
-        .add({'kunj': 'kunj'});
+        .add({
+      'date': formattedDate,
+      'time': selectedTime,
+      'user': user?.uid,
+      'useremail': user?.email
+    });
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {

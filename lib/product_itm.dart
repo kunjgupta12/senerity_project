@@ -29,7 +29,6 @@ class _ProductItemState extends State<ProductItem> {
     double displayheight = MediaQuery.of(context).size.height;
     var cardImage = NetworkImage(widget.image);
     return Container(
-
       // padding: new EdgeInsets.all(10.0),
       child: Card(
         borderOnForeground: true,
@@ -45,7 +44,6 @@ class _ProductItemState extends State<ProductItem> {
                 radius: 35.0,
                 backgroundImage: NetworkImage(widget.image),
                 backgroundColor: Colors.white,
-
               ),
 
               //Image.network(cardImage.url) ,

@@ -7,9 +7,7 @@ final firestore =
     FirebaseFirestore.instance.collection('doctor details').snapshots();
 
 class DoctorCard extends StatelessWidget {
-  const DoctorCard({super.key, required this.route});
-
-  final String route;
+  const DoctorCard({super.key});
 
   @override
   Widget build(BuildContext context) {
