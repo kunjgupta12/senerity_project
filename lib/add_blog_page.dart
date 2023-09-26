@@ -99,9 +99,27 @@ class _AddPostScreenState extends State<AddPostScreen> {
       inAsyncCall: showSpinner,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
-          automaticallyImplyLeading: true,
-          title: Text('Upload post'),
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => profilepage()));
+                },
+              );
+            },
+          ),
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Create Thread',
+            style: TextStyle(
+                fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
+          ),
           centerTitle: true,
         ),
         body: SingleChildScrollView(

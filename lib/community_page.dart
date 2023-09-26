@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled5/drawer.dart';
+import 'package:untitled5/expand_thread.dart';
 
 import 'add_blog_page.dart';
 
@@ -107,6 +108,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (BuildContext context, DataSnapshot snapshot,
                     Animation<double> animation, int index) {
                   String tempTitle = snapshot.child('pTitle').value.toString();
+                  String description =
+                      snapshot.child('pDescription').value.toString();
+                  String img = snapshot.child('pImage').value!.toString();
+
                   if (searchController.text.isEmpty) {
                     return Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -170,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 10,
                             ),
-                            /*   TextButton(
+                            /* TextButton(
                               child: Text(
                                 "Comment:" +
                                     snapshot
@@ -188,8 +193,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 showMyDialogReply(
                                     snapshot.child("pId").value.toString());
                               },
-                            ),
-                            Text(
+                            ),*/
+                            /*       Text(
                               "Comment:" +
                                   snapshot.child("pcomment").value!.toString(),
                               style: TextStyle(
@@ -199,108 +204,121 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.black54,
                               ),
                             ),*/
-                            Row(
-                              children: [
-                                Row(
-                                  children: [
-                                    IconButton(
-                                      icon: Image.asset(
-                                        "img/Expand thread.png",
-                                        height: 30,
-                                        width: 30,
-                                      ),
-                                      iconSize: 1,
-                                      onPressed: () {
-                                        showMyDialog(snapshot
-                                            .child("pId")
-                                            .value
-                                            .toString());
-                                      },
-                                    ),
-                                    const Text(
-                                      'Expand Thread',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontFamily: 'SourceCodePro',
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black54,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  width: displayWidth * .03,
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    IconButton(
+                            Container(
+                              //  height: displayheight,
+                              width: displayWidth * .9,
+
+                              child: Row(
+                                children: [
+                                  Row(
+                                    children: [
+                                      IconButton(
                                         icon: Image.asset(
-                                          color: _hasBeenPressed
-                                              ? Colors.blue
-                                              : Colors.black,
-                                          "img/Important.png",
-                                          height: 30,
+                                          "img/Expand thread.png",
+                                          height: displayheight * .023,
                                           width: 30,
                                         ),
                                         iconSize: 1,
                                         onPressed: () {
-                                          setState(() {
-                                            _hasBeenPressed = !_hasBeenPressed;
-                                          });
-                                          /*  final postRef = FirebaseDatabase
-                                              .instance
-                                              .ref()
-                                              .child('Posts');
-                                          postRef
-                                              .child('Post List')
-                                              .child(tempTitle)
-                                              .child("comment")
-                                              .update({"value": 1});*/
-                                        }),
-                                    const Text(
-                                      'Important',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontFamily: 'SourceCodePro',
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black54,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                  width: displayWidth * .03,
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    IconButton(
-                                      icon: Image.asset(
-                                        "img/share.png",
-                                        height: 30,
-                                        width: 30,
-                                      ),
-                                      onPressed: () {
-                                        /*    setState(() {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      AddPostScreen()));
-                                        });*/
-                                      },
-                                    ),
-                                    const Text(
-                                      'Share',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontFamily: 'SourceCodePro',
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black54,
+                                                  builder: (context) => expand(
+                                                      tempTitle: tempTitle,
+                                                      description: description,
+                                                      img: img)));
+                                          /*   showMyDialog(snapshot
+                                              .child("pId")
+                                              .value
+                                              .toString());*/
+                                        },
                                       ),
-                                    )
-                                  ],
-                                ),
-                              ],
+                                      const Text(
+                                        'Expand Thread',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontFamily: 'SourceCodePro',
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: displayWidth * .03,
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      IconButton(
+                                          icon: Image.asset(
+                                            color: _hasBeenPressed
+                                                ? Colors.blue
+                                                : Colors.black,
+                                            "img/Important.png",
+                                            height: displayheight * .023,
+                                            width: 30,
+                                          ),
+                                          iconSize: 1,
+                                          onPressed: () {
+                                            setState(() {
+                                              _hasBeenPressed =
+                                                  !_hasBeenPressed;
+                                            });
+                                            /*  final postRef = FirebaseDatabase
+                                                .instance
+                                                .ref()
+                                                .child('Posts');
+                                            postRef
+                                                .child('Post List')
+                                                .child(tempTitle)
+                                                .child("comment")
+                                                .update({"value": 1});*/
+                                          }),
+                                      const Text(
+                                        'Important',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: 'SourceCodePro',
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black54,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: displayWidth * .03,
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      IconButton(
+                                        icon: Image.asset(
+                                          "img/share.png",
+                                          height: displayheight * .023,
+                                          width: 30,
+                                        ),
+                                        onPressed: () {
+                                          /*    setState(() {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AddPostScreen()));
+                                          });*/
+                                        },
+                                      ),
+                                      const Text(
+                                        'Share',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: 'SourceCodePro',
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black54,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
                             )
                           ],
                         ),
