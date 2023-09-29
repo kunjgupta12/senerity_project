@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _remoteRenderer.initialize();
     user = auth.currentUser!;
     _startTimer();
+    room();
     currentUId = user.uid.toString();
     signaling.openUserMedia(_localRenderer, _remoteRenderer);
     signaling.onAddRemoteStream = ((stream) {
@@ -90,13 +91,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void dispose() {
     _localRenderer.dispose();
     _remoteRenderer.dispose();
-    /*   var db = FirebaseFirestore.instance;
+       var db = FirebaseFirestore.instance;
     var roomRef = db.collection('rooms').doc(roomId);
     roomRef.delete();
-    signaling.hangUp(_localRenderer);*/
+    signaling.hangUp(_localRenderer);
     super.dispose();
   }
-/*
+
   void senddata() {
     CollectionReference collref =
         FirebaseFirestore.instance.collection('Users joined ');
@@ -104,8 +105,12 @@ class _MyHomePageState extends State<MyHomePage> {
     collref.add({
       'uid': user.uid.toString(),
     });
-  }*/
-
+  }
+Future<void> room() async{
+  roomId = await signaling.createRoom(_remoteRenderer);
+  textEditingController.text = roomId!;
+  setState(() {});
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,25 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 width: 8,
               ),
-              ElevatedButton(
-                onPressed: () async {
-                  roomId = await signaling.createRoom(_remoteRenderer);
-                  textEditingController.text = roomId!;
-                  setState(() {});
-                  //   senddata();
-                },
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black87),
-                ),
-                child: Text(
-                  "Create room",
-                  style: TextStyle(color: Colors.blueGrey, fontSize: 20),
-                ),
-              ),
-              SizedBox(
-                width: 8,
-              ),
+
               ElevatedButton(
                 onPressed: () {
                   // Add roomId

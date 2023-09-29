@@ -51,8 +51,8 @@ class _BookingPageState extends State<BookingPage> {
         context, MaterialPageRoute(builder: (context) => SuccessPage()));
     FirebaseFirestore.instance
         .collection('doctor details')
-        .doc(widget.registraionnumber)
-        .collection('bookings')
+        .doc(widget.registraionnumber).collection('booking')
+
         .add({
       'date': formattedDate,
       'time': selectedTime,
