@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:untitled5/drawer.dart';
-import 'package:untitled5/gethelp.dart';
-import 'package:untitled5/gethelp_30.dart';
-import 'package:untitled5/signup_page.dart';
+import 'package:untitled5/drawer/drawer.dart';
+import 'package:untitled5/snaphelp/gethelp.dart';
+import 'package:untitled5/snaphelp/gethelp_30.dart';
+import 'package:untitled5/auth/signup_page.dart';
 
 int value = 0;
 
@@ -46,7 +46,30 @@ class _HomePageState extends State<paymemnt> {
                   fontSize: 15,
                 ),
               ),
-              trailing: Icon(Icons.help),
+              trailing: IconButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(heading),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text("Option 1"),
+                              ],
+                            ),
+                            actions: [
+                              MaterialButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text("Close")),
+                            ],
+                          );
+                        });
+                  },
+                  icon: Icon(Icons.help)),
             ),
             Container(
               height: 200.0,
@@ -71,9 +94,9 @@ class _HomePageState extends State<paymemnt> {
               children: [
                 TextButton(
                   child: Text(
-                    'CONTACT AGENT',
+                    'BOOK',
                     style: TextStyle(
-                      color: Colors.teal,
+                      color: Colors.black,
                       fontWeight: FontWeight.w600,
                       // fontSize: 10,
                     ),
@@ -94,38 +117,6 @@ class _HomePageState extends State<paymemnt> {
                     _razorpay.open(options);
                   },
                 ),
-                TextButton(
-                  child: const Text(
-                    'LEARN MORE',
-                    style: TextStyle(
-                      color: Colors.teal,
-                      fontWeight: FontWeight.w600,
-                      // fontSize: 10,
-                    ),
-                  ),
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text(heading),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text("Option 1"),
-                              ],
-                            ),
-                            actions: [
-                              MaterialButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text("Close")),
-                            ],
-                          );
-                        });
-                  },
-                )
               ],
             )
           ],
@@ -160,58 +151,9 @@ class _HomePageState extends State<paymemnt> {
                   fontSize: 15,
                 ),
               ),
-              trailing: Icon(Icons.support_agent),
-            ),
-            Container(
-              height: 200.0,
-              child: Ink.image(
-                image: cardImage,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(16.0),
-              alignment: Alignment.centerLeft,
-              child: Text(supportingText),
-            ),
-            ButtonBar(
-              children: [
-                TextButton(
-                  child: Text(
-                    'CONTACT AGENT',
-                    style: TextStyle(
-                      color: Colors.teal,
-                      fontWeight: FontWeight.w600,
-                      // fontSize: 10,
-                    ),
-                  ),
+              trailing: IconButton(
                   onPressed: () {
-                    value = 12900;
-                    var options = {
-                      'key': "rzp_test_ALdrxH7AP4NuvJ",
-
-                      'amount': value,
-                      'name': 'Serenity',
-                      'description': 'Conference',
-                      'timeout': 3000, // in seconds
-                      'prefill': {
-                        'contact': '8787878787',
-                      }
-                    };
-                    _razorpay.open(options);
-                  },
-                ),
-                TextButton(
-                  child: const Text(
-                    'LEARN MORE',
-                    style: TextStyle(
-                      color: Colors.teal,
-                      fontWeight: FontWeight.w600,
-                      // fontSize: 10,
-                    ),
-                  ),
-                  onPressed: () {
-                    /* ... */ showDialog(
+                    showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
@@ -232,7 +174,47 @@ class _HomePageState extends State<paymemnt> {
                           );
                         });
                   },
-                )
+                  icon: Icon(Icons.help)),
+            ),
+            Container(
+              height: 200.0,
+              child: Ink.image(
+                image: cardImage,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(16.0),
+              alignment: Alignment.centerLeft,
+              child: Text(supportingText),
+            ),
+            ButtonBar(
+              children: [
+                TextButton(
+                  child: Text(
+                    'BOOK',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      // fontSize: 10,
+                    ),
+                  ),
+                  onPressed: () {
+                    value = 12900;
+                    var options = {
+                      'key': "rzp_test_ALdrxH7AP4NuvJ",
+
+                      'amount': value,
+                      'name': 'Serenity',
+                      'description': 'Conference',
+                      'timeout': 3000, // in seconds
+                      'prefill': {
+                        'contact': '8787878787',
+                      }
+                    };
+                    _razorpay.open(options);
+                  },
+                ),
               ],
             )
           ],
@@ -267,7 +249,30 @@ class _HomePageState extends State<paymemnt> {
                   fontSize: 15,
                 ),
               ),
-              trailing: Icon(Icons.contact_support),
+              trailing: IconButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(heading),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text("Option 1"),
+                              ],
+                            ),
+                            actions: [
+                              MaterialButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text("Close")),
+                            ],
+                          );
+                        });
+                  },
+                  icon: Icon(Icons.help)),
             ),
             Container(
               height: 200.0,
@@ -285,9 +290,9 @@ class _HomePageState extends State<paymemnt> {
               children: [
                 TextButton(
                   child: Text(
-                    'CONTACT AGENT',
+                    'BOOK',
                     style: TextStyle(
-                      color: Colors.teal,
+                      color: Colors.black,
                       fontWeight: FontWeight.w600,
                       // fontSize: 10,
                     ),
@@ -308,43 +313,6 @@ class _HomePageState extends State<paymemnt> {
                     _razorpay.open(options);
                   },
                 ),
-                TextButton(
-                  child: const Text(
-                    'LEARN MORE',
-                    style: TextStyle(
-                      color: Colors.teal,
-                      fontWeight: FontWeight.w600,
-                      // fontSize: 10,
-                    ),
-                  ),
-                  onPressed: () {
-                    /* ... */
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text(heading),
-                            backgroundColor: Colors.white,
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text("Option 1"),
-                              ],
-                            ),
-                            actions: [
-                              MaterialButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text(
-                                    "Close",
-                                    style: TextStyle(),
-                                  )),
-                            ],
-                          );
-                        });
-                  },
-                )
               ],
             )
           ],

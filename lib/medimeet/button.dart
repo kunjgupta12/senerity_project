@@ -16,17 +16,22 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.circular(30),
+        //image: DecorationImage(
+        //   image: AssetImage("img/img.png"), fit: BoxFit.fill)
+      ),
       width: width,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.deepPurple,
-          foregroundColor: Colors.white,
-        ),
+      child: MaterialButton(
+        color: Colors.black,
+        padding: EdgeInsets.all(2),
         onPressed: disable ? null : onPressed,
         child: Text(
           title,
           style: const TextStyle(
+            color: Colors.grey,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),

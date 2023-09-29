@@ -9,7 +9,7 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   final String? appTitle;
   final String? route;
-  final FaIcon? icon;
+  final Icon? icon;
   final List<Widget>? actions;
 
   @override
@@ -33,10 +33,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
       leading: widget.icon != null
           ? Container(
               margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.deepPurple,
-              ),
               child: IconButton(
                 onPressed: () {
                   if (widget.route != null) {
@@ -46,8 +42,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   }
                 },
                 icon: widget.icon!,
-                iconSize: 16,
-                color: Colors.white,
+                //  iconSize: 16,
+                color: Colors.black,
               ),
             )
           : null,

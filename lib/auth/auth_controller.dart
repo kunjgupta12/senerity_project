@@ -3,13 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled5/email_auth_register.dart';
+import 'package:untitled5/auth/email_auth_register.dart';
 
-import 'package:untitled5/email_authstep.dart';
-import 'package:untitled5/login_page.dart';
-import 'package:untitled5/nav_bar.dart';
-import 'package:untitled5/signup_page.dart';
-import 'package:untitled5/welcome_page.dart';
+import 'package:untitled5/email_auth/email_authstep.dart';
+import 'package:untitled5/auth/login_page.dart';
+import 'package:untitled5/bottom_nav/nav_bar.dart';
+import 'package:untitled5/auth/signup_page.dart';
+
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();

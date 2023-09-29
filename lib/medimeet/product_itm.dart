@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
-import 'package:untitled5/doctor_details.dart';
+import 'package:untitled5/medimeet/doctor_details.dart';
 
 class ProductItem extends StatefulWidget {
   final String name;

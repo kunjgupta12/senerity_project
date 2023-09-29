@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:untitled5/ForgotPasswordPage.dart';
-import 'package:untitled5/nav_bar.dart';
+import 'package:untitled5/auth/ForgotPasswordPage.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:untitled5/bottom_nav/nav_bar.dart';
 
 class Homepagee extends StatefulWidget {
   const Homepagee({Key? key}) : super(key: key);

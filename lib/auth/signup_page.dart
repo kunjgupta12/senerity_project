@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import 'package:untitled5/auth_controller.dart';
-import 'package:untitled5/home.dart';
-import 'package:untitled5/welcome_page.dart';
+import 'package:untitled5/auth/auth_controller.dart';
+import 'package:untitled5/auth/home.dart';
+
 
 String? validateEmail(String? value) {
   const pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"

@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/doctor_appointment.dart';
+import 'package:untitled5/medimeet/doctor_appointment.dart';
 
-import 'package:untitled5/razorpay.dart';
+import 'package:untitled5/snaphelp/razorpay.dart';
 
 //import 'package:untitled5/settings_page.dart';
-import 'community_page.dart';
+import 'package:untitled5/community/community_page.dart';
 
 class profilepage extends StatefulWidget {
   const profilepage({super.key});

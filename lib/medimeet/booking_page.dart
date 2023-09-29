@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:untitled5/button.dart';
-import 'package:untitled5/custom_appbar.dart';
-import 'package:untitled5/success.dart';
+import 'package:untitled5/medimeet/button.dart';
+import 'package:untitled5/medimeet/custom_appbar.dart';
+import 'package:untitled5/medimeet/success.dart';
 import 'package:intl/intl.dart';
 
 User? user = auth.currentUser;
@@ -52,7 +52,7 @@ class _BookingPageState extends State<BookingPage> {
     FirebaseFirestore.instance
         .collection('doctor details')
         .doc(widget.registraionnumber)
-        .collection('bookings')
+        .collection('booking')
         .add({
       'date': formattedDate,
       'time': selectedTime,
@@ -100,7 +100,10 @@ class _BookingPageState extends State<BookingPage> {
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: 'Appointment',
-        icon: const FaIcon(Icons.arrow_back_ios_new),
+        icon: const Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+        ),
       ),
       body: CustomScrollView(
         slivers: <Widget>[
@@ -153,9 +156,7 @@ class _BookingPageState extends State<BookingPage> {
                                   : Colors.black,
                             ),
                             borderRadius: BorderRadius.circular(15),
-                            color: _currentIndex == index
-                                ? Colors.deepPurple
-                                : null,
+                            color: _currentIndex == index ? Colors.grey : null,
                           ),
                           alignment: Alignment.center,
                           child: Text(
@@ -218,7 +219,7 @@ class _BookingPageState extends State<BookingPage> {
       rowHeight: 48,
       calendarStyle: const CalendarStyle(
         todayDecoration:
-            BoxDecoration(color: Colors.deepPurple, shape: BoxShape.circle),
+            BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
       ),
       availableCalendarFormats: const {
         CalendarFormat.month: 'Month',

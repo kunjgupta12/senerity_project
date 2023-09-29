@@ -1,7 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/nav_bar.dart';
+
 import 'package:url_launcher/url_launcher.dart';
+import 'package:untitled5/bottom_nav/nav_bar.dart';
 
 class terms_condition extends StatefulWidget {
   const terms_condition({super.key});
@@ -29,7 +30,8 @@ class _terms_conditionState extends State<terms_condition> {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    Navigator.pop(context);
+                    /*    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => profilepage()));*/
                   },
                 );
               },

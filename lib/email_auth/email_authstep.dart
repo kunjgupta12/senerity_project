@@ -1,20 +1,19 @@
 import 'dart:async';
-import 'package:untitled5/email_auth.dart';
+import 'package:untitled5/email_auth/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/home.dart';
-import 'package:untitled5/nav_bar.dart';
 
-class EmailVerificationScreenregister extends StatefulWidget {
-  const EmailVerificationScreenregister({Key? key}) : super(key: key);
+import 'package:untitled5/bottom_nav/nav_bar.dart';
+
+class EmailVerificationScreen extends StatefulWidget {
+  const EmailVerificationScreen({Key? key}) : super(key: key);
 
   @override
-  State<EmailVerificationScreenregister> createState() =>
+  State<EmailVerificationScreen> createState() =>
       _EmailVerificationScreenState();
 }
 
-class _EmailVerificationScreenState
-    extends State<EmailVerificationScreenregister> {
+class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   bool isEmailVerified = false;
   bool done = false;
   Timer? timer;
@@ -64,7 +63,7 @@ class _EmailVerificationScreenState
                     const SizedBox(height: 30),
                     const Center(
                       child: Text(
-                        'Check your \n Email',
+                        'Verifying...  \n ',
                         textAlign: TextAlign.center,
                       ),
                     ),

@@ -6,8 +6,8 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:untitled5/drawer.dart';
-import 'package:untitled5/expand_thread.dart';
+import 'package:untitled5/drawer/drawer.dart';
+import 'package:untitled5/community/expand_thread.dart';
 
 import 'add_blog_page.dart';
 

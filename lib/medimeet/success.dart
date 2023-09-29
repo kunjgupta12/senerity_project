@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:untitled5/button.dart';
-import 'package:untitled5/nav_bar.dart';
+import 'package:untitled5/medimeet/button.dart';
+
+import 'package:untitled5/bottom_nav/nav_bar.dart';
 
 class SuccessPage extends StatelessWidget {
   const SuccessPage({super.key});

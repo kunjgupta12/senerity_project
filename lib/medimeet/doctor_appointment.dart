@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/doctor_card.dart';
-import 'package:untitled5/drawer.dart';
-import 'package:untitled5/appointment_status.dart';
+
+import 'package:untitled5/drawer/drawer.dart';
+
+import 'package:untitled5/medimeet/product_itm.dart';
+
+final firestore =
+    FirebaseFirestore.instance.collection('doctor details').snapshots();
 
 class doctor extends StatefulWidget {
   doctor({Key? key}) : super(key: key);
@@ -14,6 +19,7 @@ class doctor extends StatefulWidget {
 class _HomePageState extends State<doctor> {
   @override
   Widget build(BuildContext context) {
+    double displayheight = MediaQuery.of(context).size.height;
     return Scaffold(
       drawer: drawer(),
       appBar: AppBar(
@@ -75,7 +81,44 @@ class _HomePageState extends State<doctor> {
                 const SizedBox(
                   height: 25,
                 ),
-                DoctorCard(),
+                Container(
+                  height: displayheight * .75,
+                  child: GestureDetector(
+                    child: Column(
+                      children: [
+                        StreamBuilder<QuerySnapshot>(
+                            stream: firestore,
+                            builder: (BuildContext value,
+                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting)
+                                return CircularProgressIndicator();
+                              if (snapshot.hasError)
+                                return Text(('Some error'));
+
+                              return Expanded(
+                                child: ListView.builder(
+                                    itemCount: snapshot.data!.docs.length,
+                                    itemBuilder: (context, index) {
+                                      DocumentSnapshot data =
+                                          snapshot.data!.docs[index];
+                                      return ListTile(
+                                        title: ProductItem(
+                                            Degree: data['Degree'],
+                                            name: data['name'],
+                                            price: data['price'],
+                                            Experience: data['Experience'],
+                                            registraionnumber:
+                                                data['registraionnumber'],
+                                            image: data['image']),
+                                      );
+                                    }),
+                              );
+                            })
+                      ],
+                    ),
+                  ),
+                )
                 /*   Column(
 
                   children: List.generate(10, (index) {

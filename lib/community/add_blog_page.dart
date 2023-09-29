@@ -2,9 +2,10 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:untitled5/community_page.dart';
-import 'package:untitled5/nav_bar.dart';
-import 'package:untitled5/roundbutton.dart';
+import 'package:untitled5/community/community_page.dart';
+import 'package:untitled5/bottom_nav/nav_bar.dart';
+
+import 'package:untitled5/community/roundbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_database/firebase_database.dart';

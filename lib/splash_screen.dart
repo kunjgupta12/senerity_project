@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:untitled5/nav_bar.dart';
 
-import 'auth_controller.dart';
+import 'package:untitled5/bottom_nav/nav_bar.dart';
+import 'auth/auth_controller.dart';
 
 class splashscreen extends StatefulWidget {
   const splashscreen({super.key});

@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:untitled5/booking_page.dart';
-import 'package:untitled5/button.dart';
-import 'package:untitled5/custom_appbar.dart';
-import 'package:untitled5/product_itm.dart';
+import 'package:untitled5/medimeet/booking_page.dart';
+import 'package:untitled5/medimeet/button.dart';
+import 'package:untitled5/medimeet/custom_appbar.dart';
+import 'package:untitled5/medimeet/product_itm.dart';
 
 class DoctorDetails extends StatefulWidget {
   DoctorDetails(
@@ -34,7 +34,10 @@ class _DoctorDetailsState extends State<DoctorDetails> {
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: 'Dr. ' + widget.name,
-        icon: FaIcon(Icons.arrow_back_ios_new),
+        icon: const Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -167,20 +170,22 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           Spacer(),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: Button(
-              width: displayWidth * .85,
-              title: 'Book Appointment',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => BookingPage(
-                              name: widget.name,
-                              price: widget.price,
-                              registraionnumber: widget.registrationnumber,
-                            )));
-              },
-              disable: false,
+            child: Container(
+              child: Button(
+                width: double.infinity,
+                title: 'Book Appointment',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BookingPage(
+                                name: widget.name,
+                                price: widget.price,
+                                registraionnumber: widget.registrationnumber,
+                              )));
+                },
+                disable: false,
+              ),
             ),
           ),
         ],

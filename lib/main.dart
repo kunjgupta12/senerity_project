@@ -1,17 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/auth_controller.dart';
+import 'package:untitled5/auth/auth_controller.dart';
 
 import 'package:get/get.dart';
 
 import 'package:flutter/cupertino.dart';
-import 'package:untitled5/booking_page.dart';
-import 'package:untitled5/doctor_appointment.dart';
-import 'package:untitled5/doctor_details.dart';
-
-import 'package:untitled5/nav_bar.dart';
+import 'package:untitled5/medimeet/booking_page.dart';
+import 'package:untitled5/medimeet/doctor_appointment.dart';
+import 'package:untitled5/medimeet/doctor_details.dart';
+import 'package:untitled5/bottom_nav/nav_bar.dart';
 import 'package:untitled5/splash_screen.dart';
-import 'package:untitled5/success.dart';
+import 'package:untitled5/medimeet/success.dart';
 
 void main() async {
 //  await Firebase.initializeApp().then((value) => Get.put(AuthController()));

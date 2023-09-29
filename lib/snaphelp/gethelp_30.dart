@@ -1,30 +1,30 @@
 import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:untitled5/nav_bar.dart';
-import 'package:untitled5/signaling..dart';
+import 'package:untitled5/bottom_nav/nav_bar.dart';
 
-int _remainingTime = 900; //initial time in seconds
-late Timer _timer;
+import 'package:untitled5/snaphelp/signaling..dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(gethelp());
+  runApp(gethelp30());
 }
 
-class gethelp extends StatefulWidget {
-  const gethelp({super.key});
+class gethelp30 extends StatefulWidget {
+  const gethelp30({super.key});
 
   @override
-  State<gethelp> createState() => _gethelpState();
+  State<gethelp30> createState() => _gethelpState();
 }
 
-class _gethelpState extends State<gethelp> {
+class _gethelpState extends State<gethelp30> {
   var _razorpay = Razorpay();
 
   @override
@@ -59,44 +59,19 @@ class _MyHomePageState extends State<MyHomePage> {
     _localRenderer.initialize();
     _remoteRenderer.initialize();
     user = auth.currentUser!;
-    _startTimer();
     currentUId = user.uid.toString();
-    signaling.openUserMedia(_localRenderer, _remoteRenderer);
-    signaling.onAddRemoteStream = ((stream) {
-      _remoteRenderer.srcObject = stream;
-      setState(() {});
-    });
-    Timer(Duration(minutes: 15), () {
+
+    Timer(Duration(minutes: 30), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => profilepage()));
+
+      signaling.onAddRemoteStream = ((stream) {
+        _remoteRenderer.srcObject = stream;
+      });
     });
     super.initState();
   }
 
-  void _startTimer() {
-    //   _timer.cancel();
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_remainingTime > 0) {
-          _remainingTime--;
-        } else {
-          _timer.cancel();
-        }
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    _localRenderer.dispose();
-    _remoteRenderer.dispose();
-    /*   var db = FirebaseFirestore.instance;
-    var roomRef = db.collection('rooms').doc(roomId);
-    roomRef.delete();
-    signaling.hangUp(_localRenderer);*/
-    super.dispose();
-  }
-/*
   void senddata() {
     CollectionReference collref =
         FirebaseFirestore.instance.collection('Users joined ');
@@ -104,22 +79,21 @@ class _MyHomePageState extends State<MyHomePage> {
     collref.add({
       'uid': user.uid.toString(),
     });
-  }*/
+  }
+
+  @override
+  void dispose() {
+    _localRenderer.dispose();
+    _remoteRenderer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Conference',
-          style: TextStyle(),
-        ),
-        backgroundColor: Colors.blueGrey,
-      ),
       body: Column(
         children: [
-          Text("Remaining time: $_remainingTime seconds"),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -132,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       MaterialStateProperty.all<Color>(Colors.black87),
                 ),
                 child: Text(
-                  "Open microphone",
+                  "Open camera & microphone for 30min",
                   style: TextStyle(color: Colors.blueGrey, fontSize: 20),
                 ),
               ),
@@ -144,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   roomId = await signaling.createRoom(_remoteRenderer);
                   textEditingController.text = roomId!;
                   setState(() {});
-                  //   senddata();
+                  senddata();
                 },
                 style: ButtonStyle(
                   backgroundColor:
@@ -200,11 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                      child: RTCVideoView(
-                    _localRenderer,
-                    mirror: true,
-                  )),
+                  Expanded(child: RTCVideoView(_localRenderer, mirror: true)),
                   Expanded(child: RTCVideoView(_remoteRenderer)),
                 ],
               ),
@@ -224,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          //Text(user.uid),
+          Text(user.uid),
           SizedBox(height: 8)
         ],
       ),

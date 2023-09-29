@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/T@C.dart';
-import 'package:untitled5/gethelp.dart';
-import 'package:untitled5/login_page.dart';
-import 'package:untitled5/profile.dart';
+import 'package:untitled5/drawer/T@C.dart';
+import 'package:untitled5/snaphelp/gethelp.dart';
+import 'package:untitled5/auth/login_page.dart';
+import 'package:untitled5/drawer/profile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'ForgotPasswordPage.dart';
-import 'booking_page.dart';
+import '../auth/ForgotPasswordPage.dart';
+import '../medimeet/booking_page.dart';
 
 class drawer extends StatelessWidget {
   const drawer({super.key});

@@ -3,11 +3,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:untitled5/auth_controller.dart';
-import 'package:untitled5/home.dart';
-import 'package:untitled5/signup_page.dart';
+import 'package:untitled5/auth/auth_controller.dart';
+import 'package:untitled5/auth/home.dart';
+import 'package:untitled5/auth/signup_page.dart';
 
-import 'ForgotPasswordPage.dart';
+import 'package:untitled5/auth/ForgotPasswordPage.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
