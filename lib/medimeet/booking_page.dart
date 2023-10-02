@@ -15,12 +15,14 @@ FirebaseAuth auth = FirebaseAuth.instance;
 class BookingPage extends StatefulWidget {
   BookingPage(
       {super.key,
+        required this.email,
       required this.name,
       required this.price,
       required this.registraionnumber});
   final String name;
   final String price;
   final String registraionnumber;
+  final String email;
   @override
   State<BookingPage> createState() => _BookingPageState();
 }
@@ -51,7 +53,7 @@ class _BookingPageState extends State<BookingPage> {
         context, MaterialPageRoute(builder: (context) => SuccessPage()));
     FirebaseFirestore.instance
         .collection('doctor details')
-        .doc(widget.registraionnumber)
+        .doc(widget.email)
         .collection('booking')
         .add({
       'date': formattedDate,

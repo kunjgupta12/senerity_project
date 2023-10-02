@@ -104,6 +104,7 @@ class _HomePageState extends State<doctor> {
                                           snapshot.data!.docs[index];
                                       return ListTile(
                                         title: ProductItem(
+                                          email:data['email'],
                                             Degree: data['Degree'],
                                             name: data['name'],
                                             price: data['price'],

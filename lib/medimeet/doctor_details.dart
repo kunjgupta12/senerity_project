@@ -11,11 +11,13 @@ class DoctorDetails extends StatefulWidget {
       {super.key,
       required this.name,
       required this.price,
+        required this.email,
       required this.registrationnumber,
       required this.Experience,
       required this.Degree,
       required this.image});
   final String name;
+  final String email;
   final String price;
   final String registrationnumber;
   final String Experience;
@@ -179,6 +181,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => BookingPage(
+                            email: widget.email,
                                 name: widget.name,
                                 price: widget.price,
                                 registraionnumber: widget.registrationnumber,

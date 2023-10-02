@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled5/medimeet/doctor_details.dart';
 
 class ProductItem extends StatefulWidget {
+  final String email;
   final String name;
   final String price;
   final String registraionnumber;
@@ -14,6 +15,7 @@ class ProductItem extends StatefulWidget {
       {required this.name,
       required this.price,
       required this.registraionnumber,
+      required this.email,
       required this.Experience,
       required this.Degree,
       required this.image});
@@ -62,6 +64,7 @@ class _ProductItemState extends State<ProductItem> {
                                     name: widget.name,
                                     Degree: widget.Degree,
                                     price: widget.price,
+                                    email: widget.email,
                                     registrationnumber:
                                         widget.registraionnumber,
                                     Experience: widget.Experience,
