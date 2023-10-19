@@ -57,20 +57,7 @@ class _HomePageState extends State<doctor> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                /*   const Text(
-                  'Todays Appointment',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                const AppointmentCard(),
-                const SizedBox(
-                  height: 25,
-                ),*/
+
                 const Text(
                   'Popular Doctors',
                   style: TextStyle(
@@ -104,7 +91,7 @@ class _HomePageState extends State<doctor> {
                                           snapshot.data!.docs[index];
                                       return ListTile(
                                         title: ProductItem(
-                                          email:data['email'],
+                                            email: data['email'],
                                             Degree: data['Degree'],
                                             name: data['name'],
                                             price: data['price'],

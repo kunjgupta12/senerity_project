@@ -408,6 +408,27 @@ class _HomePageState extends State<paymemnt> {
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
+                Text(
+
+                  "Experience the power of instant connection and personalized support at your fingertips. Need a shoulder to lean on? Our trained officials are just a call away. ready to lend you their expertise and compassionate ear. Whether you're seeking guidance, a friendly conversation, or a mini-counseling session, we've got you covered. Dive into a world of convenient, confidential, and empowering communication, right within our app Break free from limitations and embrace the freedom to reach out whenever you need, knowing that our dedicated team is here to uplift your spirits and empower your journey towards emotional well-being",textAlign:   TextAlign.center,
+                  style: TextStyle(
+
+                    fontFamily: 'SourceCodePro',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 22,
+                  ),
+                ),
+                SizedBox(height: 40,),
+                Text("Pocket Friendly Options" , style: TextStyle(
+
+                  fontFamily: 'JosefinSans',
+                  color: Colors.black,
+
+                  fontWeight: FontWeight.w500,
+                  fontSize: 30,
+                ),),
+                SizedBox(height: 10,),
                 buildCard(),
                 buildCard30min(),
                 buildCard1hour(),

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase_database/firebase_database.dart';
@@ -6,6 +7,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:untitled5/community/add_poll.dart';
 import 'package:untitled5/drawer/drawer.dart';
 import 'package:untitled5/community/expand_thread.dart';
 
@@ -22,6 +24,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void _vote(String pollId, String option) {
+    FirebaseFirestore.instance.collection('polls').doc(pollId).update({
+      'votes.$option': FieldValue.increment(1),
+    });
+  }
+
   final GlobalKey kunj = GlobalKey();
   var databaseReference = FirebaseDatabase.instance.ref().child('Posts');
   String datec = DateTime.now().microsecondsSinceEpoch.toString();
@@ -35,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double displayheight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      drawer: drawer(),
+      drawer: const drawer(),
       appBar: AppBar(
         leading: Builder(
           builder: (BuildContext context) {
@@ -53,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        title: Text(
+        title: const Text(
           'Community',
           style: TextStyle(
               fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
@@ -65,10 +73,10 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         onPressed: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddPostScreen()));
+              MaterialPageRoute(builder: (context) => CreatePollPage()));
         },
         tooltip: 'Increment',
-        child: Icon(
+        child: const Icon(
           Icons.add,
           color: Colors.black,
         ),
@@ -93,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.blueGrey,
                 ),
                 labelText: 'Search',
-                labelStyle: TextStyle(color: Colors.blueGrey),
+                labelStyle: const TextStyle(color: Colors.blueGrey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(300),
                 ),
@@ -101,6 +109,47 @@ class _HomeScreenState extends State<HomeScreen> {
               onChanged: (value) {
                 search = value;
               },
+            ),
+            Container(
+              child: Expanded(
+                child: StreamBuilder(
+                  stream:
+                      FirebaseFirestore.instance.collection('polls').snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return CircularProgressIndicator();
+                    }
+                    final polls = snapshot.data?.docs;
+
+                    // Display the polls and their options, along with vote buttons
+                    return ListView.builder(
+                      itemCount: polls?.length,
+                      itemBuilder: (context, index) {
+                        var poll = polls?[index].data();
+                        var pollId = polls?[index].id;
+                        poll?['votes'] ??= {};
+                        return ListTile(
+                          title: Text(poll?['question']),
+                          subtitle: Column(
+                            children: poll?['options'].map<Widget>((option) {
+                              var voteCount = poll['votes'][option] ?? 0;
+                              return Row(
+                                children: [
+                                  Text('$option: $voteCount votes'),
+                                  ElevatedButton(
+                                    onPressed: () => _vote(pollId!, option),
+                                    child: Text('Vote'),
+                                  ),
+                                ],
+                              );
+                            }).toList(),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
             ),
             Expanded(
               child: FirebaseAnimatedList(
@@ -135,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Text(
                                 snapshot.child('pTitle').value!.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'SourceCodePro',
                                   fontSize: 29,
                                   fontWeight: FontWeight.w600,
@@ -143,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Padding(
@@ -154,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     .child('pDescription')
                                     .value!
                                     .toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontFamily: 'SourceCodePro',
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
@@ -172,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     snapshot.child('pImage').value!.toString(),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             /* TextButton(
@@ -204,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.black54,
                               ),
                             ),*/
-                            Container(
+                            SizedBox(
                               //  height: displayheight,
                               width: displayWidth * .9,
 
@@ -296,15 +345,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           height: displayheight * .023,
                                           width: 30,
                                         ),
-                                        onPressed: () {
-                                          /*    setState(() {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        AddPostScreen()));
-                                          });*/
-                                        },
+                                        onPressed: () {},
                                       ),
                                       const Text(
                                         'Share',
@@ -348,7 +389,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     snapshot.child('pImage').value!.toString(),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Padding(
@@ -356,11 +397,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Text(
                                 snapshot.child('pTitle').value!.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 23, fontWeight: FontWeight.w500),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Padding(
@@ -371,11 +412,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     .child('pDescription')
                                     .value!
                                     .toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.w400),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             /*        Padding(
@@ -459,7 +500,7 @@ class _HomeScreenState extends State<HomeScreen> {
             content: Container(
               child: TextField(
                 controller: comment,
-                decoration: InputDecoration(hintText: "Rply"),
+                decoration: const InputDecoration(hintText: "Rply"),
               ),
             ),
             actions: [
