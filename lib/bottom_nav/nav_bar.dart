@@ -29,17 +29,17 @@ class _profilepageState extends State<profilepage> {
     final items = <Widget>[
       Image.asset(
         "img/community.png",
-        height: displayheight * .04,
+        height: displayheight * .05,
         width: displayWidth * .09,
       ),
       Image.asset(
         "img/SnapHelp.png",
-        height: displayheight * .04,
+        height: displayheight * .05,
         width: displayWidth * .09,
       ),
       Image.asset(
         "img/MediMeet.png",
-        height: displayheight * .04,
+        height: displayheight * .05,
         width: displayWidth * .09,
       ),
     ];
@@ -54,7 +54,8 @@ class _profilepageState extends State<profilepage> {
             color: Color.fromRGBO(255, 237, 237, 1),
             buttonBackgroundColor: Color.fromRGBO(49, 164, 153, 1),
             backgroundColor: Colors.transparent,
-            height: displayheight * .08,
+            height: displayheight * .085,
+
             index: index,
             onTap: (index) => setState(() => this.index = index),
           )
