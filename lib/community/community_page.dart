@@ -11,7 +11,6 @@ import 'package:untitled5/community/add_poll.dart';
 import 'package:untitled5/drawer/drawer.dart';
 import 'package:untitled5/community/expand_thread.dart';
 
-import 'add_blog_page.dart';
 
 User? user = auth.currentUser;
 FirebaseAuth auth = FirebaseAuth.instance;

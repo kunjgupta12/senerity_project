@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/medimeet/doctor_appointment.dart';
@@ -23,72 +24,41 @@ class _profilepageState extends State<profilepage> {
   ];
   @override
   Widget build(BuildContext context) {
-    double displayWidth = MediaQuery.of(context).size.width;
+    double displayWidth = MediaQuery.of(context).size.width*1.4;
     double displayheight = MediaQuery.of(context).size.height;
-
-    var scaffoldKey = GlobalKey<ScaffoldState>();
-    return Scaffold(
-      body: screens[index],
-      bottomNavigationBar: Container(
-        margin: EdgeInsets.all(displayheight * .012),
-        height: displayheight * .065,
-        width: displayWidth * .5,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black.withOpacity(.6),
-                blurRadius: 10,
-                spreadRadius: 7),
-          ],
-          borderRadius: BorderRadius.circular(60),
-        ),
-        child: NavigationBarTheme(
-          data: NavigationBarThemeData(
-            indicatorColor: Colors.blueGrey,
-            labelTextStyle: MaterialStateProperty.all(
-              TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w800,
-                fontFamily: 'SourceCodePro',
-              ),
-            ),
-          ),
-          child: NavigationBar(
-            backgroundColor: Colors.white12,
-            height: displayheight * .8,
-            selectedIndex: index,
-            onDestinationSelected: (index) =>
-                setState(() => this.index = index),
-            destinations: [
-              NavigationDestination(
-                icon: Image.asset(
-                  "img/community.png",
-                  height: displayheight * .04,
-                  width: displayWidth * .08,
-                ),
-                label: 'Community',
-              ),
-              NavigationDestination(
-                icon: Image.asset(
-                  "img/SnapHelp.png",
-                  height: displayheight * .04,
-                  width: displayWidth * .08,
-                ),
-                label: 'SnapHelp',
-              ),
-              NavigationDestination(
-                icon: Image.asset(
-                  "img/MediMeet.png",
-                  height: displayheight * .04,
-                  width: displayWidth * .08,
-                ),
-                label: 'MediMeet',
-              ),
-            ],
-          ),
-        ),
+    final items = <Widget>[
+      Image.asset(
+        "img/community.png",
+        height: displayheight * .04,
+        width: displayWidth * .09,
       ),
+      Image.asset(
+        "img/SnapHelp.png",
+        height: displayheight * .04,
+        width: displayWidth * .09,
+      ),
+      Image.asset(
+        "img/MediMeet.png",
+        height: displayheight * .04,
+        width: displayWidth * .09,
+      ),
+    ];
+    var scaffoldKey = GlobalKey<ScaffoldState>();
+    return ClipRect(
+      child: Scaffold(
+          body: screens[index],
+          bottomNavigationBar: CurvedNavigationBar(
+            items: items,
+            animationCurve: Curves.fastEaseInToSlowEaseOut,
+            animationDuration: Duration(milliseconds: 200),
+            color: Color.fromRGBO(255, 237, 237, 1),
+            buttonBackgroundColor: Color.fromRGBO(49, 164, 153, 1),
+            backgroundColor: Colors.transparent,
+            height: displayheight * .08,
+            index: index,
+            onTap: (index) => setState(() => this.index = index),
+          )
+          ),
     );
   }
 }
