@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -30,10 +31,9 @@ class _LoginpageState extends State<Loginpage> {
       body: SingleChildScrollView(
         physics: ScrollPhysics(),
         child: Container(
-
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("img/Opening Page background.png"),
+              image: AssetImage("img/logoo.png"),
               fit: BoxFit.fill,
             ),
           ),
@@ -42,13 +42,16 @@ class _LoginpageState extends State<Loginpage> {
               SizedBox(
                 height: w * .09,
               ),
-              Container(
+              /*    Container(
                 width: w * 0.35,
                 height: h * 0.35,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage("img/logo.png"),
                         fit: BoxFit.fitHeight)),
+              ),*/
+              SizedBox(
+                height: 100,
               ),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
@@ -56,7 +59,7 @@ class _LoginpageState extends State<Loginpage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Center(
+                    /*   Center(
                       child: Text(
                         "Serenity",
                         style: TextStyle(
@@ -67,22 +70,22 @@ class _LoginpageState extends State<Loginpage> {
                           // color: Color.fromRGBO(10, 10, 3, 0.8)
                         ),
                       ),
-                    ),
+                    ),*/
                     SizedBox(
-                      height: w * .1,
+                      height: w * 0.35,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white.withOpacity(.8),
+                            borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
-                                  blurRadius: 10,
+                                  blurRadius: 20,
                                   spreadRadius: 7,
                                   offset: Offset(1, 1),
-                                  color: Colors.grey.withOpacity(.2))
+                                  color: Colors.white.withOpacity(.2))
                             ]),
                         child: Padding(
                           padding: const EdgeInsets.all(25.0),
@@ -119,7 +122,6 @@ class _LoginpageState extends State<Loginpage> {
                                 width: w,
                                 height: h * .18,
                                 decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black),
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(30),
                                     boxShadow: [
@@ -135,18 +137,20 @@ class _LoginpageState extends State<Loginpage> {
                                       hintText: "Email",
                                       prefixIcon: Icon(
                                         Icons.email_outlined,
-
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
                                           borderSide: BorderSide(
                                               color: Colors.white, width: 1.0)),
                                       enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
                                           borderSide: BorderSide(
                                               color: Colors.white, width: 1.0)),
                                       border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30))),
+                                          borderRadius:
+                                              BorderRadius.circular(30))),
                                 ),
                               ),
                               SizedBox(
@@ -156,7 +160,6 @@ class _LoginpageState extends State<Loginpage> {
                                 width: w,
                                 height: h * .18,
                                 decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black),
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(30),
                                     boxShadow: [
@@ -173,18 +176,20 @@ class _LoginpageState extends State<Loginpage> {
                                       hintText: "Password",
                                       prefixIcon: Icon(
                                         Icons.lock_outline_sharp,
-
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
                                           borderSide: BorderSide(
                                               color: Colors.white, width: 1.0)),
                                       enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
                                           borderSide: BorderSide(
                                               color: Colors.white, width: 1.0)),
                                       border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(30))),
+                                          borderRadius:
+                                              BorderRadius.circular(30))),
                                 ),
                               ),
                               SizedBox(
@@ -195,7 +200,8 @@ class _LoginpageState extends State<Loginpage> {
                                   RichText(
                                       text: TextSpan(
                                           recognizer: TapGestureRecognizer()
-                                            ..onTap = () => Get.to(() => Home()),
+                                            ..onTap =
+                                                () => Get.to(() => Home()),
                                           text: 'Login with Mobile',
                                           style: TextStyle(
                                               fontFamily: "Montserrat",
@@ -207,6 +213,10 @@ class _LoginpageState extends State<Loginpage> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
+                                      FirebaseAuth.instance
+                                          .sendPasswordResetEmail(
+                                              email: auth.currentUser!.email
+                                                  .toString());
                                       Navigator.push(context,
                                           MaterialPageRoute(builder: (context) {
                                         return ForgotPasswordPage();
@@ -254,7 +264,9 @@ class _LoginpageState extends State<Loginpage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: h*.05,),
+                              SizedBox(
+                                height: h * .05,
+                              ),
                               Text(
                                 "Don\'t have an account?",
                                 style: TextStyle(
@@ -265,25 +277,23 @@ class _LoginpageState extends State<Loginpage> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(30),
+                                    color: Colors.white,
+                                    border: Border.all(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(30),
                                     boxShadow: [
                                       BoxShadow(
                                           blurRadius: 10,
                                           spreadRadius: 7,
                                           offset: Offset(1, 1),
                                           color: Colors.grey.withOpacity(.2))
-                                    ]
-                                ),
-
+                                    ]),
                                 child: MaterialButton(
-
                                     onPressed: () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => SignupPage()));
+                                              builder: (context) =>
+                                                  SignupPage()));
                                     },
                                     child: Text(
                                       'Create one for Free!!',
@@ -292,19 +302,18 @@ class _LoginpageState extends State<Loginpage> {
                                           fontSize: w * .045,
                                           fontWeight: FontWeight.w600),
                                     )),
-
                               ),
-
                             ],
                           ),
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),
-              SizedBox(height: h*.1,)
+              SizedBox(
+                height: h * .1,
+              )
             ],
           ),
         ),

@@ -57,7 +57,6 @@ class _HomePageState extends State<doctor> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-
                 const Text(
                   'Popular Doctors',
                   style: TextStyle(

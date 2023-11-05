@@ -4,12 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
+
 User? user = auth.currentUser;
 FirebaseAuth auth = FirebaseAuth.instance;
 
 var databaseReference = FirebaseDatabase.instance.ref().child('Posts');
 String datec = DateTime.now().microsecondsSinceEpoch.toString();
 final comment = TextEditingController();
+
 class expand extends StatefulWidget {
   const expand(
       {required this.tempTitle,
@@ -32,11 +34,11 @@ class _expandState extends State<expand> {
           // Text(widget.img),
           Center(child: Text(widget.tempTitle)),
           Image(image: NetworkImage(widget.img)),
-
         ],
       ),
     );
   }
+
   void toastMessage(String message) {
     Fluttertoast.showToast(
         msg: message.toString(),
@@ -47,6 +49,7 @@ class _expandState extends State<expand> {
         textColor: Colors.black,
         fontSize: 16.0);
   }
+
   Future<void> showMyDialogReply(String date) async {
     return showDialog(
         context: context,
@@ -70,7 +73,6 @@ class _expandState extends State<expand> {
                         .child(datec)
                         .child('reply')
                         .set({user?.uid: comment.text}).then((value) {
-
                       toastMessage("Commented");
                     });
                   },

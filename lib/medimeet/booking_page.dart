@@ -15,7 +15,7 @@ FirebaseAuth auth = FirebaseAuth.instance;
 class BookingPage extends StatefulWidget {
   BookingPage(
       {super.key,
-        required this.email,
+      required this.email,
       required this.name,
       required this.price,
       required this.registraionnumber});

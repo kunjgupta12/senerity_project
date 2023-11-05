@@ -1,6 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled5/community/post.dart';
+import 'package:untitled5/drawer/profile.dart';
 import 'package:untitled5/medimeet/doctor_appointment.dart';
 
 import 'package:untitled5/snaphelp/razorpay.dart';
@@ -24,7 +26,7 @@ class _profilepageState extends State<profilepage> {
   ];
   @override
   Widget build(BuildContext context) {
-    double displayWidth = MediaQuery.of(context).size.width*1.4;
+    double displayWidth = MediaQuery.of(context).size.width * 1.4;
     double displayheight = MediaQuery.of(context).size.height;
     final items = <Widget>[
       Image.asset(
@@ -55,11 +57,9 @@ class _profilepageState extends State<profilepage> {
             buttonBackgroundColor: Color.fromRGBO(49, 164, 153, 1),
             backgroundColor: Colors.transparent,
             height: displayheight * .085,
-
             index: index,
             onTap: (index) => setState(() => this.index = index),
-          )
-          ),
+          )),
     );
   }
 }

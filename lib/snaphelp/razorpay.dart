@@ -375,30 +375,27 @@ class _HomePageState extends State<paymemnt> {
 
   @override
   Widget build(BuildContext context) {
+    double displayWidth = MediaQuery.of(context).size.width;
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      drawer: drawer(),
       appBar: AppBar(
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
-          },
-        ),
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        title: Text(
-          'SnapHelp',
-          style: TextStyle(
-              fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
+        title: Row(
+          children: [
+            SizedBox(width: displayWidth * .25),
+            const Text(
+              'SnapHelp',
+              style: TextStyle(
+                  fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
+            ),
+            IconButton(
+                color: Colors.black,
+                onPressed: () {},
+                icon: Icon(
+                  Icons.arrow_drop_down,
+                ))
+          ],
         ),
         centerTitle: true,
       ),
@@ -409,26 +406,30 @@ class _HomePageState extends State<paymemnt> {
             child: Column(
               children: [
                 Text(
-
-                  "Experience the power of instant connection and personalized support at your fingertips. Need a shoulder to lean on? Our trained officials are just a call away. ready to lend you their expertise and compassionate ear. Whether you're seeking guidance, a friendly conversation, or a mini-counseling session, we've got you covered. Dive into a world of convenient, confidential, and empowering communication, right within our app Break free from limitations and embrace the freedom to reach out whenever you need, knowing that our dedicated team is here to uplift your spirits and empower your journey towards emotional well-being",textAlign:   TextAlign.center,
+                  "Experience the power of instant connection and personalized support at your fingertips. Need a shoulder to lean on? Our trained officials are just a call away. ready to lend you their expertise and compassionate ear. Whether you're seeking guidance, a friendly conversation, or a mini-counseling session, we've got you covered. Dive into a world of convenient, confidential, and empowering communication, right within our app Break free from limitations and embrace the freedom to reach out whenever you need, knowing that our dedicated team is here to uplift your spirits and empower your journey towards emotional well-being",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-
                     fontFamily: 'SourceCodePro',
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
                     fontSize: 22,
                   ),
                 ),
-                SizedBox(height: 40,),
-                Text("Pocket Friendly Options" , style: TextStyle(
-
-                  fontFamily: 'JosefinSans',
-                  color: Colors.black,
-
-                  fontWeight: FontWeight.w500,
-                  fontSize: 30,
-                ),),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 40,
+                ),
+                Text(
+                  "Pocket Friendly Options",
+                  style: TextStyle(
+                    fontFamily: 'JosefinSans',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 30,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 buildCard(),
                 buildCard30min(),
                 buildCard1hour(),

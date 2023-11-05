@@ -2,16 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled5/community/add_poll.dart';
+import 'package:untitled5/community/post.dart';
 import 'package:untitled5/drawer/drawer.dart';
-import 'package:untitled5/community/expand_thread.dart';
+import 'package:untitled5/pro.dart';
 
-
+bool isFav = false;
 User? user = auth.currentUser;
 FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -35,35 +35,34 @@ class _HomeScreenState extends State<HomeScreen> {
   final comment = TextEditingController();
   TextEditingController searchController = TextEditingController();
   String search = "";
-  bool _hasBeenPressed = false;
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     double displayheight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      drawer: const drawer(),
       appBar: AppBar(
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
-          },
-        ),
+        clipBehavior: Clip.hardEdge,
         backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        title: const Text(
-          'Community',
-          style: TextStyle(
-              fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
+        //   automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            SizedBox(width: displayWidth * .25),
+            const Text(
+              'Community',
+              style: TextStyle(
+                  fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
+            ),
+            IconButton(
+                color: Colors.black,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Scene()));
+                },
+                icon: Icon(
+                  Icons.arrow_drop_down,
+                ))
+          ],
         ),
         centerTitle: true,
       ),
@@ -112,8 +111,9 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               child: Expanded(
                 child: StreamBuilder(
-                  stream:
-                      FirebaseFirestore.instance.collection('polls').snapshots(),
+                  stream: FirebaseFirestore.instance
+                      .collection('polls')
+                      .snapshots(),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return CircularProgressIndicator();
@@ -124,33 +124,57 @@ class _HomeScreenState extends State<HomeScreen> {
                     return ListView.builder(
                       itemCount: polls?.length,
                       itemBuilder: (context, index) {
-                        var poll = polls?[index].data();
-                        var pollId = polls?[index].id;
-                        poll?['votes'] ??= {};
-                        return ListTile(
-                          title: Text(poll?['question']),
-                          subtitle: Column(
-                            children: poll?['options'].map<Widget>((option) {
-                              var voteCount = poll['votes'][option] ?? 0;
-                              return Row(
-                                children: [
-                                  Text('$option: $voteCount votes'),
-                                  ElevatedButton(
-                                    onPressed: () => _vote(pollId!, option),
-                                    child: Text('Vote'),
-                                  ),
-                                ],
-                              );
-                            }).toList(),
-                          ),
-                        );
+                        if (polls?[index].data()['type'] == "polls") {
+                          var poll = polls?[index].data();
+                          var pollId = polls?[index].id;
+                          poll?['votes'] ??= {};
+                          return ListTile(
+                            title: Text(poll?['question']),
+                            subtitle: Column(
+                              children: poll?['options'].map<Widget>((option) {
+                                var voteCount = poll['votes'][option] ?? 0;
+                                return Row(
+                                  children: [
+                                    Text('$option: $voteCount votes'),
+                                    IconButton(
+                                        onPressed: () => isFav
+                                            ? _vote(pollId!, option)
+                                            : null,
+                                        icon: Icon(Icons.how_to_vote))
+                                  ],
+                                );
+                              }).toList(),
+                            ),
+                          );
+                        } else if (polls?[index].data()['type'] == "post") {
+                          var poll = polls?[index].data();
+                          var pollId = polls?[index].id;
+                          poll?['votes'] ??= {};
+                          return ListTile(
+                            title: Text(poll?['text']),
+                          );
+                          var posts = snapshot.data?.docs;
+                          List<Widget> postWidgets = [];
+                          for (var post in posts!) {
+                            var text = post['text'];
+                            var imageUrl = post['image_url'];
+                            // Create widgets to display posts
+                            // You can use ListTile, Card, or your custom widgets here
+                            var postWidget =
+                                YourPostWidget(text: text, imageUrl: imageUrl);
+                            postWidgets.add(postWidget);
+                          }
+                          return ListView(
+                            children: postWidgets,
+                          );
+                        }
                       },
                     );
                   },
                 ),
               ),
             ),
-            Expanded(
+            /*  Expanded(
               child: FirebaseAnimatedList(
                 query: databaseReference.child('Post List'),
                 itemBuilder: (BuildContext context, DataSnapshot snapshot,
@@ -441,7 +465,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                 },
               ),
-            ),
+            ),*/
           ],
         ),
       ),

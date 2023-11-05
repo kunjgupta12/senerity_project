@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'package:untitled5/auth/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+User? user = auth.currentUser;
+FirebaseAuth auth = FirebaseAuth.instance;
+
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
 
@@ -23,7 +26,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Future passwordreset() async {
     try {
       await FirebaseAuth.instance
-          .sendPasswordResetEmail(email: _emailcontroller.text.trim());
+          .sendPasswordResetEmail(email: auth.currentUser!.email.toString());
       showDialog(
           context: context,
           builder: (context) {

@@ -19,6 +19,7 @@ class CreatePollPage extends StatelessWidget {
         'question': pollQuestion,
         'options': pollOptions,
         'created_at': FieldValue.serverTimestamp(),
+        'type': 'polls'
       });
 
       Navigator.of(context).pop(); // Close the create poll page
@@ -40,12 +41,13 @@ class CreatePollPage extends StatelessWidget {
               FormBuilderTextField(
                 name: 'question',
                 decoration: InputDecoration(labelText: 'Poll Question'),
-              //  validator: FormBuilderValidators.required(context),
+                //  validator: FormBuilderValidators.required(context),
               ),
               FormBuilderTextField(
                 name: 'options',
-                decoration: InputDecoration(labelText: 'Poll Options (comma-separated)'),
-       //         validator: FormBuilderValidators.required(context),
+                decoration: InputDecoration(
+                    labelText: 'Poll Options (comma-separated)'),
+                //         validator: FormBuilderValidators.required(context),
               ),
               SizedBox(height: 20),
               ElevatedButton(

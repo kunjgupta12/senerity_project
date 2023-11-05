@@ -10,7 +10,6 @@ import 'package:untitled5/auth/login_page.dart';
 import 'package:untitled5/bottom_nav/nav_bar.dart';
 import 'package:untitled5/auth/signup_page.dart';
 
-
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   late Rx<User?> _user;

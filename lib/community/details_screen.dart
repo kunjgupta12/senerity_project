@@ -14,7 +14,6 @@ class DetailsScreen extends StatelessWidget {
       // each product have a color
 
       appBar: AppBar(
-
         leading: IconButton(
           icon: SvgPicture.asset(
             'assets/icons/back.svg',
@@ -57,7 +56,8 @@ class DetailsScreen extends StatelessWidget {
                       ),
                     ),
                     child: Column(
-                      children: <Widget>[/*
+                      children: <Widget>[
+                        /*
                     ColorAndSize(product: product),
                         SizedBox(height: kDefaultPaddin / 2),
                         Description(product: product),
@@ -68,7 +68,11 @@ class DetailsScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                 ProductTitleWithImage( tempTitle: '', description: '', img: '',)
+                  ProductTitleWithImage(
+                    tempTitle: '',
+                    description: '',
+                    img: '',
+                  )
                 ],
               ),
             )

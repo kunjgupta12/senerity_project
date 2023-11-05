@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class ProductTitleWithImage extends StatefulWidget {
-  const ProductTitleWithImage({super.key,
+  const ProductTitleWithImage({
+    super.key,
     required this.tempTitle,
-  required this.description,
-  required this.img,
+    required this.description,
+    required this.img,
   });
-final String tempTitle;
-final String description;
-final String img;
+  final String tempTitle;
+  final String description;
+  final String img;
 
   @override
   State<ProductTitleWithImage> createState() => _ProductTitleWithImageState();
@@ -20,7 +21,7 @@ class _ProductTitleWithImageState extends State<ProductTitleWithImage> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: kDefaultPaddin),
+      padding: EdgeInsets.symmetric(horizontal: kDefaultPaddin),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -29,7 +30,7 @@ class _ProductTitleWithImageState extends State<ProductTitleWithImage> {
             style: TextStyle(color: Colors.white),
           ),
           Text(
-         widget.tempTitle   ,
+            widget.tempTitle,
             style: Theme.of(context)
                 .textTheme
                 .titleLarge!

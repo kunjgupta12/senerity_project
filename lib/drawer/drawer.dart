@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/drawer/T@C.dart';
+import 'package:untitled5/pro.dart';
 import 'package:untitled5/snaphelp/gethelp.dart';
 import 'package:untitled5/auth/login_page.dart';
 import 'package:untitled5/drawer/profile.dart';
@@ -94,8 +95,8 @@ class drawer extends StatelessWidget {
                 style: TextStyle(),
               ),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Homepagee()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Scene()));
               },
             ),
             ListTile(
