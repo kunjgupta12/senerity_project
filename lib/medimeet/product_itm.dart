@@ -35,10 +35,10 @@ class _ProductItemState extends State<ProductItem> {
       child: Card(
         borderOnForeground: true,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(3.0),
         ),
-        color: Colors.black12,
-        elevation: 5,
+        color: Colors.white,
+        elevation: 1,
         child: Column(
           children: <Widget>[
             ListTile(
@@ -52,30 +52,35 @@ class _ProductItemState extends State<ProductItem> {
               title: Text(widget.name, style: TextStyle(fontSize: 40.0)),
               subtitle: Text(widget.price, style: TextStyle(fontSize: 20.0)),
             ),
-            ButtonBar(
-              children: <Widget>[
-                MaterialButton(
-                    color: Colors.white30,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DoctorDetails(
-                                    name: widget.name,
-                                    Degree: widget.Degree,
-                                    price: widget.price,
-                                    email: widget.email,
-                                    registrationnumber:
-                                        widget.registraionnumber,
-                                    Experience: widget.Experience,
-                                    image: widget.image,
-                                  )));
-                    },
-                    child: Text(
-                      'Book',
-                      style: TextStyle(),
-                    )),
-              ],
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              child: MaterialButton(
+                  minWidth: displayWidth,
+                  //    color: Colors.white,
+
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DoctorDetails(
+                                  name: widget.name,
+                                  Degree: widget.Degree,
+                                  price: widget.price,
+                                  email: widget.email,
+                                  registrationnumber: widget.registraionnumber,
+                                  Experience: widget.Experience,
+                                  image: widget.image,
+                                )));
+                  },
+                  child: Text(
+                    'Book Video Calling Appointment:  ' + 'Rs. ' + widget.price,
+                    style: TextStyle(),
+                  )),
             ),
           ],
         ),

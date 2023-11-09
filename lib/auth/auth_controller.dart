@@ -4,8 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled5/auth/email_auth_register.dart';
-
-import 'package:untitled5/email_auth/email_authstep.dart';
 import 'package:untitled5/auth/login_page.dart';
 import 'package:untitled5/bottom_nav/nav_bar.dart';
 import 'package:untitled5/auth/signup_page.dart';
@@ -30,7 +28,7 @@ class AuthController extends GetxController {
   _initialScreen(User? user) {
     if (user == null) {
       print("login page");
-      Get.offAll(() => Loginpage());
+      Get.offAll(() => const Loginpage());
     }
   }
 
@@ -39,7 +37,7 @@ class AuthController extends GetxController {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
 
-      Get.offAll(() => EmailVerificationScreenregister());
+      Get.offAll(() => const EmailVerificationScreenregister());
       user = auth.currentUser!;
 
       CollectionReference collref =
@@ -56,7 +54,7 @@ class AuthController extends GetxController {
         "User message",
         backgroundColor: Colors.redAccent,
         snackPosition: SnackPosition.BOTTOM,
-        titleText: Text(
+        titleText: const Text(
           "Account creation failed",
           style: TextStyle(color: Colors.white),
         ),
@@ -72,10 +70,10 @@ class AuthController extends GetxController {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
 
-      if (isEmailVerified) {
-        Get.offAll(profilepage());
+      if (FirebaseAuth.instance.currentUser!.emailVerified) {
+        Get.offAll(const profilepage());
       } else {
-        Get.offAll(EmailVerificationScreen());
+        Get.offAll(const EmailVerificationScreenregister());
       }
     } catch (e) {
       Get.snackbar(
@@ -83,7 +81,7 @@ class AuthController extends GetxController {
         "Login message",
         backgroundColor: Colors.redAccent,
         snackPosition: SnackPosition.BOTTOM,
-        titleText: Text(
+        titleText: const Text(
           "Login  failed",
           style: TextStyle(color: Colors.white),
         ),

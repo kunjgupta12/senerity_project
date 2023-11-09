@@ -1,0 +1,91 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:untitled5/medimeet/doctor_appointment.dart';
+
+import '../community/dialog.dart';
+
+class Medimeet extends StatefulWidget {
+  const Medimeet({super.key});
+
+  @override
+  State<Medimeet> createState() => _MedimeetState();
+}
+
+class _MedimeetState extends State<Medimeet> {
+  @override
+  Widget build(BuildContext context) {
+    double displayWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      appBar: AppBar(
+        clipBehavior: Clip.hardEdge,
+        backgroundColor: Colors.white,
+        //   automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            SizedBox(width: displayWidth * .25),
+            const Text(
+              'MediMeet',
+              style: TextStyle(
+                  fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
+            ),
+            IconButton(
+                color: Colors.black,
+                onPressed: () {
+                  customShowDialog(context);
+                  /*Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Scene()));*/
+                },
+                icon: Icon(
+                  Icons.arrow_drop_down,
+                )),
+          ],
+        ),
+        centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => doctor()));
+        },
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                Text(
+                  "Revolutionize your healthcare experience with our groundbreaking doctor's appointment feature. Bid farewell to long queues and tedious phone calls by effortlessly scheduling your appointments through our user-friendly app. Access a wide network of renowned doctors and specialists, ready to provide you with personalized care. From routine check-ups to critical consultations, our app streamlines the entire process, putting your health at the forefront. Take charge of your well-being and enjoy the convenience of booking appointments at your fingertips. Trust in our reliable platform to connect you with exceptional healthcare professionals, ensuring that you receive the quality care you deserve. Embrace a new era of healthcare convenience and prioritize your health with our cutting-edge doctor's appointment feature.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'SourceCodePro',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 22,
+                  ),
+                ),
+                SizedBox(
+                  height: 80,
+                ),
+                Text(
+                  "Experience the freedom of choice with our flexible pricing feature for doctor's appointments. We believe that every individual deserves access to quality healthcare at a price that suits their needs. With our app, you have the power to select the doctor of your choice and even determine the price you are comfortable with. Our diverse network of healthcare professionals ensures that you find the right match. No more rigid pricing structures or hidden fees - take control of your healthcare journey and set your own budget. We empower you to prioritize your health without compromising your financial well-being. Discover a new level of affordability and convenience with our app's flexible pricing for doctor's appointments.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'SourceCodePro',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 22,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
+            )),
+      ),
+    );
+  }
+}

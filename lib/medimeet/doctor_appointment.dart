@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:untitled5/drawer/drawer.dart';
-
 import 'package:untitled5/medimeet/product_itm.dart';
+
+import '../community/dialog.dart';
 
 final firestore =
     FirebaseFirestore.instance.collection('doctor details').snapshots();
@@ -20,37 +19,36 @@ class _HomePageState extends State<doctor> {
   @override
   Widget build(BuildContext context) {
     double displayheight = MediaQuery.of(context).size.height;
+
+    double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: drawer(),
       appBar: AppBar(
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
-          },
-        ),
+        clipBehavior: Clip.hardEdge,
         backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'MediMeet',
-          style: TextStyle(
-              fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
+        //   automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            const Text(
+              'Video Call Appointment',
+              style: TextStyle(
+                  fontFamily: 'JosefinSans', fontSize: 20, color: Colors.black),
+            ),
+            IconButton(
+                color: Colors.black,
+                onPressed: () {
+                  customShowDialog(context);
+                  /*Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Scene()));*/
+                },
+                icon: Icon(
+                  Icons.arrow_drop_down,
+                )),
+          ],
         ),
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15,
-          vertical: 15,
-        ),
+        padding: const EdgeInsets.all(8.0),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(

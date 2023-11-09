@@ -7,11 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled5/community/add_poll.dart';
+import 'package:untitled5/community/add_post.dart';
+import 'package:untitled5/community/dialog.dart';
 import 'package:untitled5/community/post.dart';
+import 'package:untitled5/drawer/action_button..dart';
 import 'package:untitled5/drawer/drawer.dart';
 import 'package:untitled5/pro.dart';
 
-bool isFav = false;
+import '../drawer/expanded.dart';
+
 User? user = auth.currentUser;
 FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -56,17 +60,49 @@ class _HomeScreenState extends State<HomeScreen> {
             IconButton(
                 color: Colors.black,
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Scene()));
+                  customShowDialog(context);
+                  /*Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Scene()));*/
                 },
                 icon: Icon(
                   Icons.arrow_drop_down,
-                ))
+                )),
           ],
         ),
         centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: ExpandableFab(children: [
+        ActionButton(
+          icon: const Icon(
+            Icons.poll,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CreatePollPage()));
+          },
+        ),
+        ActionButton(
+          icon: const Icon(
+            Icons.post_add,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => NewPostPage()));
+          },
+        ),
+        ActionButton(
+          icon: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            print('add');
+          },
+        ),
+      ], distance: 120),
+      /* FloatingActionButton(
         clipBehavior: Clip.hardEdge,
         backgroundColor: Colors.white,
         onPressed: () {
@@ -78,7 +114,8 @@ class _HomeScreenState extends State<HomeScreen> {
           Icons.add,
           color: Colors.black,
         ),
-      ), // This trailing comma makes,
+      ), */
+      // This trailing comma makes,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
         child: Column(
@@ -137,9 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: [
                                     Text('$option: $voteCount votes'),
                                     IconButton(
-                                        onPressed: () => isFav
-                                            ? _vote(pollId!, option)
-                                            : null,
+                                        onPressed: () => _vote(pollId!, option),
                                         icon: Icon(Icons.how_to_vote))
                                   ],
                                 );
@@ -153,20 +188,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           return ListTile(
                             title: Text(poll?['text']),
                           );
-                          var posts = snapshot.data?.docs;
-                          List<Widget> postWidgets = [];
-                          for (var post in posts!) {
-                            var text = post['text'];
-                            var imageUrl = post['image_url'];
-                            // Create widgets to display posts
-                            // You can use ListTile, Card, or your custom widgets here
-                            var postWidget =
-                                YourPostWidget(text: text, imageUrl: imageUrl);
-                            postWidgets.add(postWidget);
-                          }
-                          return ListView(
-                            children: postWidgets,
-                          );
+                        } else if (polls?[index].data()['type'] ==
+                            "post_image") {
+                          var poll = polls?[index].data();
+                          var pollId = polls?[index].id;
+                          poll?['votes'] ??= {};
+                          return ListTile(
+                              title: Text(poll?['text']),
+                              subtitle: Container(
+                                  height: 200,
+                                  child: Image.network(poll?['image_url'])));
                         }
                       },
                     );

@@ -81,7 +81,6 @@ class Scene extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  // autogroupodrsydj (UBVwxPB7b2r6FRdqEFoDRs)
                   margin: EdgeInsets.fromLTRB(
                       32 * fem, 0 * fem, 33 * fem, 27 * fem),
                   width: double.infinity,
