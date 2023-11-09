@@ -7,11 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled5/community/add_poll.dart';
+import 'package:untitled5/community/dialog.dart';
 import 'package:untitled5/community/post.dart';
+import 'package:untitled5/drawer/action_button..dart';
 import 'package:untitled5/drawer/drawer.dart';
 import 'package:untitled5/pro.dart';
 
-bool isFav = false;
+import '../drawer/expanded.dart';
+
 User? user = auth.currentUser;
 FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -56,17 +59,47 @@ class _HomeScreenState extends State<HomeScreen> {
             IconButton(
                 color: Colors.black,
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Scene()));
+               customShowDialog(context);
+                  /*Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Scene()));*/
                 },
                 icon: Icon(
                   Icons.arrow_drop_down,
-                ))
+                )),
           ],
         ),
         centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: ExpandableFab(children: [
+        ActionButton(
+          icon: const Icon(
+            Icons.person,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            print('person');
+          },
+        ),
+        ActionButton(
+          icon: const Icon(
+            Icons.settings,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            print('settings');
+          },
+        ),
+        ActionButton(
+          icon: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            print('add');
+          },
+        ),
+      ], distance: 120),
+      /* FloatingActionButton(
         clipBehavior: Clip.hardEdge,
         backgroundColor: Colors.white,
         onPressed: () {
@@ -78,7 +111,8 @@ class _HomeScreenState extends State<HomeScreen> {
           Icons.add,
           color: Colors.black,
         ),
-      ), // This trailing comma makes,
+      ), */
+      // This trailing comma makes,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
         child: Column(
@@ -137,9 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: [
                                     Text('$option: $voteCount votes'),
                                     IconButton(
-                                        onPressed: () => isFav
-                                            ? _vote(pollId!, option)
-                                            : null,
+                                        onPressed: () => _vote(pollId!, option),
                                         icon: Icon(Icons.how_to_vote))
                                   ],
                                 );
@@ -152,6 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           poll?['votes'] ??= {};
                           return ListTile(
                             title: Text(poll?['text']),
+                            subtitle: Text(''),
                           );
                           var posts = snapshot.data?.docs;
                           List<Widget> postWidgets = [];

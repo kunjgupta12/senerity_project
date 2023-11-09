@@ -1,8 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/community/post.dart';
-import 'package:untitled5/drawer/profile.dart';
 import 'package:untitled5/medimeet/doctor_appointment.dart';
 
 import 'package:untitled5/snaphelp/razorpay.dart';

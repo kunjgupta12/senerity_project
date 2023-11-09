@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/drawer/T@C.dart';
+import 'package:untitled5/drawer/privacy-policy.dart';
 import 'package:untitled5/pro.dart';
 import 'package:untitled5/snaphelp/gethelp.dart';
 import 'package:untitled5/auth/login_page.dart';
@@ -127,7 +128,11 @@ class drawer extends StatelessWidget {
               ),
               title: const Text('Privacy Policy'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>  privacy_policy()));
+
               },
             ),
             ListTile(
@@ -141,7 +146,7 @@ class drawer extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const terms_condition()));
+                        builder: (context) =>  terms_condition()));
               },
             ),
             SizedBox(

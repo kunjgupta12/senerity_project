@@ -35,10 +35,10 @@ class _ProductItemState extends State<ProductItem> {
       child: Card(
         borderOnForeground: true,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(3.0),
         ),
-        color: Colors.black12,
-        elevation: 5,
+        color: Colors.white,
+        elevation:5,
         child: Column(
           children: <Widget>[
             ListTile(
@@ -55,7 +55,7 @@ class _ProductItemState extends State<ProductItem> {
             ButtonBar(
               children: <Widget>[
                 MaterialButton(
-                    color: Colors.white30,
+                    color: Colors.white,
                     onPressed: () {
                       Navigator.push(
                           context,

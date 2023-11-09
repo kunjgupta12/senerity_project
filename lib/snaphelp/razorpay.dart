@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:untitled5/community/dialog.dart';
 import 'package:untitled5/drawer/drawer.dart';
 import 'package:untitled5/snaphelp/gethelp.dart';
 import 'package:untitled5/snaphelp/gethelp_30.dart';
@@ -391,7 +392,7 @@ class _HomePageState extends State<paymemnt> {
             ),
             IconButton(
                 color: Colors.black,
-                onPressed: () {},
+                onPressed: () {customShowDialog(context);},
                 icon: Icon(
                   Icons.arrow_drop_down,
                 ))
