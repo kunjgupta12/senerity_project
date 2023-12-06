@@ -47,13 +47,12 @@ class _terms_conditionState extends State<terms_condition> {
           ),
           body: SingleChildScrollView(
               physics: BouncingScrollPhysics(),
-              child: Container(
+              child: Center(
                 child: Padding(
                   padding: EdgeInsets.all(10.0),
-                  child: Align(
-                    alignment: Alignment.topLeft,
+                  child: Center(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
                           height: h * .02,
@@ -62,7 +61,7 @@ class _terms_conditionState extends State<terms_condition> {
 
                         Text(
                           "Understanding Our Terms and Conditions",
-                          textAlign: TextAlign.start,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: headingfont,
                               fontWeight: FontWeight.bold),
@@ -159,7 +158,7 @@ class _terms_conditionState extends State<terms_condition> {
 
                         RichText(
                           textDirection: TextDirection.ltr,
-                          textAlign: TextAlign.start,
+                          textAlign: TextAlign.center,
                           text: TextSpan(
                             text: "\u2022",
                             // Note: Styles for TextSpans must be explicitly defined.

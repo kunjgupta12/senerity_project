@@ -3,7 +3,10 @@ import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled5/auth/ForgotPasswordPage.dart';
+import 'package:untitled5/bottom_nav/nav_bar.dart';
 import 'package:untitled5/support.dart';
+
+import 'auth/login_page.dart';
 
 class Scene extends StatelessWidget {
   @override
@@ -55,13 +58,13 @@ class Scene extends StatelessWidget {
                               child: Text(
                                 'My Profile',
                                 textAlign: TextAlign.center,
-                                /* style: SafeGoogleFont (
-                                  'Josefin Sans',
-                                  fontSize: 19*ffem,
+                                style: TextStyle(
+                                  fontFamily: 'JosefinSans',
+                                  fontSize: 19 * ffem,
                                   fontWeight: FontWeight.w400,
-                                  height: 1*ffem/fem,
+                                  height: 1 * ffem / fem,
                                   color: Color(0xff000000),
-                                ),*/
+                                ),
                               ),
                             ),
                           ),
@@ -193,10 +196,20 @@ class Scene extends StatelessWidget {
                           child: SizedBox(
                             width: 24 * fem,
                             height: 19 * fem,
-                            child: Image.asset(
-                              'assets/page-1/images/vector.png',
-                              width: 24 * fem,
-                              height: 19 * fem,
+                            child: GestureDetector(
+                              onTap: () {
+                                auth.signOut().then((value) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Loginpage()));
+                                });
+                              },
+                              child: Image.asset(
+                                'assets/page-1/images/vector.png',
+                                width: 24 * fem,
+                                height: 19 * fem,
+                              ),
                             ),
                           ),
                         ),
@@ -209,10 +222,20 @@ class Scene extends StatelessWidget {
                           child: SizedBox(
                             width: 19.16 * fem,
                             height: 19 * fem,
-                            child: Image.asset(
-                              'assets/page-1/images/vector-kKB.png',
-                              width: 19.16 * fem,
-                              height: 19 * fem,
+                            child: GestureDetector(
+                              onTap: () {
+                                auth.signOut().then((value) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Loginpage()));
+                                });
+                              },
+                              child: Image.asset(
+                                'assets/page-1/images/vector-kKB.png',
+                                width: 19.16 * fem,
+                                height: 19 * fem,
+                              ),
                             ),
                           ),
                         ),
@@ -228,13 +251,13 @@ class Scene extends StatelessWidget {
                             child: Text(
                               'Sign Out',
                               textAlign: TextAlign.center,
-                              /*  style: SafeGoogleFont (
-                                'ABeeZee',
-                                fontSize: 16*ffem,
+                              style: TextStyle(
+                                fontFamily: 'ABeeZee',
+                                fontSize: 16 * ffem,
                                 fontWeight: FontWeight.w400,
-                                height: 1.1825*ffem/fem,
+                                height: 1.1825 * ffem / fem,
                                 color: Color(0xff363636),
-                              ),*/
+                              ),
                             ),
                           ),
                         ),
@@ -470,13 +493,12 @@ class Scene extends StatelessWidget {
                               child: Text(
                                 'Support',
                                 textAlign: TextAlign.center,
-                                /*style: SafeGoogleFont (
-                                  'Actor',
-                                  fontSize: 18*ffem,
+                                style: TextStyle(
+                                  fontSize: 16 * ffem,
                                   fontWeight: FontWeight.w400,
-                                  height: 1.2025*ffem/fem,
+                                  height: 1.2025 * ffem / fem,
                                   color: Color(0xff000000),
-                                ),*/
+                                ),
                               ),
                             ),
                           ),
@@ -500,6 +522,128 @@ class Scene extends StatelessWidget {
                                 height: 1.1825*ffem/fem,
                                 color: Color(0xff000000),
                               ),*/
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  // component1U6M (44:254)
+                  padding: EdgeInsets.fromLTRB(
+                      34 * fem, 13 * fem, 33 * fem, 13 * fem),
+                  width: double.infinity,
+                  height: 76 * fem,
+                  decoration: BoxDecoration(
+                    color: Color(0xffffecec),
+                    borderRadius: BorderRadius.circular(18 * fem),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        // autogroupxsahAE5 (UBW1SXsHJjysFQqAmpXsAH)
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 0 * fem, 35 * fem, 0 * fem),
+                        padding: EdgeInsets.fromLTRB(
+                            18 * fem, 8 * fem, 18 * fem, 7.92 * fem),
+                        height: double.infinity,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(
+                              'assets/page-1/images/community.png',
+                            ),
+                          ),
+                        ),
+                        child: Center(
+                          // communitylines1r6u (I44:254;44:249)
+                          child: SizedBox(
+                            width: 42 * fem,
+                            height: 34.08 * fem,
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => profilepage()));
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Image.asset(
+                                'assets/page-1/images/community-lines-1-abj.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => profilepage()));
+                        },
+                        child: Container(
+                          // autogroupqcyfwPF (UBW1Y2i832avQfDhhjQCyF)
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 24 * fem, 0 * fem),
+                          padding: EdgeInsets.fromLTRB(
+                              16 * fem, 8 * fem, 27.92 * fem, 7.92 * fem),
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                'assets/page-1/images/snaphelp-Bk5.png',
+                              ),
+                            ),
+                          ),
+                          child: Center(
+                            // snaphelp1dWy (I44:254;44:250)
+                            child: SizedBox(
+                              width: 34.08 * fem,
+                              height: 34.08 * fem,
+                              child: Image.asset(
+                                'assets/page-1/images/snaphelp-1-Ea5.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => profilepage()));
+                        },
+                        child: Container(
+                          // autogrouprydkA17 (UBW1bXcHxJRbKzvQUaryDK)
+                          padding: EdgeInsets.fromLTRB(
+                              21 * fem, 8 * fem, 20.92 * fem, 7.92 * fem),
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                'assets/page-1/images/medimeet-ysf.png',
+                              ),
+                            ),
+                          ),
+                          child: Center(
+                            // medimeet1sRK (I44:254;44:251)
+                            child: SizedBox(
+                              width: 34.08 * fem,
+                              height: 34.08 * fem,
+                              child: Image.asset(
+                                'assets/page-1/images/medimeet-1-oS9.png',
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),

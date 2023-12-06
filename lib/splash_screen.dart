@@ -1,3 +1,4 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class _splashscreenState extends State<splashscreen>
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Firebase.initializeApp().then((value) => Get.put(AuthController()));
+
     Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (_) => profilepage(),

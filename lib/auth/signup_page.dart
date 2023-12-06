@@ -67,32 +67,12 @@ class _SignuppageState extends State<SignupPage> {
               SizedBox(
                 height: w * .2,
               ),
-              /*     Container(
-                width: w * .35,
-                height: h * 0.35,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("img/logo.png"),
-                        fit: BoxFit.fitHeight)),
-              ),*/
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 width: w,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /*    Center(
-                      child: Text(
-                        "Serenity",
-                        style: TextStyle(
-                          fontFamily: 'JosefinSans',
-                          fontSize: 50,
-                          decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.w600,
-                          // color: Color.fromRGBO(10, 10, 3, 0.8)
-                        ),
-                      ),
-                    ),*/
                     SizedBox(
                       height: w * .5,
                     ),

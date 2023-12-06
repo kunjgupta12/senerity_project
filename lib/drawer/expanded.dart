@@ -74,13 +74,15 @@ class _ExpandableFabState extends State<ExpandableFab>
           shape: const CircleBorder(),
           clipBehavior: Clip.antiAlias,
           elevation: 4,
+          color: Colors.black,
           child: InkWell(
             onTap: _toggle,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Icon(
                 Icons.close,
-                color: Theme.of(context).primaryColor,
+                size: 30,
+                color: Colors.white,
               ),
             ),
           ),
@@ -94,7 +96,7 @@ class _ExpandableFabState extends State<ExpandableFab>
       duration: const Duration(milliseconds: 250),
       transformAlignment: Alignment.center,
       transform:
-          Matrix4.diagonal3Values(_open ? 0.7 : 1.0, _open ? 0.7 : 1.0, 1.0),
+          Matrix4.diagonal3Values(_open ? 0.6 : 1.0, _open ? 0.6 : 1.0, 1.0),
       curve: Curves.easeOut,
       child: AnimatedOpacity(
         opacity: _open ? 0.0 : 1.0,
@@ -105,7 +107,7 @@ class _ExpandableFabState extends State<ExpandableFab>
           onPressed: _toggle,
           child: const Icon(
             Icons.add,
-            size: 40,
+            size: 30,
           ),
         ),
       ),
@@ -150,8 +152,8 @@ class _ExpandableFab extends StatelessWidget {
     return AnimatedBuilder(
       animation: progress!,
       builder: (context, child) {
-        final offset = Offset.fromDirection(
-            directionDegrees * (math.pi / 180), progress!.value * maxDistance);
+        final offset = Offset.fromDirection(directionDegrees * (math.pi / 180),
+            progress!.value * maxDistance * 0.9);
 
         return Positioned(
           right: 4.0 + offset.dx,

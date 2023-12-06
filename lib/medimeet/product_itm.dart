@@ -33,10 +33,6 @@ class _ProductItemState extends State<ProductItem> {
     return Container(
       // padding: new EdgeInsets.all(10.0),
       child: Card(
-        borderOnForeground: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(3.0),
-        ),
         color: Colors.white,
         elevation: 1,
         child: Column(
@@ -58,9 +54,9 @@ class _ProductItemState extends State<ProductItem> {
             Container(
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
               child: MaterialButton(
-                  minWidth: displayWidth,
+                  minWidth: displayWidth * 0.9,
                   //    color: Colors.white,
 
                   onPressed: () {

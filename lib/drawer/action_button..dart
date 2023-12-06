@@ -5,7 +5,7 @@ class ActionButton extends StatelessWidget {
       : super(key: key);
 
   final VoidCallback? onPressed;
-  final Icon icon;
+  final String icon;
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +13,13 @@ class ActionButton extends StatelessWidget {
     return Material(
       shape: const CircleBorder(),
       clipBehavior: Clip.antiAlias,
-      color: theme.colorScheme.primary,
+      color: Colors.black,
       elevation: 4.0,
       child: IconButton(
+        iconSize: 40,
+        color: Colors.black,
         onPressed: onPressed,
-        icon: icon,
+        icon: Image.asset(icon),
       ),
     );
   }

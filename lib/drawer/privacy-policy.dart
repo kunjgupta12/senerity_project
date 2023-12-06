@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:untitled5/utils.dart';
+
+import '../utils.dart';
 
 class privacy_policy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 360;
     double fem = MediaQuery.of(context).size.width / baseWidth;
-    double ffem = fem * 0.97;
+    double ffem = fem * 0.96;
     return Container(
       width: double.infinity,
       child: Container(
@@ -27,7 +28,7 @@ class privacy_policy extends StatelessWidget {
               left: 0 * fem,
               top: 0 * fem,
               child: Container(
-                width: 1412 * fem,
+                width: 1410 * fem,
                 height: 864 * fem,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,7 +36,7 @@ class privacy_policy extends StatelessWidget {
                     Container(
                       // rectangle23BxM (262:208)
                       margin: EdgeInsets.fromLTRB(
-                          526.5 * fem, 0 * fem, 525.5 * fem, 7 * fem),
+                          520.5 * fem, 0 * fem, 525.5 * fem, 7 * fem),
                       width: double.infinity,
                       height: 67 * fem,
                       decoration: BoxDecoration(

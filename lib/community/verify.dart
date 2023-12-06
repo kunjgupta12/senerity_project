@@ -5,12 +5,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-class NewPostPage extends StatefulWidget {
+class verify extends StatefulWidget {
   @override
   _NewPostPageState createState() => _NewPostPageState();
 }
 
-class _NewPostPageState extends State<NewPostPage> {
+class _NewPostPageState extends State<verify> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
@@ -43,9 +43,10 @@ class _NewPostPageState extends State<NewPostPage> {
       final String userId = user.uid;
 
       // Add the new post to Firestore
-      await _firestore.collection('polls').add({
-        'type': 'post_image',
-        'text': text,
+      await _firestore.collection('verified').doc(user.uid).update({
+        'type': 'adhaar',
+        // 'text': text,
+        'verified': false,
         'image_url': _imageURL,
         'user_id': userId,
         'timestamp': FieldValue.serverTimestamp(),
@@ -60,27 +61,22 @@ class _NewPostPageState extends State<NewPostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create New Post'),
+        title: Text('Get verify'),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              if (_imageURL != null) Image.network(_imageURL!),
-              ElevatedButton(
-                onPressed: _pickImage,
-                child: Text('Pick Image'),
-              ),
-              TextField(
-                controller: _textController,
-                decoration: InputDecoration(labelText: 'Enter your post text'),
-              ),
-              ElevatedButton(
-                onPressed: _createPost,
-                child: Text('Create Post'),
-              ),
-            ],
+          child: Center(
+            child: Column(
+              children: [
+                if (_imageURL != null) Image.network(_imageURL!),
+                ElevatedButton(
+                  onPressed: _pickImage,
+                  child: Text('Pick Image'),
+                ),
+                ElevatedButton(onPressed: _createPost, child: Text('Submit')),
+              ],
+            ),
           ),
         ),
       ),

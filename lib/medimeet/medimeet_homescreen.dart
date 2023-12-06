@@ -15,29 +15,49 @@ class _MedimeetState extends State<Medimeet> {
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
+
+
+    double baseWidth = 360;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.97;
     return Scaffold(
       appBar: AppBar(
         clipBehavior: Clip.hardEdge,
         backgroundColor: Colors.white,
+        shadowColor: Colors.white,
         //   automaticallyImplyLeading: false,
         title: Row(
           children: [
-            SizedBox(width: displayWidth * .25),
-            const Text(
+            SizedBox(width: displayWidth * .3),
+            Text(
               'MediMeet',
+              textAlign: TextAlign.center,
               style: TextStyle(
-                  fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
+                fontFamily: 'JosefinSans',
+                fontSize: 19 * ffem,
+                fontWeight: FontWeight.w400,
+                height: 1 * ffem / fem,
+                color: Color(0xff000000),
+              ),
             ),
-            IconButton(
-                color: Colors.black,
-                onPressed: () {
-                  customShowDialog(context);
-                  /*Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Scene()));*/
-                },
-                icon: Icon(
-                  Icons.arrow_drop_down,
-                )),
+            SizedBox(
+              width: 5,
+            ),
+            GestureDetector(
+              onTap: () {
+                customShowDialog(context);
+              },
+              child: Container(
+                // line3FBw (129:381)
+                width: 9 * fem,
+                height: 5 * fem,
+                child: Image.asset(
+                  'assets/page-1/images/line-3-Ni5.png',
+                  width: 9 * fem,
+                  height: 5 * fem,
+                ),
+              ),
+            ),
           ],
         ),
         centerTitle: true,
@@ -64,12 +84,10 @@ class _MedimeetState extends State<Medimeet> {
                     fontFamily: 'SourceCodePro',
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
-                    fontSize: 22,
+                    fontSize: 18,
                   ),
                 ),
-                SizedBox(
-                  height: 80,
-                ),
+                Image.asset('assets/page-1/images/medimeet.png'),
                 Text(
                   "Experience the freedom of choice with our flexible pricing feature for doctor's appointments. We believe that every individual deserves access to quality healthcare at a price that suits their needs. With our app, you have the power to select the doctor of your choice and even determine the price you are comfortable with. Our diverse network of healthcare professionals ensures that you find the right match. No more rigid pricing structures or hidden fees - take control of your healthcare journey and set your own budget. We empower you to prioritize your health without compromising your financial well-being. Discover a new level of affordability and convenience with our app's flexible pricing for doctor's appointments.",
                   textAlign: TextAlign.center,
@@ -77,7 +95,7 @@ class _MedimeetState extends State<Medimeet> {
                     fontFamily: 'SourceCodePro',
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
-                    fontSize: 22,
+                    fontSize: 18,
                   ),
                 ),
                 SizedBox(

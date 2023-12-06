@@ -42,14 +42,6 @@ class _LoginpageState extends State<Loginpage> {
               SizedBox(
                 height: w * .09,
               ),
-              /*    Container(
-                width: w * 0.35,
-                height: h * 0.35,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("img/logo.png"),
-                        fit: BoxFit.fitHeight)),
-              ),*/
               SizedBox(
                 height: 100,
               ),
@@ -59,18 +51,6 @@ class _LoginpageState extends State<Loginpage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /*   Center(
-                      child: Text(
-                        "Serenity",
-                        style: TextStyle(
-                          fontFamily: 'JosefinSans',
-                          fontSize: w * .1,
-                          decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.w600,
-                          // color: Color.fromRGBO(10, 10, 3, 0.8)
-                        ),
-                      ),
-                    ),*/
                     SizedBox(
                       height: w * 0.35,
                     ),

@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:untitled5/bottom_nav/nav_bar.dart';
 import 'package:untitled5/medimeet/product_itm.dart';
 
 import '../community/dialog.dart';
@@ -18,9 +21,25 @@ class doctor extends StatefulWidget {
 class _HomePageState extends State<doctor> {
   @override
   Widget build(BuildContext context) {
+    double displayWidth = MediaQuery.of(context).size.width * 1.4;
     double displayheight = MediaQuery.of(context).size.height;
-
-    double displayWidth = MediaQuery.of(context).size.width;
+    final items = <Widget>[
+      Image.asset(
+        "img/community.png",
+        height: displayheight * .05,
+        width: displayWidth * .09,
+      ),
+      Image.asset(
+        "img/SnapHelp.png",
+        height: displayheight * .05,
+        width: displayWidth * .09,
+      ),
+      Image.asset(
+        "img/MediMeet.png",
+        height: displayheight * .05,
+        width: displayWidth * .09,
+      ),
+    ];
     return Scaffold(
       appBar: AppBar(
         clipBehavior: Clip.hardEdge,
@@ -37,8 +56,6 @@ class _HomePageState extends State<doctor> {
                 color: Colors.black,
                 onPressed: () {
                   customShowDialog(context);
-                  /*Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Scene()));*/
                 },
                 icon: Icon(
                   Icons.arrow_drop_down,
@@ -47,73 +64,68 @@ class _HomePageState extends State<doctor> {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                const Text(
-                  'Popular Doctors',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+      bottomNavigationBar: CurvedNavigationBar(
+        items: items,
+        animationCurve: Curves.fastEaseInToSlowEaseOut,
+        animationDuration: Duration(milliseconds: 200),
+        color: Color.fromRGBO(255, 237, 237, 1),
+        buttonBackgroundColor: Color.fromRGBO(49, 164, 153, 1),
+        backgroundColor: Colors.transparent,
+        height: displayheight * .085,
+        onTap: (index) => setState(() {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => profilepage()));
+        }),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Container(
+                height: displayheight * .75,
+                child: GestureDetector(
+                  child: Column(
+                    children: [
+                      StreamBuilder<QuerySnapshot>(
+                          stream: firestore,
+                          builder: (BuildContext value,
+                              AsyncSnapshot<QuerySnapshot> snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting)
+                              return CircularProgressIndicator();
+                            if (snapshot.hasError) return Text(('Some error'));
+
+                            return Expanded(
+                              child: ListView.builder(
+                                  itemCount: snapshot.data!.docs.length,
+                                  itemBuilder: (context, index) {
+                                    DocumentSnapshot data =
+                                        snapshot.data!.docs[index];
+                                    return ProductItem(
+                                        email: data['email'],
+                                        Degree: data['Degree'],
+                                        name: data['name'],
+                                        price: data['price'],
+                                        Experience: data['Experience'],
+                                        registraionnumber:
+                                            data['registraionnumber'],
+                                        image: data['image']);
+                                  }),
+                            );
+                          })
+                    ],
                   ),
                 ),
-                const SizedBox(
-                  height: 25,
-                ),
-                Container(
-                  height: displayheight * .75,
-                  child: GestureDetector(
-                    child: Column(
-                      children: [
-                        StreamBuilder<QuerySnapshot>(
-                            stream: firestore,
-                            builder: (BuildContext value,
-                                AsyncSnapshot<QuerySnapshot> snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.waiting)
-                                return CircularProgressIndicator();
-                              if (snapshot.hasError)
-                                return Text(('Some error'));
+              )
+              /*   Column(
 
-                              return Expanded(
-                                child: ListView.builder(
-                                    itemCount: snapshot.data!.docs.length,
-                                    itemBuilder: (context, index) {
-                                      DocumentSnapshot data =
-                                          snapshot.data!.docs[index];
-                                      return ListTile(
-                                        title: ProductItem(
-                                            email: data['email'],
-                                            Degree: data['Degree'],
-                                            name: data['name'],
-                                            price: data['price'],
-                                            Experience: data['Experience'],
-                                            registraionnumber:
-                                                data['registraionnumber'],
-                                            image: data['image']),
-                                      );
-                                    }),
-                              );
-                            })
-                      ],
-                    ),
-                  ),
-                )
-                /*   Column(
-
-                  children: List.generate(10, (index) {
-                    return const DoctorCard(
-                      route: 'doc_details',
-                    );
-                  }),
-                ),*/
-              ],
-            ),
+                children: List.generate(10, (index) {
+                  return const DoctorCard(
+                    route: 'doc_details',
+                  );
+                }),
+              ),*/
+            ],
           ),
         ),
       ),

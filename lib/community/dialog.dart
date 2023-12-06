@@ -9,10 +9,13 @@ Future<void> customShowDialog(BuildContext context) async {
       context: context,
       builder: (context) {
         return AlertDialog(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(25),
+            ),
+          ),
           backgroundColor: Color.fromRGBO(255, 237, 237, 1),
           content: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(15))),
             height: 200,
             width: 200,
             child: Column(

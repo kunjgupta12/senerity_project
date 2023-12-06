@@ -377,27 +377,48 @@ class _HomePageState extends State<paymemnt> {
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
+
+    double baseWidth = 360;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.97;
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        shadowColor: Colors.white,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            SizedBox(width: displayWidth * .25),
-            const Text(
+            SizedBox(width: displayWidth * .3),
+            Text(
               'SnapHelp',
+              textAlign: TextAlign.center,
               style: TextStyle(
-                  fontFamily: 'JosefinSans', fontSize: 25, color: Colors.black),
+                fontFamily: 'JosefinSans',
+                fontSize: 19 * ffem,
+                fontWeight: FontWeight.w400,
+                height: 1 * ffem / fem,
+                color: Color(0xff000000),
+              ),
             ),
-            IconButton(
-                color: Colors.black,
-                onPressed: () {
-                  customShowDialog(context);
-                },
-                icon: Icon(
-                  Icons.arrow_drop_down,
-                ))
+            SizedBox(
+              width: 5,
+            ),
+            GestureDetector(
+              onTap: () {
+                customShowDialog(context);
+              },
+              child: Container(
+                // line3FBw (129:381)
+                width: 9 * fem,
+                height: 5 * fem,
+                child: Image.asset(
+                  'assets/page-1/images/line-3-Ni5.png',
+                  width: 9 * fem,
+                  height: 5 * fem,
+                ),
+              ),
+            ),
           ],
         ),
         centerTitle: true,
@@ -415,19 +436,17 @@ class _HomePageState extends State<paymemnt> {
                     fontFamily: 'SourceCodePro',
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
-                    fontSize: 22,
+                    fontSize: 20,
                   ),
                 ),
-                SizedBox(
-                  height: 40,
-                ),
+                Image.asset('assets/page-1/images/snaphelp.png'),
                 Text(
-                  "Pocket Friendly Options",
+                  "Pocket Friendly Plans",
                   style: TextStyle(
                     fontFamily: 'JosefinSans',
                     color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 30,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 25,
                   ),
                 ),
                 SizedBox(

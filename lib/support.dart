@@ -7,7 +7,7 @@ import 'package:untitled5/utils.dart';
 class Scenee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 360;
+    double baseWidth = 380;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
@@ -74,7 +74,7 @@ class Scenee extends StatelessWidget {
                                 ),
                                 Container(
                                   // line3NU1 (129:377)
-                                  width: 9 * fem,
+                                  width: 8 * fem,
                                   height: 5 * fem,
                                   child: Image.asset(
                                     'assets/page-1/images/line-3-aKB.png',
@@ -292,7 +292,7 @@ class Scenee extends StatelessWidget {
                       Container(
                         // autogroupax7sivV (UBVzL4ihfZoW1sBeEgAx7s)
                         margin: EdgeInsets.fromLTRB(
-                            2 * fem, 0 * fem, 207.5 * fem, 9.5 * fem),
+                            1 * fem, 0 * fem, 207.5 * fem, 9.5 * fem),
                         width: double.infinity,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -300,7 +300,7 @@ class Scenee extends StatelessWidget {
                             Container(
                               // formkitinstagrame3T (278:244)
                               margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 0 * fem, 18.5 * fem, 0 * fem),
+                                  0 * fem, 0 * fem, 13.5 * fem, 0 * fem),
                               width: 21 * fem,
                               height: 21 * fem,
                               child: Image.asset(
@@ -313,17 +313,20 @@ class Scenee extends StatelessWidget {
                               // instagramj4u (278:238)
                               margin: EdgeInsets.fromLTRB(
                                   0 * fem, 0 * fem, 0 * fem, 1 * fem),
-                              child: Text(
-                                'Instagram',
-                                textAlign: TextAlign.center,
-                                style: SafeGoogleFont(
-                                  'Roboto',
-                                  fontSize: 14 * ffem,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.1725 * ffem / fem,
-                                  decoration: TextDecoration.underline,
-                                  color: Color(0xff000000),
-                                  decorationColor: Color(0xff000000),
+                              child: TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'Instagram',
+                                  textAlign: TextAlign.center,
+                                  style: SafeGoogleFont(
+                                    'Roboto',
+                                    fontSize: 14 * ffem,
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.1725 * ffem / fem,
+                                    decoration: TextDecoration.underline,
+                                    color: Color(0xff000000),
+                                    decorationColor: Color(0xff000000),
+                                  ),
                                 ),
                               ),
                             ),

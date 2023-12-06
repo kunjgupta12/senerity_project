@@ -69,7 +69,8 @@ dependencies:
   geolocator: ^10.0.1
   permission_handler: ^10.3.0
   geocoding: ^2.1.0
-
+  flutter_svg: ^2.0.9
+  firebase_app_check: ^0.2.1+6
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -97,6 +98,7 @@ flutter:
   assets:
     - img/
     - fonts/
+    - assets/
     - assets/page-1/images/auto-group-g9az.png
     - assets/page-1/images/android-battery.png
     - assets/page-1/images/community-lines-1.png
