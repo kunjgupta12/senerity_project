@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
             print('add');
           },
         ),
-      ], distance: 120),
+      ], distance: 100),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),

@@ -19,6 +19,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   await FirebaseAppCheck.instance.activate();
 //  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(MyApp());

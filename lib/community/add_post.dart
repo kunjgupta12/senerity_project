@@ -20,7 +20,7 @@ class _NewPostPageState extends State<NewPostPage> {
   // Function to pick an image from the device
   Future<void> _pickImage() async {
     final ImagePicker _picker = ImagePicker();
-    final image = await _picker.getImage(source: ImageSource.gallery);
+    final image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       final imageFile = File(image.path);
       // Upload the selected image to Firebase Storage
@@ -77,7 +77,7 @@ class _NewPostPageState extends State<NewPostPage> {
                 decoration: InputDecoration(labelText: 'Enter your post text'),
               ),
               ElevatedButton(
-                onPressed: _createPost,
+                onPressed: _imageURL != null ? _createPost : null,
                 child: Text('Create Post'),
               ),
             ],

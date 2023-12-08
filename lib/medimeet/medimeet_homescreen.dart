@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled5/drawer/action_audio.dart';
+import 'package:untitled5/drawer/audio_video.dart';
 import 'package:untitled5/medimeet/doctor_appointment.dart';
+import 'package:untitled5/medimeet/doctor_audio.dart';
 
 import '../community/dialog.dart';
+import '../drawer/action_button..dart';
+import '../drawer/expanded.dart';
 
 class Medimeet extends StatefulWidget {
   const Medimeet({super.key});
@@ -15,7 +20,6 @@ class _MedimeetState extends State<Medimeet> {
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
-
 
     double baseWidth = 360;
     double fem = MediaQuery.of(context).size.width / baseWidth;
@@ -62,15 +66,24 @@ class _MedimeetState extends State<Medimeet> {
         ),
         centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => doctor()));
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: Audio(children: [
+        ActionButton_Audio(
+          text: 'Video Call appointment',
+            icon: 'assets/video.png',
+            onPressed: () {
+              ////  if(document.data().value[]){
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => doctor()));
+            }),
+        ActionButton_Audio(
+          text: 'Audio Call appointment',
+          icon: 'assets/phone.png',
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => doctor_audio()));
+          },
+        ),
+      ], distance: 80),
       body: Container(
         padding: EdgeInsets.all(16.0),
         child: SingleChildScrollView(

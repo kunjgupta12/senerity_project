@@ -74,7 +74,7 @@ class _ProductItemState extends State<ProductItem> {
                                 )));
                   },
                   child: Text(
-                    'Book Video Calling Appointment:  ' + 'Rs. ' + widget.price,
+                    'Book  Calling Appointment:  ' + 'Rs. ' + widget.price,
                     style: TextStyle(),
                   )),
             ),
