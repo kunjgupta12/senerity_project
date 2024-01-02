@@ -30,10 +30,13 @@ class ActionButton_Audio extends StatelessWidget {
               onPressed: onPressed,
               icon: Image.asset(icon),
             ),
-            Text(text,style: TextStyle(   fontFamily: 'SourceCodePro',
-              color: Colors.black,
-              fontWeight: FontWeight.w800,
-              fontSize: 15,),)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0,5,9,5.0),
+              child: Text(text,style: TextStyle(   fontFamily: 'SourceCodePro',
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+                fontSize: 12,),),
+            )
           ],
         ),
       ),

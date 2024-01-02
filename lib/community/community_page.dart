@@ -61,21 +61,21 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       floatingActionButton: ExpandableFab(children: [
         ActionButton(
-            icon: 'assets/f3.png',
+            icon: 'assets/poll.svg',
             onPressed: () {
               ////  if(document.data().value[]){
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => CreatePollPage()));
             }),
         ActionButton(
-          icon: 'assets/f2.png',
+          icon: 'assets/image.svg',
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => NewPostPage()));
           },
         ),
         ActionButton(
-          icon: 'assets/f1.png',
+          icon: 'assets/write.svg',
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => NewPostWrite()));
@@ -192,13 +192,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             var poll = polls?[index].data();
                             var pollId = polls?[index].id;
                             poll?['votes'] ??= {};
-                            return Card(
-                              elevation: 1,
+                            return Padding(
+                              padding: const EdgeInsets.fromLTRB(20.0,5,12,5),
                               child: Container(
                                 margin: const EdgeInsets.only(bottom: 20),
                                 child: Column(
+
                                   children: [
-                                    FlutterPolls(
+                                    Image.asset('assets/line_c.png',color: Colors.black,),
+
+                                                                        FlutterPolls(
                                       pollId: polls?[index].id.toString(),
                                       // hasVoted: hasVoted.value,
                                       // userVotedOptionId: userVotedOptionId.value,
@@ -239,6 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             var a = PollOption(
                                                 id: '1', //option['id'],
                                                 title: TextButton(
+
                                                     onPressed: () {
                                                       _vote(pollId!, option);
                                                     },
@@ -322,42 +326,50 @@ class _HomeScreenState extends State<HomeScreen> {
                             var poll = polls?[index].data();
                             var pollId = polls?[index].id;
                             poll?['votes'] ??= {};
-                            return Card(
-                              child: ListTile(
-                                title: Row(
-                                  children: [
-                                    Image.asset(
-                                      'assets/page-1/images/ellipse-13-bg.png',
-                                      width: 40,
-                                      height: 40,
+                            return Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Column(
+                                children: [
+                                  if(index!=0)
+
+                                    Image.asset('assets/line_c.png',color: Colors.black,),
+                                  ListTile(
+                                    title: Row(
+                                      children: [
+                                        Image.asset(
+                                          'assets/page-1/images/ellipse-13-bg.png',
+                                          width: 40,
+                                          height: 40,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(poll?['text']),
+                                        ),
+                                      ],
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(poll?['text']),
+                                    subtitle: Row(
+                                      children: [
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Image.asset(
+                                              'assets/page-1/images/expand-thread.png',
+                                              width: 20,
+                                              height: 20,
+                                            )),
+                                        SizedBox(
+                                          width: displayWidth * 0.57,
+                                        ),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Image.asset(
+                                              'assets/page-1/images/share.png',
+                                              width: 20,
+                                              height: 20,
+                                            )),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                                subtitle: Row(
-                                  children: [
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Image.asset(
-                                          'assets/page-1/images/expand-thread.png',
-                                          width: 20,
-                                          height: 20,
-                                        )),
-                                    SizedBox(
-                                      width: displayWidth * 0.57,
-                                    ),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Image.asset(
-                                          'assets/page-1/images/share.png',
-                                          width: 20,
-                                          height: 20,
-                                        )),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             );
                           } else if (polls?[index].data()['type'] ==
@@ -365,21 +377,28 @@ class _HomeScreenState extends State<HomeScreen> {
                             var poll = polls?[index].data();
                             var pollId = polls?[index].id;
                             poll?['votes'] ??= {};
-                            return Card(
-                              child: ListTile(
-                                title: Row(
-                                  children: [
-                                    Image.asset(
-                                      'assets/page-1/images/ellipse-13-bg.png',
-                                      width: 40,
-                                      height: 40,
+                            return Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                children: [
+                                  Image.asset('assets/line_c.png',color: Colors.black,),
+
+                                  ListTile(
+                                    title: Row(
+                                      children: [
+                                        Image.asset(
+                                          'assets/page-1/images/ellipse-13-bg.png',
+                                          width: 40,
+                                          height: 40,
+                                        ),
+                                        Text(poll?['text']),
+                                      ],
                                     ),
-                                    Text(poll?['text']),
-                                  ],
-                                ),
-                                subtitle: Container(
-                                    height: 200,
-                                    child: Image.network(poll?['image_url'])),
+                                    subtitle: Container(
+                                        height: 200,
+                                        child: Image.network(poll?['image_url'])),
+                                  ),
+                                ],
                               ),
                             );
                           }

@@ -387,39 +387,42 @@ class _HomePageState extends State<paymemnt> {
         shadowColor: Colors.white,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            SizedBox(width: displayWidth * .3),
-            Text(
-              'SnapHelp',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'JosefinSans',
-                fontSize: 19 * ffem,
-                fontWeight: FontWeight.w400,
-                height: 1 * ffem / fem,
-                color: Color(0xff000000),
-              ),
-            ),
-            SizedBox(
-              width: 5,
-            ),
-            GestureDetector(
-              onTap: () {
-                customShowDialog(context);
-              },
-              child: Container(
-                // line3FBw (129:381)
-                width: 9 * fem,
-                height: 5 * fem,
-                child: Image.asset(
-                  'assets/page-1/images/line-3-Ni5.png',
-                  width: 9 * fem,
-                  height: 5 * fem,
+        title: GestureDetector(
+          onTap: () {
+            customShowDialog(context);
+          },
+
+          child: Row(
+            children: [
+              SizedBox(width: displayWidth * .3),
+              Text(
+                'SnapHelp',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: 'JosefinSans',
+                  fontSize: 19 * ffem,
+                  fontWeight: FontWeight.w400,
+                  height: 1 * ffem / fem,
+                  color: Color(0xff000000),
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                width: 5,
+              ),
+              GestureDetector(
+                child: Container(
+                  // line3FBw (129:381)
+                  width: 9 * fem,
+                  height: 5 * fem,
+                  child: Image.asset(
+                    'assets/page-1/images/line-3-Ni5.png',
+                    width: 9 * fem,
+                    height: 5 * fem,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         centerTitle: true,
       ),

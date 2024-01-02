@@ -329,10 +329,10 @@ class _HomepageState extends State<Homepagee> {
                   ),
                   Text(
                     "Contact Us",
-                    /*   style: TextStyle(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
-                        color: Colors.black45),*/
+                        color: Colors.black45),
                   ),
                 ],
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ActionButton extends StatelessWidget {
   const ActionButton({Key? key, this.onPressed, required this.icon})
@@ -19,7 +20,8 @@ class ActionButton extends StatelessWidget {
         iconSize: 40,
         color: Colors.black,
         onPressed: onPressed,
-        icon: Image.asset(icon),
+        icon: SvgPicture.asset(icon),
+      //  Image.asset(icon),
       ),
     );
   }
